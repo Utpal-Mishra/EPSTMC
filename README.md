@@ -53,3 +53,42 @@ The providers below are candidates for the planned application.
 | Media production | OpenAI image generation for illustrations, FFmpeg for assembly, and Runway and ElevenLabs as candidates for video and narration. |
 
 The first live integration is planned around one primary source, with a traceable path from source intake to an editor-reviewed brief.
+
+## Pre-launch roadmap
+
+Readers will open straight to the feed without signing up. The app will refresh stories on open and resume, and readers can opt in to push alerts for major stories and material updates. Editorial publishing uses separate, protected access.
+
+The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are planning targets.
+
+| Week | Deliverable | Completion check |
+| --- | --- | --- |
+| 1 | Prototype and launch scope | The sample runs, the first source is selected, and the ingestion work is ready to start. |
+| 2 | Primary-source ingestion | A real update is stored with its provenance. Retrying creates no duplicate. |
+| 3 | Editorial draft and review | An editor can attach historical evidence and approve a version with conditional scenarios. |
+| 4 | Publishing and public read API | An approved story and its corrections reach the feed with a visible version history. |
+| 5 | Account-free mobile feed | A fresh iOS or Android install opens directly to the feed and can open a story and its sources. |
+| 6 | Automatic refresh and offline reading | Opening or resuming fetches updates. Offline readers can see the cached feed and its last refresh time. |
+| 7 | Optional alerts and basic analytics | An approved alert opens the right story on both platforms. The feed works with alerts disabled. |
+| 8 | Closed beta | Test real coverage, corrections, offline use, and notifications on physical devices. |
+| 9 | Release preparation | Resolve launch blockers and prepare privacy disclosures, support details, and store submissions. |
+| 10 | Launch decision | Review two weeks of editorial reliability and beta evidence. Release once critical issues are resolved and both stores approve. |
+
+### Week 1 daily tasks
+
+| Date | Task | Evidence to record |
+| --- | --- | --- |
+| 7 Nov | Review PR #1 and reproduce the example. | Successful sample render and rejection of an unknown source ID. |
+| 8 Nov | Review edge cases and address any baseline issues. | Review findings, validation results, and PR status. |
+| 9 Nov | Define the launch scope and editorial beat. | Scope covering account-free reading, automatic refresh, and optional alerts. |
+| 10 Nov | Choose the first primary source and inspect sample entries. | Source link, sample item, and fields available for ingestion. |
+| 11 Nov | Specify the evidence and story fields. | Source IDs, dates, claim references, scenario triggers, and signals. |
+| 12 Nov | Define publication, correction, and alert rules. | Examples of an ordinary update, a correction, and an alert-worthy change. |
+| 13 Nov | Review the Week 1 exit criteria and prepare Week 2. | Verified work, open blockers, and the next ingestion task. |
+
+### Daily development status
+
+<!-- epstmc-status:start -->
+| Date | Verified progress | Blockers | Next task |
+| --- | --- | --- | --- |
+| 6 Nov 2026 | Evidence-linked brief prototype is available in draft PR #1. | Prototype review pending. | Reproduce the sample and review validation. |
+<!-- epstmc-status:end -->
