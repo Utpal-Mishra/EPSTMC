@@ -1,0 +1,21 @@
+{
+  "title": "Fictional example: City proposes an electric bus pilot",
+  "sources": [
+    {"id": "S1", "title": "Illustrative council proposal", "url": "https://example.com/proposal"},
+    {"id": "S2", "title": "Illustrative archive entry", "url": "https://example.com/archive"}
+  ],
+  "facts": [
+    {"text": "The council proposed a pilot covering two routes.", "source_ids": ["S1"]}
+  ],
+  "history": [
+    {"text": "An earlier pilot covered one route, so depot capacity will matter more this time.", "source_ids": ["S2", "S1"]}
+  ],
+  "scenarios": [
+    {
+      "text": "the city could issue a procurement notice.",
+      "condition": "the council approves the budget",
+      "signal": "a procurement notice with a submission deadline",
+      "source_ids": ["S1"]
+    }
+  ]
+}
