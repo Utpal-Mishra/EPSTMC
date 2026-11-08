@@ -92,5 +92,5 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | --- | --- | --- | --- |
 | 6 Nov 2026 | Evidence-linked brief prototype is available in draft PR #1. | Prototype review pending. | Reproduce the sample and review validation. |
 | 7 Nov 2026 | Reviewed [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). The sample rendered and all three sections rejected unknown source IDs. | No blocker for Day 1. PR remains in draft. | Review validation edge cases, starting with a source URL that accepted a nonnumeric port. |
-| 8 Nov 2026 | Checked validation edge cases in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). Invalid source IDs and missing scenario fields were rejected. Implementation unchanged. | Source URLs with invalid ports still pass validation. | Reject invalid URL ports in the draft and rerun the checks. |
+| 8 Nov 2026 | Fixed invalid URL port validation in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). All 12 checks passed. | No blocker found in the validation checks. PR remains in draft. | Define the launch scope and editorial beat. |
 <!-- epstmc-status:end -->
