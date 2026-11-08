@@ -24,6 +24,11 @@ def render_brief(brief):
         parsed = urlsplit(url)
         if parsed.scheme not in {"http", "https"} or not parsed.hostname:
             raise ValueError(f"Source {source_id} requires an HTTP(S) URL")
+        try:
+            # urlsplit validates the port when it is accessed.
+            _ = parsed.port
+        except ValueError as exc:
+            raise ValueError(f"Source {source_id} has an invalid URL port") from exc
         sources[source_id] = (required_text(source, "title"), url)
 
     for field, heading in (
