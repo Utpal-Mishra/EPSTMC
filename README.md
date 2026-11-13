@@ -52,7 +52,28 @@ The providers below are candidates for the planned application.
 | Web and data | Next.js for the reader experience. Supabase Postgres for stories, claims, evidence, versions, scenarios, feedback, and engagement events. Supabase Storage for media assets. |
 | Media production | OpenAI image generation for illustrations, FFmpeg for assembly, and Runway and ElevenLabs as candidates for video and narration. |
 
-The first live integration is planned around one primary source, with a traceable path from source intake to an editor-reviewed brief.
+## First source intake
+
+The pilot beat is **U.S. AI infrastructure and policy**, starting with federal notices, rules, and executive actions relevant to data centres and their supporting infrastructure. The first source is the [Federal Register published-documents API](https://www.federalregister.gov/reader-aids/developer-resources/rest-api). Search results are candidates for editorial screening. A search match alone does not establish that an item belongs in the beat.
+
+Run from the prototype branch with Python 3.9+ and internet access. The API requires no key and the CLI uses the Python standard library.
+
+```bash
+python ingest.py --db /tmp/epstmc-evidence.sqlite --document 2025-05936
+python ingest.py --db /tmp/epstmc-evidence.sqlite --limit 10
+python ingest.py --db /tmp/epstmc-evidence.sqlite --list
+```
+
+The first command fetches the Department of Energy’s [AI infrastructure notice](https://www.federalregister.gov/d/2025-05936), published on 7 April 2025. It is a reproducible historical sample. The second command fetches the first page of results for the pilot search, newest first. Use `--query` to supply a different search term. The third command exports the local records for review.
+
+| Stored evidence | Use |
+| --- | --- |
+| `id`, `document_number` | The Federal Register document number gives each item a stable ID, such as `fr-2025-05936`. Repeated intake updates the same row. |
+| `title`, `url`, `document_type` | Identify the original document and the kind of action reported. |
+| `publication_date`, `official_pdf_url` | Record the publication date and the official electronic edition link when supplied. |
+| `first_retrieved_at`, `last_retrieved_at` | Record the first and most recent successful intake in UTC. |
+
+An editor can copy an evidence record’s `id`, `title`, and `url` into the brief’s `sources` array and reference its ID from a claim. The editor supplies the claim, checks the source, and decides what to publish. This integration runs manually with local SQLite. The roadmap calls for shared Postgres storage and an editorial queue in later work.
 
 ## Pre-launch roadmap
 
