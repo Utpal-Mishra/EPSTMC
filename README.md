@@ -56,7 +56,7 @@ The providers below are candidates for the planned application.
 
 The pilot beat is **U.S. AI infrastructure and policy**, starting with federal notices, rules, and executive actions relevant to data centres and their supporting infrastructure. The first source is the [Federal Register published-documents API](https://www.federalregister.gov/reader-aids/developer-resources/rest-api). Search results are candidates for editorial screening. A search match alone does not establish that an item belongs in the beat.
 
-Run from the prototype branch with Python 3.9+ and internet access. The API requires no key and the CLI uses the Python standard library.
+Run from the prototype branch with Python 3.9+ and internet access. The API requires no key. SQLite mode uses the Python standard library.
 
 ```bash
 python ingest.py --db /tmp/epstmc-evidence.sqlite --document 2025-05936
@@ -73,7 +73,35 @@ The first command fetches the Department of Energy’s [AI infrastructure notice
 | `publication_date`, `official_pdf_url` | Record the publication date and the official electronic edition link when supplied. |
 | `first_retrieved_at`, `last_retrieved_at` | Record the first and most recent successful intake in UTC. |
 
-An editor can copy an evidence record’s `id`, `title`, and `url` into the brief’s `sources` array and reference its ID from a claim. The editor supplies the claim, checks the source, and decides what to publish. This integration runs manually with local SQLite. The roadmap calls for shared Postgres storage and an editorial queue in later work.
+An editor can copy an evidence record’s `id`, `title`, and `url` into the brief’s `sources` array and reference its ID from a claim. The editor supplies the claim, checks the source, and decides what to publish.
+
+### Shared Postgres storage
+
+The importer can also use a Postgres database shared by the ingestion worker and
+editorial tools. Set `EPSTMC_DATABASE_URL` through your shell or deployment secret
+store. Use the database provider’s TLS settings for a hosted connection.
+
+Apply the [schema migration](migrations/001_federal_register_evidence.sql) with
+the schema owner’s connection. If the worker uses a separate database role, grant
+it `USAGE` on the `epstmc` schema and `SELECT, INSERT, UPDATE` on
+`epstmc.federal_register_evidence`. For hosted Postgres keep this schema out of
+any public API exposure settings.
+
+```bash
+python -m pip install -r requirements-postgres.txt
+# Run with the schema owner's connection for initial setup.
+psql "$EPSTMC_DATABASE_URL" -v ON_ERROR_STOP=1 -f migrations/001_federal_register_evidence.sql
+# Run with the worker's connection for intake and export.
+python ingest.py --postgres --document 2025-05936
+python ingest.py --postgres --list
+```
+
+The same document ID updates one record, preserves its first successful intake
+timestamp, and advances its last successful intake timestamp. The JSON export
+uses the same fields and UTC timestamp format as SQLite. Existing SQLite records
+remain in their database. Re-fetch a document using `--postgres` to record it
+in shared storage. Intake runs on demand, and the editorial review queue is
+planned separately.
 
 ## Pre-launch roadmap
 
@@ -118,5 +146,7 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 10 Nov 2026 | Week 1, Day 4. No new development verified. First-source selection and sample review are pending. The [URL-port fix](https://github.com/Utpal-Mishra/EPSTMC/commit/3ed93aea9f5928d216805f0b1fbaaa9a745c852a) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). | The first editorial beat is still undocumented. | Record the editorial beat, choose a primary source, and document one sample entry and its ingestion fields. |
 | 11 Nov 2026 | Week 1, Day 5. Evidence and story field specification is pending. No new development verified since the [URL-port fix](https://github.com/Utpal-Mishra/EPSTMC/commit/3ed93aea9f5928d216805f0b1fbaaa9a745c852a) in draft PR #1. | The editorial beat and first primary-source sample are still undocumented. | Record the beat and one sample from the chosen source, then specify source IDs, dates, claim references, scenario triggers, and signals. |
 | 12 Nov 2026 | Week 1, Day 6. Publication, correction, and alert rules are pending. Development is unchanged since the [URL-port fix](https://github.com/Utpal-Mishra/EPSTMC/commit/3ed93aea9f5928d216805f0b1fbaaa9a745c852a) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). | The editorial beat, primary-source sample, and evidence fields are still undocumented. | Document the first editorial beat and one primary-source sample to ground the rules. |
-| 13 Nov 2026 | Week 1, Day 7. Exit criteria reviewed. The sample render and validation are recorded. Development is unchanged since the [URL-port fix](https://github.com/Utpal-Mishra/EPSTMC/commit/3ed93aea9f5928d216805f0b1fbaaa9a745c852a) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). | Week 1 exit criteria are unmet. The editorial beat, first primary source, and sample ingestion fields are pending. | Document the editorial beat, select one primary source, and capture one real item with its original link, publication date, and available fields. |
+| 13 Nov 2026 | Selected U.S. AI infrastructure and policy as the pilot beat. [Draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) now ingests Federal Register documents into SQLite. A live [DOE notice](https://www.federalregister.gov/d/2025-05936) was stored, re-fetched without a duplicate, and rendered as a cited brief. | Intake is available in draft PR #1 and runs locally. Shared storage and the editorial queue are pending. | Add the editorial queue and connect intake to the shared evidence store. |
+| 14 Nov 2026 | Week 2, Day 1. Primary-source ingestion is unchanged since 13 Nov. The [Federal Register importer](https://github.com/Utpal-Mishra/EPSTMC/commit/af2a27ca346b6d3c7219b534dff39388c6a4b852) stored a DOE notice with provenance and re-fetched it without a duplicate in local SQLite. | Importer runs manually in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). Shared storage and editorial queue are pending. | Connect intake to shared Postgres and verify that re-fetching the same notice creates one evidence record. |
+| 15 Nov 2026 | Week 2, Day 2. Ingestion is unchanged since 13 Nov. The [Federal Register importer](https://github.com/Utpal-Mishra/EPSTMC/commit/af2a27ca346b6d3c7219b534dff39388c6a4b852) stored one DOE notice with provenance after two fetches in local SQLite. | [Draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) runs manually. Shared storage and the editorial review queue are pending. | Connect intake to shared Postgres and verify that two fetches of the same notice leave one record with provenance intact. |
 <!-- epstmc-status:end -->
