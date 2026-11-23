@@ -50,7 +50,7 @@ def make_app(reader_factory):
                     match = STORY_PATH.fullmatch(path)
                     story_id, version = match.groups()
                     with reader_factory() as reader:
-                        if path.endswith('/versions'):
+                        if path == f'/api/v1/stories/{story_id}/versions':
                             result = reader.history(story_id)
                         else:
                             result = reader.story(story_id, int(version) if version else None)

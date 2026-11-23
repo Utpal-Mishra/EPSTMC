@@ -4,17 +4,29 @@ EPSTMC is an AI-assisted news project that connects today’s headlines to their
 
 ## Current status
 
-The Python implementation supports primary-source intake and the Week 3 private
-editorial workflow: attach ingested and historical evidence, submit a draft for
-review, approve or reject it, and create revisions without changing earlier
-versions. Conditional scenarios include triggers, timeframes and signals;
-historical comparisons record their limitations. Every decision has an actor,
-time and note.
+The local application connects primary-source intake, Week 3 editorial review and
+Week 4 publication. Editors attach evidence, review conditional scenarios and
+approve immutable versions. A separate publish command makes an approved version
+available to the account-free reader and GET-only public API. Corrections retain
+older publications and explain what changed.
 
-See [Week 3 setup and walkthrough](docs/WEEK3.md) and the
-[project audit trail](docs/PROJECT_LOGS.md). SQLite runs locally with Python 3.9+;
-Postgres uses the optional requirements and migrations. Hosted production
-Postgres setup remains pending. Public publishing and the reader API are Week 4.
+Quick start with an explicitly fictional demo in a fresh database:
+
+```bash
+python demo.py --db /tmp/epstmc-reader-demo.sqlite
+python app.py --db /tmp/epstmc-reader-demo.sqlite
+```
+
+Open `http://127.0.0.1:8080/` when running locally. See the
+[Week 4 reader, API and publishing guide](docs/WEEK4.md),
+[Week 3 editorial walkthrough](docs/WEEK3.md),
+[daily development tracker](docs/DAILY_DEVELOPMENT.md) and
+[project audit trail](docs/PROJECT_LOGS.md).
+
+**Integration status:** Week 3–4 code is committed locally; GitHub push and merge
+are blocked pending explicit approval. Local SQLite and WSGI checks pass.
+Postgres migrations/CI are prepared, but hosted database verification and public
+hosting are pending. No real story was automatically approved or published.
 
 The original fictional brief still runs with:
 
@@ -164,6 +176,5 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 20 Nov 2026 | Week 2, Day 7. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). The recorded local test stored a real notice with provenance and kept one record after repeated and concurrent imports. | Hosted Postgres setup and validation remain pending. The editorial review queue is pending. | Apply the migration to hosted Postgres, import DOE notice 2025-05936 twice, and verify one record with provenance intact. |
 | 21 Nov 2026 | Week 3, Day 1. Editorial draft and review is the planned milestone and remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation and the editorial review queue remain pending. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 22 Nov 2026 | Week 3, Day 2. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
-| 23 Nov 2026 | Week 3, Day 3. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1), with recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
-| 23 Nov 2026 — Week 3 implementation | Added evidence-backed drafts, historical attachments, conditional scenarios, review queue, approval/rejection, immutable revisions and audit events. Local SQLite suite and fictional CLI walkthrough passed; Postgres CI is prepared but has not run. | Hosted Postgres credentials/setup absent; remote push awaits authorization. | Push for CI, integrate after passing checks, then start Week 4 publishing and public read API. |
+| 23 Nov 2026 | Week 3 editorial workflow and seven accelerated Week 4 units implemented locally: publication, public read API, connected reader, correction history, audit trail and CI preparation. 42 local tests pass. | Automatic approval review blocked GitHub push; Postgres, remote CI and hosted deployment remain unverified. | Obtain explicit approval for combined Week 3–4 push, run CI and integrate, then continue the next daily milestone. |
 <!-- epstmc-status:end -->

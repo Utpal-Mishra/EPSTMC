@@ -32,3 +32,29 @@ Codex. Date: 23 November 2026. Change group: W3-20261123.
 - Hosted production Postgres migration/intake: pending credentials and setup.
 - GitHub push was blocked by automatic approval review: remote publication needs explicit user authorization. Local implementation is committed; remote CI and merge have not run.
 - No real story was approved by automation. Examples and test approvals are explicitly fictional.
+
+## Week 4 — W4-20261123
+
+All seven work units below were implemented on 23 November 2026; day labels
+identify the planned work breakdown, not seven elapsed days. Previous Week 3
+status entries above describe that milestone's verification at the time.
+
+| ID / log | Context and decision | Rationale / evidence | Status / follow-up |
+| --- | --- | --- | --- |
+| W4-BL-01 Business Learning | Separate approval from publication and explain corrections to readers. | `Publisher.publish`, public version history, tests for unpublished approvals. | IMPLEMENTED and VALIDATED locally. |
+| W4-SY-01 System | Connect intake → editorial approval → publication → reader/API through one database. | `publishing.py`, `app.py`, `reader.py`; actual read-connection and demo tests. | IMPLEMENTED; GitHub integration blocked. |
+| W4-AR-01 Architecture | Append-only publication records point to immutable editorial versions. | Migration 003; expected publication sequence, story lock and atomic event write. | IMPLEMENTED; SQLite tested, Postgres not executed. |
+| W4-AU-01 Automation | Update the existing daily task from status-only to one bounded next development unit. | Automation update confirmed 23 Nov; existing flexible daily schedule preserved. | CONFIGURED; future execution is not guaranteed. Pending push rejection must not be bypassed. |
+| W4-RE-01 Recommendation | Gate GitHub integration on backend CI and configure a read-only server database role before hosting. | WSGI application factory, provider-neutral runbook and CI matrix. | RECOMMENDED; production configuration pending. |
+| W4-EX-01 Experiment | Simulate initial publication, correction and old-version reading using fictional evidence. | `demo.py`, API tests and public projection tests. | VALIDATED locally without real editorial approvals. |
+| W4-EE-01 External Evidence | No new external reporting claims introduced. Source snapshots reuse ingested/registered provenance. | Public source field allowlist; fictional examples. | IMPLEMENTED; original-page review still belongs to an editor. |
+| W4-RA-01 Risk & Assumption | Draft or private metadata might leak through the reader. Method: boundary tests; likelihood medium, impact high. | Explicit field projection, published-only queries and read-only connection. | Mitigated locally; owner Utpal; hosted review pending. |
+| W4-RA-02 Risk & Assumption | Concurrent/stale publishers might overwrite content or lose audit events. Likelihood medium, impact high. | Lock/sequence checks, append-only triggers, concurrency and rollback tests. | VALIDATED locally on SQLite; Postgres CI pending. |
+| W4-DI-01 Data & Integration | Reader returns published version content, dates, source links and public change summary. | Feed/story/history API contract and tests. | IMPLEMENTED; no public database API exposure. |
+| W4-PF-01 Product / Feature | Account-free web evidence desk with scenario signals, comparison limits and correction history. | Responsive HTML template, viewport, escaped content and semantic headings. | IMPLEMENTED; browser visual QA pending. Does not complete native mobile Week 5. |
+| W4-MF-01 Merchant & Fulfilment | No commerce or fulfilment requirement. | News publishing scope. | NOT APPLICABLE. |
+| W4-EP-01 Expansion | Continue native mobile feed after integration; keep refresh/offline/alerts in their planned milestones. | Roadmap and daily tracker. | AGREED/PLANNED; no unsupported completion claims. |
+| W4-DE-01 Decision | Deliver seven local day-labelled commits, retain actual implementation date and report remote blockers accurately. | Git history; `DAILY_DEVELOPMENT.md`. | IMPLEMENTED; requires explicit combined Week 3–4 push authorization. |
+| W4-QA-01 Validation / QA | Exercise API routes, response codes, cache validation, private-field filtering, HTML escaping, publication history and demo safety. | 42 local tests pass; compilation and diff checks pass. | VALIDATED locally; remote/Postgres CI not run. |
+| W4-SP-01 Security & Privacy | API supports only GET/HEAD; no public review/approval endpoint; database details do not appear in errors. | Method/status and missing-database tests; CSP, no-sniff and referrer headers. | IMPLEMENTED; production TLS/runtime configuration pending. |
+| W4-CR-01 Change / Release | Local application integration completed; remote integration rejected by automatic approval review. | GitHub push rejected because pending Week 3 publication approval was unresolved. | BLOCKED: no further push/merge attempted through another route. |

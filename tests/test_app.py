@@ -137,3 +137,12 @@ class AppTests(PublicationFixture):
             self.assertIn(b'name="viewport"', body)
             with self.assertRaises(FileExistsError):
                 seed(path)
+
+    def test_story_named_versions_is_not_misrouted_to_history(self):
+        self.approve()
+        published = self.publish()
+        with patch.object(self.publisher, 'story', return_value=published) as story, \
+             patch.object(self.publisher, 'history', side_effect=AssertionError('Wrong route')):
+            status, _, _ = self.request('/api/v1/stories/versions')
+            self.assertEqual(status, 200)
+            story.assert_called_once_with('versions', None)
