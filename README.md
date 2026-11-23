@@ -23,11 +23,12 @@ Open `http://127.0.0.1:8080/` when running locally. See the
 [daily development tracker](docs/DAILY_DEVELOPMENT.md) and
 [project audit trail](docs/PROJECT_LOGS.md).
 
-**Release tracking:** the complete Weeks 1–4 source is tracked in
-[PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). Local SQLite/WSGI tests pass;
-Postgres 16 CI has also passed. The final branch is gated by the Python 3.9/3.12
-and Postgres checks. Hosted production database setup, public deployment and
-browser visual QA remain pending. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
+**Integrated:** Weeks 1–4 were merged into `main` through
+[PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) on 23 November 2026
+(merge `04f136e`). All 42 tests passed on SQLite/Python 3.9, SQLite/Python 3.12
+and Postgres 16 in [the release CI run](https://github.com/Utpal-Mishra/EPSTMC/actions/runs/45278577458).
+Hosted production database setup, public deployment and browser visual QA remain
+pending. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
 No real story was automatically approved or published.
 
 The original fictional brief still runs with:
@@ -178,5 +179,5 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 20 Nov 2026 | Week 2, Day 7. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). The recorded local test stored a real notice with provenance and kept one record after repeated and concurrent imports. | Hosted Postgres setup and validation remain pending. The editorial review queue is pending. | Apply the migration to hosted Postgres, import DOE notice 2025-05936 twice, and verify one record with provenance intact. |
 | 21 Nov 2026 | Week 3, Day 1. Editorial draft and review is the planned milestone and remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation and the editorial review queue remain pending. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 22 Nov 2026 | Week 3, Day 2. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
-| 23 Nov 2026 | Weeks 1–4 implementation uploaded to PR #1: intake, editorial review, explicit publication, reader/API and correction history. 42 local tests pass and Postgres 16 CI passed. Seven Week 4 commits preserved. | Final CI/integration tracked in PR #1; hosted production database, deployment and browser visual QA remain pending. | Finish release checks and merge, then continue Week 5 native mobile work through daily tasks. |
+| 23 Nov 2026 | Weeks 1–4 merged into main via PR #1 (`04f136e`): intake, editorial review, explicit publication, reader/API and correction history. All 42 tests passed on SQLite/Python 3.9 and 3.12 and Postgres 16. Seven Week 4 commits preserved. | Hosted production database, public deployment and browser visual QA remain pending. | Continue Week 5 native mobile development through the daily task; preserve completed milestones. |
 <!-- epstmc-status:end -->

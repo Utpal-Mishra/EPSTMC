@@ -109,7 +109,7 @@ corrections, immutable history, private-field filtering, API status codes,
 ETags, HTML escaping and the real reader connection. The same suite supports a
 disposable Postgres database through `EPSTMC_TEST_DATABASE_URL`; never set this
 test variable to production. CI is prepared for Python 3.9/3.12 and Postgres 16.
-The Postgres 16 GitHub CI job passed; final Python/backend CI and merge status
-are recorded in PR #1. GitHub integration was authorised on 23 November 2026. Local socket permissions prevent a local Postgres/browser server run.
+The Postgres 16 GitHub CI job passed; Python 3.9 and 3.12 SQLite jobs also passed. PR #1 merged the
+release into main on 23 November 2026 (`04f136e`). GitHub integration was authorised on 23 November 2026. Local socket permissions prevent a local Postgres/browser server run.
 
 See [daily development tracking](DAILY_DEVELOPMENT.md) for stages and blockers.

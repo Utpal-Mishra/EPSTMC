@@ -69,3 +69,15 @@ status entries above describe that milestone's verification at the time.
 - INT-PF-01 Product / Governance: added explicit launch scope, source review, update/correction and future alert rules in EDITORIAL_POLICY.md, closing the Week 1 policy documentation gap. Alerts remain unimplemented in this milestone.
 - INT-RA-01 Risk & Assumption: hosted production database, public deployment and browser visual QA remain pending. CI uses disposable data; no real reporting was approved or published.
 - INT-CR-01 Change / Release: PR #1 tracks final integration; daily milestone GitHub hashes updated to match the uploaded sequence. Retained earlier blocker entries above as historical audit evidence.
+
+
+### Integration completed
+
+INT-CR-02 — 23 November 2026: PR #1 merged successfully into main at
+`04f136eea904724bf6efeaa6b2433049eab4d816`, with head
+`3df8b88cd756cdb192f0dd6999e179986b5db9ac`. All three jobs in release CI run
+45278577458 passed: SQLite/Python 3.9, SQLite/Python 3.12, Postgres 16. Each ran
+the 42-test suite. Verified the release head is an ancestor of fetched main and
+the application, migrations, tests and documentation are present there.
+The daily task retains its schedule and now continues the next incomplete unit.
+Hosted production setup, deployment and visual QA remain pending.
