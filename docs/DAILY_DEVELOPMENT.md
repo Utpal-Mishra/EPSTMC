@@ -31,8 +31,10 @@ integration and production verification are separate statuses.
    integration does not imply a hosted deployment or real editorial publication.
 4. Follow [NEXT_7_DAYS.md](NEXT_7_DAYS.md) for 24–30 November: one real story
    from history to present, with one tested website/code increment each day.
-   This owner-directed phase takes precedence over starting native mobile now.
-   Do not implement or upload all seven days in one batch.
+   The owner subsequently requested the complete seven-unit set in the current
+   session; see HISTORY_TO_PRESENT.md for the implemented release. Follow-up
+   daily runs check reliability, source intake and bounded fixes. Do not rebuild
+   completed units or backdate the implementation.
 5. Record real date, task ID, commit/PR, tests, files, blockers and next task. Use
    the README status markers for one idempotent entry per calendar date. Keep
    proposed, implemented, validated, integrated and deployed distinct. Preserve

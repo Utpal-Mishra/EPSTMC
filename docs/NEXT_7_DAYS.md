@@ -1,4 +1,11 @@
-# Seven daily website increments — 24–30 November 2026
+# Seven website increments — original daily plan
+
+**Superseded execution cadence:** the owner subsequently requested development
+and integration of the full listed set in the current session. All seven units
+are implemented in the history-to-present release; the original dated plan below
+is retained as planning history. See [HISTORY_TO_PRESENT.md](HISTORY_TO_PRESENT.md).
+The remaining seven scheduled runs check intake/reliability and make bounded
+follow-up fixes rather than rebuilding these units.
 
 Owner instruction recorded 23 November: develop and integrate the next seven
 calendar days of updates, including the website, and update GitHub day by day.

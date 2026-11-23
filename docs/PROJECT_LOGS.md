@@ -102,3 +102,31 @@ Hosted production setup, deployment and visual QA remain pending.
 - NEXT7-RA-01 Risk & Assumption / Data: dates are targets; factual coverage, human review and hosting setup can block completion. Mitigate with explicit pending states, dependency checks and separate validation of source, code and website freshness. Owner: Utpal. Status: PLANNED.
 - NEXT7-EP-01 Expansion / Merchant & Fulfilment: native mobile follows this prioritised phase; no commerce scope. No paid-service activation or access widening authorised.
 - NEXT7-QA-01 Validation / Change: inspect branch/PR state, test each daily change, push that day's increment and merge after passing checks, then verify the private Site result. Preserve existing audit history. This setup commit contains documentation only.
+
+
+## HTP implementation — 23 November 2026
+
+| Log / ID | Decision, change and rationale | Evidence / status |
+| --- | --- | --- |
+| Business Learning HTP-BL-01 | Deliver one real source-backed history-to-present case before native mobile. Selected events are related by topic, not asserted as one causal chain or one facility. | Five primary pages read; selected coverage and gaps explicitly labelled. IMPLEMENTED. |
+| System HTP-SY-01 | Replace the hosted fictional snapshot with a private Worker-backed workspace: timeline, intake, review and reader. Preserve Python CLI functionality. | `web/worker`, `timeline.py`; local checks pass. Deployment tracked separately. |
+| Architecture HTP-AR-01 | D1 provides durable hosted versions/evidence/checks/audit; a shared case contract retains facts/history/scenarios/source structure. Conditional SQL batches and immutable guards protect review/publication lineage. | Generated Drizzle schema migrations and rollback/concurrency tests. IMPLEMENTED / VALIDATED locally. |
+| Automation HTP-AU-01 | Latest owner instruction requests the full seven-unit set now. Future scheduled runs perform intake/reliability checks and bounded fixes, rather than rebuild completed work. | Original plan retained as history; daily prompt updated at release. |
+| Recommendation HTP-RE-01 | Review originals and coverage limitations before approving. A successful Federal Register query is not a full story fact-check. | Freshness scope is visible; owner-only review checklist. RECOMMENDED / IMPLEMENTED controls. |
+| Experiment HTP-EX-01 | Exercise chronology, filters, stale writes, durable restart, source failures, corrections and rejected unauthorized actions. | 45 Python and 18 Worker/D1 tests passed; browser year/month and review screens inspected. VALIDATED locally. |
+| External Evidence HTP-EE-01 | Use GPO/FR, White House, DOE/NNSA and Senate primary pages with distinct event/publication dates. Latest case event is 6 Nov 2026; research checked 23 Nov. | Source URLs and case boundaries recorded in HISTORY_TO_PRESENT.md. No claim of an unverified agency response. |
+| Risk & Assumption HTP-RA-01 | Reader may confuse retrieval freshness with a new event, or negotiations with operational delivery. Likelihood medium, impact high. | Mitigate with separate dates, status labels, source attribution and explicit gaps. Owner Utpal. IMPLEMENTED. |
+| Data & Integration HTP-DI-01 | Intake stores fingerprinted source revisions, preserves first retrieval and queues candidates without changing claims. Failed checks preserve the previous successful timestamp. | Retry/deduplication tests; source uses fixed approved API, not arbitrary URL fetching. IMPLEMENTED. |
+| Product / Feature HTP-PF-01 | Year/month timeline, original-source links, source queue, browser review and publication history share durable data. Visible reader refreshes every minute and on resume. | Browser inspection and API tests; no automatic human approval. IMPLEMENTED. |
+| Merchant & Fulfilment HTP-MF-01 | No merchant or fulfilment operations. | NOT APPLICABLE. |
+| Expansion HTP-EP-01 | Broader archives, more topics and native apps remain subsequent work. No complete historical coverage or instant news detection is asserted. | AGREED/PLANNED boundaries retained. |
+| Decision HTP-DE-01 | Preserve the existing owner-private Site and project ID. Narrow machine updater routes rely on its private platform gate; actual review/publication additionally requires browser identity and Origin checks. | Runtime shared-update flag configured; role/access policy unchanged. Do not reuse on a public Worker. |
+| Security & Privacy HTP-SP-01 | No credentials or private review notes in browser bundles/publications. Preview identity injection exists only in the local QA adapter, outside the deployed bundle. | Auth/Origin tests, explicit projection and source URL validation. VALIDATED locally. |
+| Change / Release HTP-CR-01 | Seven units implemented in one current session on the owner's latest request. Do not backdate or claim seven elapsed days. | GitHub integration and hosted D1 verification recorded after release. |
+
+HTP-REL-01 — Hosted verification: the retained private Site deployment succeeded
+with runtime environment revision 1 and D1 tables provisioned by migrations.
+Idempotent service initialization saved the real research case as draft version 1
+with five events. Live intake returned 20 pending candidates and a separate status
+request confirmed the durable success timestamp `2026-11-23T23:15:22.748Z`.
+No candidate was auto-attached and no real story was approved or published.
