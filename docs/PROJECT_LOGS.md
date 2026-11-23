@@ -81,3 +81,13 @@ the 42-test suite. Verified the release head is an ancestor of fetched main and
 the application, migrations, tests and documentation are present there.
 The daily task retains its schedule and now continues the next incomplete unit.
 Hosted production setup, deployment and visual QA remain pending.
+
+## Reader review — 23 November 2026
+
+- REVIEW-SY-01 System / Product: provide a private hosted reader snapshot with one clearly fictional story and two publications, plus a guided workflow page. Drafting/approval remain CLI-only; no live news claim.
+- REVIEW-AR-01 Architecture / Data: export the actual WSGI-rendered HTML and the published public projection from a disposable SQLite database. Static navigation uses version pages and JSON snapshots; no database or private review fields are uploaded.
+- REVIEW-EX-01 Experiment / QA: 43 local tests passed; exporter links and private-field filtering checked. Browser inspection verified the feed, corrected story and version 1 warning. The private deployed origin presents its expected ChatGPT sign-in gate.
+- REVIEW-SP-01 Risk & Assumption / Decision: keep the review owner-only. Make fictional content and snapshot limitations explicit on every page. Hosted demo does not complete production hosting, live intake, ongoing refresh, or a web editorial console.
+- REVIEW-AU-01 Automation / Recommendation / Expansion: generation is on demand; no new schedule or notification. Continue planned mobile/editorial work from the current main branch; do not treat this snapshot as a native app.
+- REVIEW-EE-01 External Evidence / Business Learning: evidence links are explicitly fictional placeholders; this review validates navigation and provenance presentation, not source factual support. No real news was approved or published.
+- REVIEW-MF-01 Merchant & Fulfilment: not applicable. REVIEW-CR-01 Change / Release: private review site version and reproducible export process recorded in REVIEW_SITE.md.

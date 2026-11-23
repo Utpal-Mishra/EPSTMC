@@ -146,3 +146,32 @@ class AppTests(PublicationFixture):
             status, _, _ = self.request('/api/v1/stories/versions')
             self.assertEqual(status, 200)
             story.assert_called_once_with('versions', None)
+
+    def test_static_review_export_links_and_privacy(self):
+        from preview_export import export
+        from html.parser import HTMLParser
+        class Links(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.hrefs = []
+            def handle_starttag(self, tag, attrs):
+                if tag == 'a':
+                    self.hrefs.extend(value for key, value in attrs if key == 'href')
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.assertEqual(export(root)['published_versions'], 2)
+            self.assertTrue((root/'workflow/index.html').exists())
+            for file in root.rglob('*.html'):
+                html = file.read_text()
+                self.assertIn('fictional news sample', html)
+                parser = Links()
+                parser.feed(html)
+                for href in parser.hrefs:
+                    if href.startswith('/'):
+                        target = root/href.lstrip('/')
+                        if target.is_dir():
+                            target = target/'index.html'
+                        self.assertTrue(target.exists(), href)
+            data = (root/'data/history.json').read_text()
+            self.assertNotIn('registered_by', data)
+            self.assertNotIn('assessment', data)
