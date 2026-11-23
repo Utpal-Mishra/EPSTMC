@@ -1,0 +1,161 @@
+{
+  "id": "us-ai-federal-land",
+  "title": "AI data centres on federal land: policy, projects and oversight",
+  "subtitle": "A source-linked timeline from January 2025 to the latest event verified in this case study.",
+  "coverage_start": "2025-01-14",
+  "coverage_end": "2026-11-06",
+  "research_checked_at": "2026-11-23T22:59:31+00:00",
+  "review_status": "research_preview",
+  "summary": "Federal-land AI development moved through policy changes and project negotiations; a November 2026 oversight request asks how BLM is assessing proposals. These events share a theme but are not one project or a proven causal chain.",
+  "sources": [
+    {
+      "id": "fr-2025-01395",
+      "title": "Executive Order 14141: AI infrastructure",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2025-01-17/html/2025-01395.htm",
+      "publisher": "U.S. Government Publishing Office",
+      "publication_date": "2025-01-17",
+      "retrieved_at": "2026-11-23T22:59:31+00:00",
+      "verification_method": "Original primary-source page read during source review; metadata and paraphrased claim checked."
+    },
+    {
+      "id": "fr-2025-05936",
+      "title": "DOE request for information on AI infrastructure on DOE lands",
+      "url": "https://www.federalregister.gov/documents/2025/04/07/2025-05936/request-for-information-on-artificial-intelligence-infrastructure-on-doe-lands",
+      "publisher": "Federal Register / Department of Energy",
+      "publication_date": "2025-04-07",
+      "retrieved_at": "2026-11-23T22:59:31+00:00",
+      "verification_method": "Original primary-source page read during source review; metadata and paraphrased claim checked."
+    },
+    {
+      "id": "eo-14318",
+      "title": "Executive Order 14318: data-centre permitting",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/07/accelerating-federal-permitting-of-data-center-infrastructure/",
+      "publisher": "The White House",
+      "publication_date": "2025-07-23",
+      "retrieved_at": "2026-11-23T22:59:31+00:00",
+      "verification_method": "Original primary-source page read during source review; metadata and paraphrased claim checked."
+    },
+    {
+      "id": "nnsa-2026-07-20",
+      "title": "NNSA selects Amentum for lease negotiations",
+      "url": "https://www.energy.gov/nnsa/articles/nnsa-selects-amentum-ai-data-center-and-energy-project-savannah-river-site",
+      "publisher": "DOE / National Nuclear Security Administration",
+      "publication_date": "2026-07-20",
+      "retrieved_at": "2026-11-23T22:59:31+00:00",
+      "verification_method": "Original primary-source page read during source review; metadata and paraphrased claim checked."
+    },
+    {
+      "id": "senate-2026-11-06",
+      "title": "Heinrich requests answers on data centres on public lands",
+      "url": "https://www.heinrich.senate.gov/newsroom/press-releases/heinrich-demands-answers-on-trump-administrations-push-to-build-data-centers-on-public-lands",
+      "publisher": "Office of Senator Martin Heinrich",
+      "publication_date": "2026-11-06",
+      "retrieved_at": "2026-11-23T22:59:31+00:00",
+      "verification_method": "Original primary-source page read during source review; metadata and paraphrased claim checked."
+    }
+  ],
+  "timeline": [
+    {
+      "id": "policy-baseline",
+      "event_date": "2025-01-14",
+      "date_precision": "day",
+      "title": "Federal infrastructure plan",
+      "text": "Executive Order 14141 set out a plan for developing AI infrastructure on federal sites. This is historical policy, not evidence that any particular facility was built.",
+      "source_ids": [
+        "fr-2025-01395"
+      ],
+      "kind": "fact",
+      "connection": "Starting point for comparing later approaches to federal land and AI infrastructure."
+    },
+    {
+      "id": "doe-rfi",
+      "event_date": "2025-04-07",
+      "date_precision": "day",
+      "title": "DOE seeks industry input",
+      "text": "DOE published an information request about AI infrastructure on its lands, including development approaches and energy needs. An information request does not award a lease.",
+      "source_ids": [
+        "fr-2025-05936"
+      ],
+      "kind": "fact",
+      "connection": "A concrete intake step for the federal-land development theme; not a construction milestone."
+    },
+    {
+      "id": "policy-change",
+      "event_date": "2025-07-23",
+      "date_precision": "day",
+      "title": "Permitting policy changes",
+      "text": "Executive Order 14318 prioritised facilitating data-centre infrastructure and expressly revoked Executive Order 14141.",
+      "source_ids": [
+        "eo-14318"
+      ],
+      "kind": "fact",
+      "connection": "A policy change, so the January order must not be described as the unchanged current framework."
+    },
+    {
+      "id": "lease-negotiations",
+      "event_date": "2026-07-20",
+      "date_precision": "day",
+      "title": "Savannah River negotiations announced",
+      "text": "NNSA selected Amentum to enter phased-lease negotiations for a proposed AI data centre and on-site energy project at Savannah River. NNSA explicitly said selection was not a final lease award.",
+      "source_ids": [
+        "nnsa-2026-07-20"
+      ],
+      "kind": "fact",
+      "connection": "Illustrates project-level implementation; DOE-site negotiations and BLM land decisions involve different agencies and authorities."
+    },
+    {
+      "id": "oversight-request",
+      "event_date": "2026-11-06",
+      "date_precision": "day",
+      "title": "Senate oversight request",
+      "text": "Senator Heinrich requested BLM information on legal authorities, proposals and eligible lands for data-centre development, with a requested response date of 20 November 2026.",
+      "source_ids": [
+        "senate-2026-11-06"
+      ],
+      "kind": "fact",
+      "connection": "Shows an oversight question within the broader federal-land story. The letter establishes the request, not the truth of every allegation or the agency response."
+    }
+  ],
+  "facts": [
+    {
+      "text": "Senator Heinrich requested BLM information on legal authorities, proposals and eligible lands for data-centre development, with a requested response date of 20 November 2026.",
+      "source_ids": [
+        "senate-2026-11-06"
+      ]
+    },
+    {
+      "text": "NNSA announced negotiations, not a final Savannah River lease award.",
+      "source_ids": [
+        "nnsa-2026-07-20"
+      ]
+    }
+  ],
+  "history": [
+    {
+      "text": "The policy framework changed between January and July 2025.",
+      "comparison": "Both orders address AI infrastructure; the later order expressly revoked the earlier one.",
+      "limitations": "A policy statement is not proof of project completion or a common legal basis for every federal site.",
+      "source_ids": [
+        "fr-2025-01395",
+        "eo-14318"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "text": "a published agency response could clarify the authorities and review process being used.",
+      "condition": "BLM or the Senate publishes a response to the request",
+      "signal": "an official agency response or committee publication",
+      "timeframe": "The next published response; timing is not established by this case study.",
+      "source_ids": [
+        "senate-2026-11-06"
+      ]
+    }
+  ],
+  "gaps": [
+    "No agency response to the 20 November request has been verified in this case study as of the research check. This does not establish that no response exists.",
+    "The latest verified event here is 6 November 2026; the research-check time is not a newer news event.",
+    "This is a selected-source timeline, not an exhaustive archive or a legal assessment.",
+    "Project operational status after the cited negotiation announcement has not been verified."
+  ]
+}

@@ -1,4 +1,19 @@
-# Private reader review
+# Private history-to-present website
+
+The existing private URL now hosts the real-source, D1-backed workspace:
+https://epstmc-reader-review.utpalmishra21.chatgpt.site/
+
+Sign in with the owner account. Use Evidence desk and Timeline to explore the
+real federal-land AI infrastructure case and source chronology. Editorial review
+now provides protected draft, evidence-check, approval and publication controls.
+The real case is a labelled research preview until the owner approves it. Live
+Federal Register intake, pending candidates, durable data and freshness indicators
+are connected. The hosted projection refreshes while visible and on resume.
+
+See [HISTORY_TO_PRESENT.md](HISTORY_TO_PRESENT.md) for the complete source
+contract, API/access boundary, tests and deployment verification.
+
+## Earlier review baseline (superseded)
 
 The owner-only review site is available at:
 https://epstmc-reader-review.utpalmishra21.chatgpt.site/

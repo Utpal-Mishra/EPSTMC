@@ -126,12 +126,13 @@ remain in their database. Re-fetch a document using `--postgres` to record it
 in shared storage. Intake runs on demand. Apply migration 002 to use the integrated
 [editorial review queue](docs/WEEK3.md).
 
-## Next seven daily updates
+## History-to-present website
 
-The [24–30 November website development plan](docs/NEXT_7_DAYS.md) prioritises
-one real source-backed story from history to the latest verified development.
-One tested increment is planned per calendar day, with separate GitHub and
-private website updates. These units are planned, not already implemented.
+The [history-to-present integration](docs/HISTORY_TO_PRESENT.md) implements
+one real source-backed case, dated evidence, year/month timeline navigation,
+source candidates and freshness, protected browser review and durable D1 data.
+The story remains a private research preview until owner approval. The
+original daily plan is retained as history; subsequent tasks maintain the release.
 
 ## Pre-launch roadmap
 
