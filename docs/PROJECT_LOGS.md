@@ -28,5 +28,7 @@ Codex. Date: 23 November 2026. Change group: W3-20261123.
 ## Release verification
 
 - Local SQLite behavioral suite: 17 tests passed before release checks.
+- Postgres verification: test suite and migrations prepared, but local server startup is blocked by the runtime's socket permissions. No Postgres behavioral result is claimed.
 - Hosted production Postgres migration/intake: pending credentials and setup.
+- GitHub push was blocked by automatic approval review: remote publication needs explicit user authorization. Local implementation is committed; remote CI and merge have not run.
 - No real story was approved by automation. Examples and test approvals are explicitly fictional.

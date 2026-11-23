@@ -99,6 +99,7 @@ python brief.py examples/brief.json
 
 The same behavioral suite runs against a disposable Postgres database when
 `EPSTMC_TEST_DATABASE_URL` is set. Never point that variable at production: tests
-insert fictional evidence. GitHub Actions provisions its own Postgres 16 service
-and runs both backends. A hosted production database is not configured in this
+insert fictional evidence. The prepared GitHub Actions workflow provisions its own Postgres 16 service
+and runs both backends after the code is pushed. Remote CI has not run yet.
+Local Postgres startup was blocked by runtime socket permissions. A hosted production database is not configured in this
 workspace; hosted migration and live production intake remain unverified.
