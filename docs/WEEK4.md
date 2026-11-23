@@ -1,8 +1,8 @@
 # Week 4 — publishing, corrections and the public reader
 
-Week 4 is integrated with Week 3 in the local application. Editorial approval and
-public publication are separate operations. Production hosting, remote CI and
-hosted Postgres verification are still pending. This milestone provides a
+Week 4 is integrated with Week 3 in the application source. Editorial approval and
+public publication are separate operations. Production hosting and hosted production Postgres verification remain pending;
+GitHub CI now verifies the database workflow with disposable Postgres 16. This milestone provides a
 working WSGI reader and public read API, not an app-store release.
 
 ## Try the complete reader locally
@@ -109,7 +109,7 @@ corrections, immutable history, private-field filtering, API status codes,
 ETags, HTML escaping and the real reader connection. The same suite supports a
 disposable Postgres database through `EPSTMC_TEST_DATABASE_URL`; never set this
 test variable to production. CI is prepared for Python 3.9/3.12 and Postgres 16.
-Postgres and remote CI results remain unverified until GitHub integration is
-approved. Local socket permissions prevent a local Postgres/browser server run.
+The Postgres 16 GitHub CI job passed; final Python/backend CI and merge status
+are recorded in PR #1. GitHub integration was authorised on 23 November 2026. Local socket permissions prevent a local Postgres/browser server run.
 
 See [daily development tracking](DAILY_DEVELOPMENT.md) for stages and blockers.

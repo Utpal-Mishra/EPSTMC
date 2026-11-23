@@ -58,3 +58,14 @@ status entries above describe that milestone's verification at the time.
 | W4-QA-01 Validation / QA | Exercise API routes, response codes, cache validation, private-field filtering, HTML escaping, publication history and demo safety. | 42 local tests pass; compilation and diff checks pass. | VALIDATED locally; remote/Postgres CI not run. |
 | W4-SP-01 Security & Privacy | API supports only GET/HEAD; no public review/approval endpoint; database details do not appear in errors. | Method/status and missing-database tests; CSP, no-sniff and referrer headers. | IMPLEMENTED; production TLS/runtime configuration pending. |
 | W4-CR-01 Change / Release | Local application integration completed; remote integration rejected by automatic approval review. | GitHub push rejected because pending Week 3 publication approval was unresolved. | BLOCKED: no further push/merge attempted through another route. |
+
+
+## Weeks 1–4 integration follow-up — 23 November 2026
+
+- INT-DE-01 Decision: owner explicitly authorised integration of all pending Weeks 1–4 work. Earlier push-approval blocker resolved; no production deployment requested.
+- INT-SY-01 System / Data: transferred the complete source tree to the existing GitHub PR branch and verified its Git tree equals the tested local source. Git CLI lacked credentials; connected GitHub operations preserved the ten-commit development sequence without a force update.
+- INT-AU-01 Automation: daily task will use current GitHub code and next unfinished work, with the obsolete approval blocker removed; existing cadence retained.
+- INT-QA-01 Validation: all 42 local tests pass. The first Postgres 16 CI job passed all tests. Python 3.9 setup failed on the default Ubuntu 26.04 image; pinned CI to Ubuntu 22.04 and disabled matrix fail-fast, then reran checks. Final check and merge status are visible in PR #1.
+- INT-PF-01 Product / Governance: added explicit launch scope, source review, update/correction and future alert rules in EDITORIAL_POLICY.md, closing the Week 1 policy documentation gap. Alerts remain unimplemented in this milestone.
+- INT-RA-01 Risk & Assumption: hosted production database, public deployment and browser visual QA remain pending. CI uses disposable data; no real reporting was approved or published.
+- INT-CR-01 Change / Release: PR #1 tracks final integration; daily milestone GitHub hashes updated to match the uploaded sequence. Retained earlier blocker entries above as historical audit evidence.
