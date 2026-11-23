@@ -139,3 +139,6 @@ live intake independently verified D1 persistence. The private Site version is
 `appgprj_6b04bdf51930819196bfe67273bccb48~appgver_4593c150a988819188be7da7a6bdabe9`.
 The scheduled task retains its seven morning runs and now performs reliability
 and source checks. Owner approval and physical mobile-device QA remain pending.
+
+
+UI-TEXT-01 — 23 November 2026: owner requested the timeline heading change from “History to present” to “News Timeline”. Updated the reader template in GitHub and the existing private Site source. Copy-only change; build verification used.
