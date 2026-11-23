@@ -91,3 +91,14 @@ Hosted production setup, deployment and visual QA remain pending.
 - REVIEW-AU-01 Automation / Recommendation / Expansion: generation is on demand; no new schedule or notification. Continue planned mobile/editorial work from the current main branch; do not treat this snapshot as a native app.
 - REVIEW-EE-01 External Evidence / Business Learning: evidence links are explicitly fictional placeholders; this review validates navigation and provenance presentation, not source factual support. No real news was approved or published.
 - REVIEW-MF-01 Merchant & Fulfilment: not applicable. REVIEW-CR-01 Change / Release: private review site version and reproducible export process recorded in REVIEW_SITE.md.
+
+
+## Seven-day execution change — 23 November 2026
+
+- NEXT7-DE-01 Decision / Business Learning: owner requests actual day-by-day code and website integration, rather than a single seven-day batch. Prioritise one real history-to-present story before native mobile work. Record the seven dated targets in NEXT_7_DAYS.md; all remain PLANNED.
+- NEXT7-SY-01 System / Architecture / Product: use the current GitHub main and existing owner-private reader Site. The fictional snapshot remains the baseline. Plan evidence chronology, timeline navigation, reviewed updates, browser review and durable website data; no feature implementation is claimed during setup.
+- NEXT7-AU-01 Automation: reconfigure the existing task for seven daily runs, 24–30 November, approximate 09:00 Europe/Dublin. One newly completed unit per date, idempotent reruns, no future-day code or backdating. It stops after the seven occurrences.
+- NEXT7-RE-01 Recommendation / Experiment / External Evidence: verify one primary-source case study at run time, distinguish event/publication/retrieval dates, and label drafts and coverage gaps. Source selection is still pending, not fabricated or marked complete.
+- NEXT7-RA-01 Risk & Assumption / Data: dates are targets; factual coverage, human review and hosting setup can block completion. Mitigate with explicit pending states, dependency checks and separate validation of source, code and website freshness. Owner: Utpal. Status: PLANNED.
+- NEXT7-EP-01 Expansion / Merchant & Fulfilment: native mobile follows this prioritised phase; no commerce scope. No paid-service activation or access widening authorised.
+- NEXT7-QA-01 Validation / Change: inspect branch/PR state, test each daily change, push that day's increment and merge after passing checks, then verify the private Site result. Preserve existing audit history. This setup commit contains documentation only.

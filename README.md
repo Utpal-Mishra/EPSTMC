@@ -126,6 +126,13 @@ remain in their database. Re-fetch a document using `--postgres` to record it
 in shared storage. Intake runs on demand. Apply migration 002 to use the integrated
 [editorial review queue](docs/WEEK3.md).
 
+## Next seven daily updates
+
+The [24–30 November website development plan](docs/NEXT_7_DAYS.md) prioritises
+one real source-backed story from history to the latest verified development.
+One tested increment is planned per calendar day, with separate GitHub and
+private website updates. These units are planned, not already implemented.
+
 ## Pre-launch roadmap
 
 Readers will open straight to the feed without signing up. The app will refresh stories on open and resume, and readers can opt in to push alerts for major stories and material updates. Editorial publishing uses separate, protected access.

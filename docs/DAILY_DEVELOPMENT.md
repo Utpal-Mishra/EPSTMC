@@ -29,10 +29,10 @@ integration and production verification are separate statuses.
 3. Fix any failing required CI checks before integration. Preserve concurrent
    upstream work and use fast-forward branch updates; never force push. Code
    integration does not imply a hosted deployment or real editorial publication.
-4. After integration, select exactly one next incomplete daily deliverable from
-   the agreed roadmap. Week 5 is the account-free mobile feed; define and test a
-   bounded vertical slice before marking it done. Do not treat the browser reader
-   as a completed iOS/Android application.
+4. Follow [NEXT_7_DAYS.md](NEXT_7_DAYS.md) for 24–30 November: one real story
+   from history to present, with one tested website/code increment each day.
+   This owner-directed phase takes precedence over starting native mobile now.
+   Do not implement or upload all seven days in one batch.
 5. Record real date, task ID, commit/PR, tests, files, blockers and next task. Use
    the README status markers for one idempotent entry per calendar date. Keep
    proposed, implemented, validated, integrated and deployed distinct. Preserve
@@ -40,6 +40,6 @@ integration and production verification are separate statuses.
    deployment claims.
 
 The existing daily task was updated on 23 November 2026 to implement a bounded next task rather
-than only maintain the README. Its existing schedule is retained; no duplicate
-recurring task is needed. If execution, credentials or authorization are missing,
+than only maintain the README. The same task now has seven dated runs for 24–30 November; no duplicate
+recurring task is needed. Its approximate morning slot is retained. If execution, credentials or authorization are missing,
 report the blocker and perform only independently authorized work.
