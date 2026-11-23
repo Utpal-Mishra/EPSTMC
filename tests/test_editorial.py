@@ -16,7 +16,7 @@ from editorial import Store, fingerprint, init_sqlite, open_store
 from ingest import normalize_document, run_postgres, store_documents
 
 
-class EditorialTests(unittest.TestCase):
+class EditorialFixture(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.path = Path(self.tmp.name) / 'evidence.sqlite'
@@ -74,6 +74,8 @@ class EditorialTests(unittest.TestCase):
         self.create()
         return self.store.transition(self.story, 1, 'submit', 'editor', 'Ready for review')
 
+
+class EditorialTests(EditorialFixture):
     def test_end_to_end_approval_and_history(self):
         self.submit()
         self.assertIn(self.story, [r['story_id'] for r in self.store.queue('in_review')])
