@@ -125,3 +125,14 @@ and five timeline events. Live Federal Register intake returned HTTP 200 with
 20 unreviewed candidates at `2026-11-23T23:15:22.748Z`; a separate status request
 confirmed the successful check was stored. These candidates were not promoted
 to claims, timeline events or publications. No real review approval was automated.
+
+
+## GitHub integration
+
+PR #3 merged into main on 23 November 2026 at
+`3335c514907f531381fdd6254a175e4cda3b6ab6` after release CI run
+45287420076 passed all four jobs: website (18 Worker/D1 tests), Python 3.9 SQLite,
+Python 3.12 SQLite and Postgres (45 Python tests per job). Verified all 20 new
+application/web files against the uploaded Git blobs with no content mismatch.
+The existing 24–30 November task now checks source intake and reliability and
+makes bounded follow-up fixes rather than rebuilding the delivered units.

@@ -74,3 +74,13 @@ remain pending independently of code completion.
 | Date | Unit | Commit / PR | Validation | Website result | Blocker / next action |
 | --- | --- | --- | --- | --- | --- |
 | 23 Nov | SETUP | Planning/configuration only | Baseline inspected; no new feature completion claimed | Existing private review retained | Begin HTP-D1 on 24 Nov. |
+
+
+### Superseding implementation result
+
+23 November 2026 — HTP-D1 through HTP-D7 implemented and integrated through
+PR #3 (`3335c51`), with 45 Python and 18 Worker/D1 tests passing. The private
+website is database-backed; live intake saved 20 pending candidates. The real
+case stays unapproved until explicit owner review. Subsequent scheduled dates
+perform reliability and source checks; they do not represent backdated feature
+implementation. Physical-device QA and broader source coverage remain follow-up.

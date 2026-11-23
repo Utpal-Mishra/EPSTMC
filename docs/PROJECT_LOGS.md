@@ -130,3 +130,12 @@ Idempotent service initialization saved the real research case as draft version 
 with five events. Live intake returned 20 pending candidates and a separate status
 request confirmed the durable success timestamp `2026-11-23T23:15:22.748Z`.
 No candidate was auto-attached and no real story was approved or published.
+
+
+HTP-REL-02 — Integration complete: PR #3 merged at `3335c514907f531381fdd6254a175e4cda3b6ab6`.
+Release CI run 45287420076 passed all four jobs (45 Python, 18 Worker/D1 tests).
+Uploaded application/web blobs matched local files exactly. Hosted setup and
+live intake independently verified D1 persistence. The private Site version is
+`appgprj_6b04bdf51930819196bfe67273bccb48~appgver_4593c150a988819188be7da7a6bdabe9`.
+The scheduled task retains its seven morning runs and now performs reliability
+and source checks. Owner approval and physical mobile-device QA remain pending.
