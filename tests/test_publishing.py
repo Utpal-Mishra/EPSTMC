@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 from threading import Barrier
 import sqlite3
 import os
+from unittest.mock import patch
 
 from editorial import Store
 from publishing import Publisher, init_publications, open_reader
@@ -160,3 +161,17 @@ class PublishingTests(PublicationFixture):
         with ThreadPoolExecutor(max_workers=2) as pool:
             self.assertEqual(sorted(pool.map(worker, range(2))), ['saved', 'stale'])
         self.assertEqual(len(self.publisher.history(self.story)['versions']), 1)
+
+    def test_publication_rolls_back_if_audit_write_fails(self):
+        self.approve()
+        with patch.object(self.store, 'event', side_effect=ValueError('Audit unavailable')):
+            with self.assertRaises(ValueError):
+                self.publish()
+        with self.assertRaises(LookupError):
+            self.publisher.story(self.story)
+
+    def test_publication_rejects_superseded_approved_version(self):
+        self.approve()
+        self.store.create(self.story, self.payload, 'editor', 'New draft', 1)
+        with self.assertRaisesRegex(ValueError, 'Stale version'):
+            self.publish()

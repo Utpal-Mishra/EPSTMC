@@ -112,3 +112,28 @@ class AppTests(PublicationFixture):
             status, _, body = self.request('/')
             self.assertEqual(status, 200)
             self.assertIn(b'No stories have been published yet', body)
+
+    def test_real_read_connection_serves_published_content(self):
+        self.approve()
+        self.publish()
+        if self.pg:
+            with patch.dict('os.environ', EPSTMC_DATABASE_URL=__import__('os').environ['EPSTMC_TEST_DATABASE_URL']):
+                status, _, body = self.request('/api/v1/stories/' + self.story, app=create_app(postgres=True))
+        else:
+            status, _, body = self.request('/api/v1/stories/' + self.story, app=create_app(self.path))
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body)['story_id'], self.story)
+
+    def test_fictional_demo_and_safe_existing_database_check(self):
+        from demo import seed
+        from app import create_app
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'demo.sqlite'
+            seed(path)
+            app = create_app(path)
+            status, _, body = self.request('/stories/fictional-bus-pilot', app=app)
+            self.assertEqual(status, 200)
+            self.assertIn(b'Fictional correction: three routes, not two.', body)
+            self.assertIn(b'name="viewport"', body)
+            with self.assertRaises(FileExistsError):
+                seed(path)

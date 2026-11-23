@@ -247,7 +247,7 @@ def open_store(path=None, postgres=False):
             with psycopg.connect(dsn, connect_timeout=10, autocommit=True, row_factory=dict_row) as db:
                 yield Store(db, postgres=True)
         except psycopg.errors.UndefinedTable:
-            raise ValueError("Apply migrations 001 and 002 before editorial commands") from None
+            raise ValueError("Apply migrations 001 and 002, plus 003 for publishing/reader commands") from None
         except psycopg.Error as exc:
             raise ValueError(f"Postgres operation failed ({type(exc).__name__})") from None
     else:

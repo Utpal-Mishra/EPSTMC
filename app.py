@@ -78,8 +78,6 @@ def make_app(reader_factory):
             status, result = 400, {'error': 'Invalid request'}
         except (OSError, sqlite3.Error):
             status, result = 503, {'error': 'Reader temporarily unavailable'}
-        # Backend connection failures are sanitized by open_store as ValueError.
-        # A database ValueError must not be mistaken for invalid user input.
         if status != 200:
             content_type = 'application/json; charset=utf-8'
         body = (result.encode('utf-8') if isinstance(result, str) else
