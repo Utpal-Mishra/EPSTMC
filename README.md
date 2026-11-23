@@ -4,13 +4,21 @@ EPSTMC is an AI-assisted news project that connects today’s headlines to their
 
 ## Current status
 
-The Python prototype in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) turns an editor-supplied JSON file into a Markdown brief. It separates reported facts, historical context, and conditional scenarios. Each entry references a listed source, and each scenario includes a condition and a signal to watch. The prototype validates source references within the brief. An editor checks whether the sources support the claims.
+The Python implementation supports primary-source intake and the Week 3 private
+editorial workflow: attach ingested and historical evidence, submit a draft for
+review, approve or reject it, and create revisions without changing earlier
+versions. Conditional scenarios include triggers, timeframes and signals;
+historical comparisons record their limitations. Every decision has an actor,
+time and note.
 
-To run the fictional example, check out the prototype branch:
+See [Week 3 setup and walkthrough](docs/WEEK3.md) and the
+[project audit trail](docs/PROJECT_LOGS.md). SQLite runs locally with Python 3.9+;
+Postgres uses the optional requirements and migrations. Hosted production
+Postgres setup remains pending. Public publishing and the reader API are Week 4.
+
+The original fictional brief still runs with:
 
 ```bash
-git clone --branch codex/evidence-brief-mvp https://github.com/Utpal-Mishra/EPSTMC.git
-cd EPSTMC
 python brief.py examples/brief.json
 ```
 
@@ -73,7 +81,7 @@ The first command fetches the Department of Energy’s [AI infrastructure notice
 | `publication_date`, `official_pdf_url` | Record the publication date and the official electronic edition link when supplied. |
 | `first_retrieved_at`, `last_retrieved_at` | Record the first and most recent successful intake in UTC. |
 
-An editor can copy an evidence record’s `id`, `title`, and `url` into the brief’s `sources` array and reference its ID from a claim. The editor supplies the claim, checks the source, and decides what to publish.
+The editorial workflow resolves source IDs against these stored evidence records and snapshots their metadata into each version. An editor supplies claims, checks the source, and explicitly approves a reviewed version. See [the walkthrough](docs/WEEK3.md).
 
 ### Shared Postgres storage
 
@@ -100,8 +108,8 @@ The same document ID updates one record, preserves its first successful intake
 timestamp, and advances its last successful intake timestamp. The JSON export
 uses the same fields and UTC timestamp format as SQLite. Existing SQLite records
 remain in their database. Re-fetch a document using `--postgres` to record it
-in shared storage. Intake runs on demand, and the editorial review queue is
-planned separately.
+in shared storage. Intake runs on demand. Apply migration 002 to use the integrated
+[editorial review queue](docs/WEEK3.md).
 
 ## Pre-launch roadmap
 
@@ -157,4 +165,5 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 21 Nov 2026 | Week 3, Day 1. Editorial draft and review is the planned milestone and remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation and the editorial review queue remain pending. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 22 Nov 2026 | Week 3, Day 2. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 23 Nov 2026 | Week 3, Day 3. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1), with recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
+| 23 Nov 2026 — Week 3 implementation | Added evidence-backed drafts, historical attachments, conditional scenarios, review queue, approval/rejection, immutable revisions and audit events. Local SQLite suite and fictional CLI walkthrough passed; Postgres CI verification tracked in the PR. | Hosted Postgres credentials/setup absent; production verification pending. | Complete CI checks, integrate code, then start Week 4 publishing and public read API. |
 <!-- epstmc-status:end -->

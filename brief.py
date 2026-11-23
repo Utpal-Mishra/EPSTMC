@@ -54,9 +54,16 @@ def render_brief(brief):
             if field == "scenarios":
                 condition = required_text(item, "condition")
                 signal = required_text(item, "signal")
-                lines.append(f"- If {condition}, {text} Evidence: {citations}. Watch for {signal}.")
+                timeframe = item.get("timeframe")
+                horizon = f" Timeframe: {timeframe}." if timeframe else ""
+                lines.append(f"- If {condition}, {text} Evidence: {citations}. Watch for {signal}.{horizon}")
             else:
                 lines.append(f"- {text} {citations}")
+                if field == "history":
+                    if item.get("comparison"):
+                        lines.append(f"  Comparison: {item['comparison']}")
+                    if item.get("limitations"):
+                        lines.append(f"  Limitations: {item['limitations']}")
 
     lines.extend(("", "## Sources", ""))
     for source_id, (title, url) in sources.items():
