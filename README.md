@@ -4,13 +4,35 @@ EPSTMC is an AI-assisted news project that connects today’s headlines to their
 
 ## Current status
 
-The Python prototype in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) turns an editor-supplied JSON file into a Markdown brief. It separates reported facts, historical context, and conditional scenarios. Each entry references a listed source, and each scenario includes a condition and a signal to watch. The prototype validates source references within the brief. An editor checks whether the sources support the claims.
+The application connects primary-source intake, Week 3 editorial review and
+Week 4 publication. Editors attach evidence, review conditional scenarios and
+approve immutable versions. A separate publish command makes an approved version
+available to the account-free reader and GET-only public API. Corrections retain
+older publications and explain what changed.
 
-To run the fictional example, check out the prototype branch:
+Quick start with an explicitly fictional demo in a fresh database:
 
 ```bash
-git clone --branch codex/evidence-brief-mvp https://github.com/Utpal-Mishra/EPSTMC.git
-cd EPSTMC
+python demo.py --db /tmp/epstmc-reader-demo.sqlite
+python app.py --db /tmp/epstmc-reader-demo.sqlite
+```
+
+Open `http://127.0.0.1:8080/` when running locally. See the
+[Week 4 reader, API and publishing guide](docs/WEEK4.md),
+[Week 3 editorial walkthrough](docs/WEEK3.md),
+[daily development tracker](docs/DAILY_DEVELOPMENT.md) and
+[project audit trail](docs/PROJECT_LOGS.md).
+
+**Release tracking:** the complete Weeks 1–4 source is tracked in
+[PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). Local SQLite/WSGI tests pass;
+Postgres 16 CI has also passed. The final branch is gated by the Python 3.9/3.12
+and Postgres checks. Hosted production database setup, public deployment and
+browser visual QA remain pending. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
+No real story was automatically approved or published.
+
+The original fictional brief still runs with:
+
+```bash
 python brief.py examples/brief.json
 ```
 
@@ -52,7 +74,56 @@ The providers below are candidates for the planned application.
 | Web and data | Next.js for the reader experience. Supabase Postgres for stories, claims, evidence, versions, scenarios, feedback, and engagement events. Supabase Storage for media assets. |
 | Media production | OpenAI image generation for illustrations, FFmpeg for assembly, and Runway and ElevenLabs as candidates for video and narration. |
 
-The first live integration is planned around one primary source, with a traceable path from source intake to an editor-reviewed brief.
+## First source intake
+
+The pilot beat is **U.S. AI infrastructure and policy**, starting with federal notices, rules, and executive actions relevant to data centres and their supporting infrastructure. The first source is the [Federal Register published-documents API](https://www.federalregister.gov/reader-aids/developer-resources/rest-api). Search results are candidates for editorial screening. A search match alone does not establish that an item belongs in the beat.
+
+Run from the prototype branch with Python 3.9+ and internet access. The API requires no key. SQLite mode uses the Python standard library.
+
+```bash
+python ingest.py --db /tmp/epstmc-evidence.sqlite --document 2025-05936
+python ingest.py --db /tmp/epstmc-evidence.sqlite --limit 10
+python ingest.py --db /tmp/epstmc-evidence.sqlite --list
+```
+
+The first command fetches the Department of Energy’s [AI infrastructure notice](https://www.federalregister.gov/d/2025-05936), published on 7 April 2025. It is a reproducible historical sample. The second command fetches the first page of results for the pilot search, newest first. Use `--query` to supply a different search term. The third command exports the local records for review.
+
+| Stored evidence | Use |
+| --- | --- |
+| `id`, `document_number` | The Federal Register document number gives each item a stable ID, such as `fr-2025-05936`. Repeated intake updates the same row. |
+| `title`, `url`, `document_type` | Identify the original document and the kind of action reported. |
+| `publication_date`, `official_pdf_url` | Record the publication date and the official electronic edition link when supplied. |
+| `first_retrieved_at`, `last_retrieved_at` | Record the first and most recent successful intake in UTC. |
+
+The editorial workflow resolves source IDs against these stored evidence records and snapshots their metadata into each version. An editor supplies claims, checks the source, and explicitly approves a reviewed version. See [the walkthrough](docs/WEEK3.md).
+
+### Shared Postgres storage
+
+The importer can also use a Postgres database shared by the ingestion worker and
+editorial tools. Set `EPSTMC_DATABASE_URL` through your shell or deployment secret
+store. Use the database provider’s TLS settings for a hosted connection.
+
+Apply the [schema migration](migrations/001_federal_register_evidence.sql) with
+the schema owner’s connection. If the worker uses a separate database role, grant
+it `USAGE` on the `epstmc` schema and `SELECT, INSERT, UPDATE` on
+`epstmc.federal_register_evidence`. For hosted Postgres keep this schema out of
+any public API exposure settings.
+
+```bash
+python -m pip install -r requirements-postgres.txt
+# Run with the schema owner's connection for initial setup.
+psql "$EPSTMC_DATABASE_URL" -v ON_ERROR_STOP=1 -f migrations/001_federal_register_evidence.sql
+# Run with the worker's connection for intake and export.
+python ingest.py --postgres --document 2025-05936
+python ingest.py --postgres --list
+```
+
+The same document ID updates one record, preserves its first successful intake
+timestamp, and advances its last successful intake timestamp. The JSON export
+uses the same fields and UTC timestamp format as SQLite. Existing SQLite records
+remain in their database. Re-fetch a document using `--postgres` to record it
+in shared storage. Intake runs on demand. Apply migration 002 to use the integrated
+[editorial review queue](docs/WEEK3.md).
 
 ## Pre-launch roadmap
 
@@ -107,5 +178,5 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 20 Nov 2026 | Week 2, Day 7. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1). The recorded local test stored a real notice with provenance and kept one record after repeated and concurrent imports. | Hosted Postgres setup and validation remain pending. The editorial review queue is pending. | Apply the migration to hosted Postgres, import DOE notice 2025-05936 twice, and verify one record with provenance intact. |
 | 21 Nov 2026 | Week 3, Day 1. Editorial draft and review is the planned milestone and remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation and the editorial review queue remain pending. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 22 Nov 2026 | Week 3, Day 2. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
-| 23 Nov 2026 | Week 3, Day 3. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) remains in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1), with recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
+| 23 Nov 2026 | Weeks 1–4 implementation uploaded to PR #1: intake, editorial review, explicit publication, reader/API and correction history. 42 local tests pass and Postgres 16 CI passed. Seven Week 4 commits preserved. | Final CI/integration tracked in PR #1; hosted production database, deployment and browser visual QA remain pending. | Finish release checks and merge, then continue Week 5 native mobile work through daily tasks. |
 <!-- epstmc-status:end -->
