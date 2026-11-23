@@ -142,3 +142,5 @@ and source checks. Owner approval and physical mobile-device QA remain pending.
 
 
 UI-TEXT-01 — 23 November 2026: owner requested the timeline heading change from “History to present” to “News Timeline”. Updated the reader template in GitHub and the existing private Site source. Copy-only change; build verification used.
+
+UI-TEXT-02 — 23 November 2026: updated the HTML browser tab title to “EPSTMC · News Timeline”, matching the requested visible heading. Copy-only change; verified by the website build.
