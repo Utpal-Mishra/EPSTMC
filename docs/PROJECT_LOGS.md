@@ -173,3 +173,8 @@ No real approval/publication performed. Credentials were used only for exact-ori
 service headers and were not recorded. Documentation integration is recorded in the
 follow-up PR; implementation, tests, merge, deployment and editorial approval are
 separate statuses.
+
+
+Follow-up: [PR #4](https://github.com/Utpal-Mishra/EPSTMC/pull/4), initial evidence
+commit [3405e34](https://github.com/Utpal-Mishra/EPSTMC/commit/3405e34dc1e76be4091302ae87ddaf3b86e15d04).
+The PR provides the authoritative check and merge status; no application files changed.

@@ -83,3 +83,8 @@ justified an application change. No code/website rebuild, approval or publicatio
   physical-device QA remain pending. Next: review queued candidate relevance or
   an observed coverage/access/mobile regression; do not fabricate a daily fix.
 - Schedule: existing 24–30 November run window retained; no schedule changes.
+
+
+Follow-up: [PR #4](https://github.com/Utpal-Mishra/EPSTMC/pull/4), initial evidence
+commit [3405e34](https://github.com/Utpal-Mishra/EPSTMC/commit/3405e34dc1e76be4091302ae87ddaf3b86e15d04).
+The PR provides the authoritative check and merge status; no application files changed.
