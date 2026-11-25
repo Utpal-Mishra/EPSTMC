@@ -126,3 +126,16 @@ The separate step records extend the existing logs rather than replacing their h
 ## Verification of this documentation change
 
 All 45 IDs are unique, each has a separate file and recording commit, file links are checked, and shared historical origins are labelled. Runtime, dependencies, migrations and deployed behavior were not changed. The last recorded implementation checks remain 54 Python and 45 website tests; this documentation update is not a fresh runtime test, provider activation, deployment or editorial approval.
+
+## Website completion phase — planned 25 November 2026
+
+| Step | Separate record | Acceptance scope | Status |
+| --- | --- | --- | --- |
+| WEB-01 | [Connected workspace and readiness dashboard](steps/WEB-01.md) | Aggregate story/review/media/feedback health with actionable navigation; expose configuration presence without secrets. | PLANNED |
+| WEB-02 | [Guided story creation and revision](steps/WEB-02.md) | Create and edit the complete source-backed story through labelled fields and repeatable sections; keep JSON as an optional advanced mode and preserve review controls. | PLANNED |
+| WEB-03 | [Complete feed, filters and shareable navigation](steps/WEB-03.md) | Feature the latest covered story honestly, add recent filtering, persist filter state in URLs and preserve story/timeline context. | PLANNED |
+| WEB-04 | [Explicit offline saved-reading workflow](steps/WEB-04.md) | Opt in to local story copies, cache only the app shell, read saved projections offline, show timestamps and allow clearing; never cache editorial data or credentials. | PLANNED |
+| WEB-05 | [Browser video production and media handoff](steps/WEB-05.md) | Produce actual captioned video in supported browsers, download transcript/captions and upload output for separate media review; preserve source version and file validation. | PLANNED |
+| WEB-06 | [Reader preferences, notifications and help](steps/WEB-06.md) | Connect browser-local preferences, opt-in counts and open-site update alerts; provide privacy/help/setup status with honest provider and background-push limits. | PLANNED |
+| WEB-07 | [Navigation, unsaved work and failure handling](steps/WEB-07.md) | Protect editorial edits, avoid stale route rendering, preserve playback, handle offline/unavailable states and verify the integrated website journey. | PLANNED |
+| WEB-08 | [Website release, GitHub integration and deployment](steps/WEB-08.md) | Run meaningful checks, synchronize separate commits, obtain actual CI evidence, integrate the website branch and deploy the existing owner-private Site; record external blockers separately. | PLANNED |
