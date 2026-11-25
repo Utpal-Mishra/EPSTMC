@@ -260,3 +260,10 @@ MED2-DE-AUTH (25 November 2026): Owner explicitly authorized the previously
 blocked GitHub transfer of `codex/media-formats` to `Utpal-Mishra/EPSTMC`. The
 permission blocker is resolved for this exact push; private Site access remains
 unchanged. Remote synchronization, CI and main integration remain separate facts.
+
+MED2-SYNC (25 November 2026): Completed the authorized transfer to GitHub branch
+`codex/media-formats`. Code head `9d55d46c`; every uploaded tree matched its local
+development tree, including the final tested release. Connected API commit IDs
+differ; original local SHAs are retained in commit trailers. Shell credentials
+were unavailable; no credential was exposed or fabricated. Main merge/remote CI
+remain separate; private Site v6 unchanged.

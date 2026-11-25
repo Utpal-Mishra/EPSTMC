@@ -167,3 +167,14 @@ blocker for that branch and repository. Preserve the existing private Site and
 its deployed version 6. Push the completed history without force; verify the
 remote branch head. This authorization does not itself claim a main merge or
 a successful remote CI run.
+
+### Verified GitHub branch transfer
+
+The authenticated GitHub connection uploaded all twelve feature/development
+commits in order to `codex/media-formats`. The code head is
+`9d55d46cec6af63f7a9ebc33163e12409987b478`; its source tree
+`3224b4f92f5012a4e2ffbb4be34d9c291f832871` exactly matches the tested local
+release tree. Uploading through the connected API created new commit IDs; each
+message retains its original local SHA in an `Original-Commit` trailer.
+This resolves branch synchronization only: no main merge or new remote CI result
+is claimed. Existing private Site version 6 remains unchanged.
