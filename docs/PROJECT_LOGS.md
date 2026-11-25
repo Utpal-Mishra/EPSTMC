@@ -334,3 +334,24 @@ D25 follow-up: [PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5), evidence
 commit [c5efb25](https://github.com/Utpal-Mishra/EPSTMC/commit/c5efb25922d252acb3e8520d38ecf540eceacd09).
 The PR is the authoritative release-check and merge record. No application or
 deployment changes belong to this documentation follow-up.
+
+
+## WEB-08 — 25 November 2026 verified source and deployment events
+
+Actual integration, deployment and record date: 25 November 2026. [Separate event record](steps/WEB-08.md).
+
+| Log | Release entry |
+| --- | --- |
+| Business Learning | Website delivery and editorial launch remain separate outcomes. |
+| System | 74 website and 54 Python tests passed locally; build succeeded. |
+| Architecture | Worker, D1 and R2 runtime retained; no new WEB-phase migrations. |
+| Automation | No schedule changes; GitHub workflow configured but remote results unverified. |
+| Recommendation | Activate providers only with actual configured credentials; complete device QA before broad launch. |
+| Experiment | Local browser verified guided creation, unsaved dialog, workspace, reading and offline saving. |
+| External Evidence | Publishing service returned successful v7 deployment; GitHub returned merged PR #6. |
+| Risk & Assumption | Authenticated live browser and remote CI remain unverified; paid outputs and native delivery remain open. |
+| Data & Integration | Main tree matches local release tree; local-to-remote commit mapping recorded. |
+| Product / Feature | Connected website is deployed privately as v7. |
+| Merchant & Fulfilment | Not applicable. |
+| Expansion | Native apps and app-store launch not claimed. |
+| Decision | Preserve owner-only access, approval gates, existing data and published history; v6 remains rollback option. |

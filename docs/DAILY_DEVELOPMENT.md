@@ -232,3 +232,8 @@ D25 follow-up: [PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5), evidence
 commit [c5efb25](https://github.com/Utpal-Mishra/EPSTMC/commit/c5efb25922d252acb3e8520d38ecf540eceacd09).
 The PR is the authoritative release-check and merge record. No application or
 deployment changes belong to this documentation follow-up.
+
+
+## 25 November 2026 — WEB-08 integrated private website release
+
+WEB-01–WEB-07 implementation transferred as separate GitHub commits; PR #6 merged at `617216e`. Local and main trees matched exactly. Private Site v7 deployment succeeded (hosted source `f699111`), with D1/R2 and audience retained. Local build, 74 website tests, 54 Python tests and browser navigation/offline-save smoke passed. GitHub returned no run/status evidence; remote CI is unverified. Live browser verified the private sign-in gate only. Provider activation, editorial approval, device testing and native milestones remain open. Detailed event evidence and origin mapping: [WEB-08](steps/WEB-08.md).
