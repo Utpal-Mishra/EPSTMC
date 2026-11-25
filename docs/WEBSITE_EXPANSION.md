@@ -1,5 +1,7 @@
 # Website expansion: seven tracked work units
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 Owner selected continued website expansion over the original native-app Week 5
 milestone. Implementation began 23 November 2026. W5-D1–D7 below are work-unit
 identifiers, not seven elapsed calendar days or claims of native-app delivery.

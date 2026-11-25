@@ -1,5 +1,7 @@
 # Story formats and integration runbook
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 Implementation: 24 November 2026. This extends the existing owner-private Worker;
 it does not complete native iOS/Android, offline reading, push alerts or broad news coverage.
 

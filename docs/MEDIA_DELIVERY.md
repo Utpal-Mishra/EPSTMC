@@ -1,5 +1,7 @@
 # EPSTMC pending work and media delivery
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 ## Planning snapshot (superseded by accelerated implementation)
 
 As of 24 November 2026. This is a delivery plan, not evidence of implemented media or a scheduled background build. Dates are proposed targets conditional on implementation sessions and prerequisite checks.

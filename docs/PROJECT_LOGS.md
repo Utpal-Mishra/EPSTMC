@@ -1,5 +1,7 @@
 # EPSTMC project audit trail
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 Private project record. Baseline for this work is the fetched prototype branch
 plus main's status entries through 23 November 2026. Older conversations are not
 reconstructed as verified implementation. Owner: Utpal Mishra; implementation:
@@ -267,3 +269,5 @@ development tree, including the final tested release. Connected API commit IDs
 differ; original local SHAs are retained in commit trailers. Shell credentials
 were unavailable; no credential was exposed or fabricated. Main merge/remote CI
 remain separate; private Site v6 unchanged.
+
+TRACE-20261125: Owner requested separate records for every planned step. Added 45 individually committed step files and a master traceability index. This clarifies historical shared changes without rewriting them; statuses retain planned/implemented/validated/deployed/activated/approved distinctions. The index maps each step to the existing 13 log categories. System/architecture/data/runtime unchanged; risk of misleading rollback boundaries mitigated by explicit shared-origin labels. No commerce, new schedule, provider activation or real editorial approval. Validation covers unique IDs, links, record commit scope and documentation-only files. Future implementation must use one step per commit under AGENTS.md.

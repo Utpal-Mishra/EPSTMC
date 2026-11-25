@@ -2,6 +2,10 @@
 
 EPSTMC is an AI-assisted news project that connects today’s headlines to their sources, historical context, and what could happen next. A story is designed to evolve as new evidence arrives, with a record of what changed and why.
 
+## Trace every planned update
+
+Open [the step-by-step index](docs/STEP_TRACEABILITY.md) for separate records, implementation links, validation evidence, remaining work and recording commits. Historical shared implementations are explicitly labelled; future implementation uses one planned step per commit.
+
 ## Current status
 
 The owner-private hosted application connects source intake, multi-story reading,

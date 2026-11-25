@@ -1,5 +1,7 @@
 # EPSTMC daily development tracker
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 Each row is a bounded milestone work unit, not a claim that seven calendar days
 have elapsed. The original Week 4 planning window is 28 November–4 December
 2026. The owner requested accelerated Week 4 development on 23 November; all
@@ -178,3 +180,9 @@ release tree. Uploading through the connected API created new commit IDs; each
 message retains its original local SHA in an `Original-Commit` trailer.
 This resolves branch synchronization only: no main merge or new remote CI result
 is claimed. Existing private Site version 6 remains unchanged.
+
+## 25 November 2026 — Separate step records and traceability index
+
+Added 45 distinct requirement/event records, each in its own documentation commit: seven history-to-present units, seven website units, fourteen media requirements, five release/synchronization events, six operational follow-ups and six original native/launch milestones. Historical combined HTP/media origins are explicitly labelled. Original dates and published history are retained; recording commits are not isolated runtime rollback units. Added one-step-per-implementation-commit rules in AGENTS.md and a navigable index with implementation and recording commit links.
+
+Verification: unique IDs, per-step commit scope, local links and documentation-only changed paths checked. Runtime/tests/deployment unchanged; no new provider activation or editorial approval claimed.
