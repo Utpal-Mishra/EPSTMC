@@ -15,3 +15,5 @@ Implemented and locally validated. Worker build passed; 82 website and 54 Python
 The command environment could not connect to the daemon preview over its loopback address; browser preview worked. This is not a live deployment or production refresh validation. Native/mobile QA and authenticated live-browser validation remain separate. GitHub transfer and deployment result will be appended after confirmation.
 
 Recovery: deploy prior v7 for runtime rollback; preserve additive news tables and existing editorial data. No changes to existing schedules or audience.
+
+Source-status correction during release: a failed first runtime refresh now retains the bundled snapshot’s previous successful timestamp and count. Regression assertion verifies it. No provider error details or credentials are displayed.
