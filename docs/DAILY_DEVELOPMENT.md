@@ -122,3 +122,24 @@ captioned MP4 export. See MEDIA_INTEGRATIONS.md and VIDEO_EXPORT.md.
   physical-device testing and a hosted external video-render worker remain open.
 - GitHub integration and the existing owner-private Site deployment are recorded
   independently below; no date labels imply elapsed future work days.
+
+### Release result
+
+- Local source head: `12d7bd2` (includes the website expansion and preserves
+  merged PR #4 freshness evidence). GitHub push was rejected by automatic
+  approval review: external code/history transfer requires explicit approval.
+  No GitHub PR, remote CI or main merge is claimed for this release.
+- The existing owner-private Site deployed successfully as **version 6** at
+  https://epstmc-reader-review.utpalmishra21.chatgpt.site . Access remains owner
+  only, with no groups or additional viewers. This is a software deployment,
+  not an editorial approval or public news publication.
+- Private hosted source: `f2d5f81ec0df2c302a6fccea538f4eb3fb87b2c0`; it includes
+  the tested web runtime, media migrations, renderer source and runbooks.
+- Deployment `appgdep_6b061cb2df3c819197c1b79f5c9a2e4c` succeeded with environment
+  revision 1. Provider credentials were not configured or fabricated.
+- Local verification: 54 Python tests, 45 website tests, successful Worker build.
+  Cloud-browser preview verified scene selection updates its caption and source;
+  an unapproved diagram remained in review with its approval control disabled.
+- Remaining: owner editorial review, provider setup and live paid-output QA,
+  physical-device testing, optional hosted rendering worker, and explicit GitHub
+  transfer approval. Existing reliability schedules were not changed.

@@ -238,3 +238,15 @@ The PR provides the authoritative check and merge status; no application files c
 | Decision / MED2-DE | Accelerate the two-week media scope into the current implementation session. Keep software release, provider activation and actual editorial review separate. | IMPLEMENTED; no real source-review attestation fabricated. |
 | Security & Privacy / MED2-SP | Same-origin writes, editor-only media access, fixed egress, signature/size validation, review rollback and consent-required aggregate measurement. | VALIDATED; no access audience change. |
 | Validation / MED2-QA | Python/renderer tests and Worker integration suite; browser checked modes, source diagram, studio and disabled media approval before story approval. | See daily tracker for exact counts and release result. |
+
+### MED2 release closure
+
+MED2-CR: Existing private Site version 6 deployed successfully; private source
+`f2d5f81ec0df2c302a6fccea538f4eb3fb87b2c0`. Owner-only audience retained.
+MED2-QA: Final local checks: 54 Python and 45 website tests passed; Worker built.
+MED2-RA: Cloud-browser voice unavailable; transcript fallback observed; real
+provider validation and physical-device QA remain open. Paid generation disabled.
+MED2-DE: GitHub push automatically rejected for external source/history transfer
+without explicit approval. Do not retry via another route; retain local branch
+and seek approval for that exact transfer after the private release is complete.
+No GitHub integration/CI, real story approval or media editorial approval claimed.
