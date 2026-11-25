@@ -129,3 +129,9 @@ left untouched; this run uses an isolated branch from fetched main.
   remain open. Next: assess a real coverage/access/mobile/regression issue;
   do not promote matches automatically or invent a code change.
 - Existing 24–30 November seven-run window preserved; no schedule mutation.
+
+
+D25 follow-up: [PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5), evidence
+commit [c5efb25](https://github.com/Utpal-Mishra/EPSTMC/commit/c5efb25922d252acb3e8520d38ecf540eceacd09).
+The PR is the authoritative release-check and merge record. No application or
+deployment changes belong to this documentation follow-up.

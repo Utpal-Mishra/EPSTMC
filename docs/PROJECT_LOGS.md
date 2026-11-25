@@ -203,3 +203,9 @@ Actual work and record date: 25 November 2026. Baseline main `4863d32`.
 
 Release/check and merge evidence is linked below after the follow-up PR is opened.
 No real editorial attestation, approval or publication was performed.
+
+
+D25 follow-up: [PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5), evidence
+commit [c5efb25](https://github.com/Utpal-Mishra/EPSTMC/commit/c5efb25922d252acb3e8520d38ecf540eceacd09).
+The PR is the authoritative release-check and merge record. No application or
+deployment changes belong to this documentation follow-up.
