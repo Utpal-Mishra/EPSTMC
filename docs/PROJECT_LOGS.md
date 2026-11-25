@@ -355,3 +355,24 @@ Actual integration, deployment and record date: 25 November 2026. [Separate even
 | Merchant & Fulfilment | Not applicable. |
 | Expansion | Native apps and app-store launch not claimed. |
 | Decision | Preserve owner-only access, approval gates, existing data and published history; v6 remains rollback option. |
+
+
+## DESIGN-01 / NEWS-01 / NEWS-02 — 25 November 2026
+
+Planned, implemented and recorded on 25 November 2026. Separate implementation records and commits: DESIGN-01 selected reference, NEWS-01 regional intake, NEWS-02 reader integration. Release is tracked separately as REL-09.
+
+| Log | Entry |
+| --- | --- |
+| Business Learning | Headlines and EPSTMC editorial review are distinct surfaces. |
+| System | Worker build and 82 website / 54 Python checks passed. |
+| Architecture | Additive regional news/status/market/refresh tables; allowlisted bounded feed importer. |
+| Automation | On-open/open-page refresh capped at 15 minutes; no existing schedule changed. |
+| Recommendation | Keep coverage, source freshness and global-context classification visible. |
+| Experiment | Live intake: 244 records / 223 canonical URLs, 11 feeds, 64 ECB observations. Browser exercised region/category filtering and rate table. |
+| External Evidence | BBC regional/topic RSS, ECB, Parliament, Federal Reserve, NASA; retrieved_at preserved per snapshot. |
+| Risk & Assumption | Selected sources cannot ensure exhaustive coverage. General source topics use explicit rule-based labels; partial errors preserve previous records. |
+| Data & Integration | Stable source IDs and URL deduplication; dated rates from ECB, no fabricated market data. |
+| Product / Feature | Playfair/DM Sans editorial theme; visual edition + timeline + market panel; filter/search/year/month/pagination. |
+| Merchant & Fulfilment | Not applicable; private personal reader, no commerce. |
+| Expansion | US and European sources plus explicitly labelled international context. |
+| Decision | Match the selected reference while retaining private access and publication gates. |

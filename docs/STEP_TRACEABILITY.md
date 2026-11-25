@@ -139,3 +139,13 @@ All 45 IDs are unique, each has a separate file and recording commit, file links
 | WEB-06 | [Reader preferences, notifications and help](steps/WEB-06.md) | Connect browser-local preferences, opt-in counts and open-site update alerts; provide privacy/help/setup status with honest provider and background-push limits. | IMPLEMENTED / GitHub main / private Site v7; per-step QA limits retained |
 | WEB-07 | [Navigation, unsaved work and failure handling](steps/WEB-07.md) | Protect editorial edits, avoid stale route rendering, preserve playback, handle offline/unavailable states and verify the integrated website journey. | IMPLEMENTED / GitHub main / private Site v7; per-step QA limits retained |
 | WEB-08 | [Website release, GitHub integration and deployment](steps/WEB-08.md) | Run meaningful checks, synchronize separate commits, obtain actual CI evidence, integrate the website branch and deploy the existing owner-private Site; record external blockers separately. | DEPLOYED v7 / merged PR #6; remote CI unverified |
+
+
+## Editorial US / Europe expansion — planned 25 November 2026
+
+| Step | Record | Acceptance | Status |
+| --- | --- | --- | --- |
+| DESIGN-01 | [Selected editorial design](steps/DESIGN-01.md) | Playfair Display / DM Sans, reference layout 07 visual edition + 04 timeline journal + 08 navy/mint source-backed market monitor; responsive and readable. | PLANNED |
+| NEWS-01 | [Regional ingestion](steps/NEWS-01.md) | Bounded allowlisted RSS/Atom intake, dated attributed headlines across US/Europe, per-source freshness/failure, durable deduplication; no automatic editorial approval. | PLANNED |
+| NEWS-02 | [Regional news desk](steps/NEWS-02.md) | Working region/category/time/search controls, source links, source health, recent headlines, retained reviewed stories and actual ECB reference-rate chart. | PLANNED |
+| REL-09 | [Editorial regional release](steps/REL-09.md) | Build and relevant tests, browser QA, GitHub synchronization and existing private Site deployment with honest limits. | PLANNED |

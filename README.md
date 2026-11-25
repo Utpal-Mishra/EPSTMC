@@ -230,3 +230,10 @@ Release evidence and exact integration/deployment status: [WEB-08](docs/steps/WE
 
 
 **Current deployed release:** [EPSTMC version 7](https://epstmc-reader-review.utpalmishra21.chatgpt.site), owner-private, deployed 25 November 2026. [PR #6](https://github.com/Utpal-Mishra/EPSTMC/pull/6) is merged into main. The release passed 74 website and 54 Python tests locally; remote CI and authenticated live-browser smoke remain unverified. See [the release record](docs/steps/WEB-08.md) for exact evidence, source mapping and outstanding launch work.
+
+
+## US / Europe editorial news desk
+
+The selected Magazine Editorial direction uses self-hosted Playfair Display headlines and DM Sans text, combining the Visual Edition (07), Timeline Journal (04) and navy/mint Markets Monitor (08). The regional desk presents publisher-attributed news, regional/category/search/date/year/month filters, source health, and an exact ECB EUR/USD reference series alongside the existing EPSTMC story workflow.
+
+Initial live retrieval on 25 November imported 244 feed records / 223 unique article URLs from eleven selected feeds and 64 ECB observations. Headlines are publisher reports, not automatic EPSTMC verification. Feeds cover the US (BBC US & Canada includes Canada), Europe/UK and explicitly labelled international context. Coverage is bounded, not exhaustive. The app checks for source updates while open with a 15-minute shared refresh limit; existing unattended schedules are unchanged. Original articles open with their publishers. See [the regional release record](docs/steps/REL-09.md).
