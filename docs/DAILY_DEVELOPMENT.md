@@ -237,3 +237,8 @@ deployment changes belong to this documentation follow-up.
 ## 25 November 2026 — WEB-08 integrated private website release
 
 WEB-01–WEB-07 implementation transferred as separate GitHub commits; PR #6 merged at `617216e`. Local and main trees matched exactly. Private Site v7 deployment succeeded (hosted source `f699111`), with D1/R2 and audience retained. Local build, 74 website tests, 54 Python tests and browser navigation/offline-save smoke passed. GitHub returned no run/status evidence; remote CI is unverified. Live browser verified the private sign-in gate only. Provider activation, editorial approval, device testing and native milestones remain open. Detailed event evidence and origin mapping: [WEB-08](steps/WEB-08.md).
+
+
+## 25 November 2026 — Editorial regional release
+
+DESIGN-01 / NEWS-01 / NEWS-02 integrated through PR #7, with separate commits and local-origin mapping. Site v8 deployment confirmed. Snapshot: 244 feed records, 223 unique URLs, eleven feeds and 64 ECB observations. Worker build, 82 website tests, 54 Python tests and preview browser checks passed. Remote CI and authenticated production browser remain unverified. Audience and unattended schedules unchanged. Evidence and recovery: [REL-09](steps/REL-09.md).

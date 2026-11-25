@@ -145,7 +145,7 @@ All 45 IDs are unique, each has a separate file and recording commit, file links
 
 | Step | Record | Acceptance | Status |
 | --- | --- | --- | --- |
-| DESIGN-01 | [Selected editorial design](steps/DESIGN-01.md) | Playfair Display / DM Sans, reference layout 07 visual edition + 04 timeline journal + 08 navy/mint source-backed market monitor; responsive and readable. | PLANNED |
-| NEWS-01 | [Regional ingestion](steps/NEWS-01.md) | Bounded allowlisted RSS/Atom intake, dated attributed headlines across US/Europe, per-source freshness/failure, durable deduplication; no automatic editorial approval. | PLANNED |
-| NEWS-02 | [Regional news desk](steps/NEWS-02.md) | Working region/category/time/search controls, source links, source health, recent headlines, retained reviewed stories and actual ECB reference-rate chart. | PLANNED |
-| REL-09 | [Editorial regional release](steps/REL-09.md) | Build and relevant tests, browser QA, GitHub synchronization and existing private Site deployment with honest limits. | PLANNED |
+| DESIGN-01 | [Selected editorial design](steps/DESIGN-01.md) | Playfair Display / DM Sans, reference layout 07 visual edition + 04 timeline journal + 08 navy/mint source-backed market monitor; responsive and readable. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |
+| NEWS-01 | [Regional ingestion](steps/NEWS-01.md) | Bounded allowlisted RSS/Atom intake, dated attributed headlines across US/Europe, per-source freshness/failure, durable deduplication; no automatic editorial approval. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |
+| NEWS-02 | [Regional news desk](steps/NEWS-02.md) | Working region/category/time/search controls, source links, source health, recent headlines, retained reviewed stories and actual ECB reference-rate chart. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |
+| REL-09 | [Editorial regional release](steps/REL-09.md) | Build and relevant tests, browser QA, GitHub synchronization and existing private Site deployment with honest limits. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |

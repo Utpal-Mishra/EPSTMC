@@ -376,3 +376,8 @@ Planned, implemented and recorded on 25 November 2026. Separate implementation r
 | Merchant & Fulfilment | Not applicable; private personal reader, no commerce. |
 | Expansion | US and European sources plus explicitly labelled international context. |
 | Decision | Match the selected reference while retaining private access and publication gates. |
+
+
+## REL-09 — 25 November 2026 deployment event
+
+System / Data & Integration: GitHub PR #7 merged; local/runtime tree equality verified. Private v8 deployment succeeded with additive regional tables. Validation: 82 website / 54 Python tests and preview browser checks passed. External Evidence: successful native deployment response and empty recent error-log result. Risk & Assumption: remote CI, authenticated production workflows and physical devices remain unverified. Automation: existing schedules unchanged; reader-open refresh only. Decision: preserve v7 rollback and all editorial history. Full event IDs and separate commit provenance: [REL-09](steps/REL-09.md).

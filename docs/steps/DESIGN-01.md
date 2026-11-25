@@ -1,6 +1,6 @@
 # DESIGN-01 — Selected editorial design
 
-Planned and recorded: 25 November 2026 (Europe/Dublin). Actual implementation: pending. Status: PLANNED.
+Planned and recorded: 25 November 2026 (Europe/Dublin). Actual implementation: 25 November 2026. Status: IMPLEMENTED / VALIDATED / DEPLOYED v8.
 
 Scope and acceptance: see STEP_TRACEABILITY.md. Dependencies: private v7 website; NEWS-02 depends on NEWS-01 and DESIGN-01; REL-09 depends on all three.
 
