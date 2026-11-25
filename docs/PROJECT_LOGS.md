@@ -255,3 +255,8 @@ browser. Diagram loaded, chapter selection changed caption/source, storage-backe
 preparation enabled and paid controls disabled. Existing freshness and review
 state persisted. Narrow viewport reported no page overflow; screenshot timed out;
 physical-device QA remains open. No production test data or approvals added.
+
+MED2-DE-AUTH (25 November 2026): Owner explicitly authorized the previously
+blocked GitHub transfer of `codex/media-formats` to `Utpal-Mishra/EPSTMC`. The
+permission blocker is resolved for this exact push; private Site access remains
+unchanged. Remote synchronization, CI and main integration remain separate facts.

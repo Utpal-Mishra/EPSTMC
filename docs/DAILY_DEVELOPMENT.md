@@ -158,3 +158,12 @@ A temporary narrow-viewport override reported a 487-pixel inner viewport and a
 468-pixel document width (no horizontal page overflow); it was reset. The browser
 screenshot command timed out, so no final mobile screenshot or physical-device
 validation is claimed. The live editorial tab was retained for owner review.
+
+## 25 November 2026 — GitHub transfer authorization
+
+The owner explicitly approved pushing the completed `codex/media-formats` branch
+to `Utpal-Mishra/EPSTMC`. This resolves the prior external-transfer approval
+blocker for that branch and repository. Preserve the existing private Site and
+its deployed version 6. Push the completed history without force; verify the
+remote branch head. This authorization does not itself claim a main merge or
+a successful remote CI run.
