@@ -13,7 +13,7 @@ export function timelineSvg(c){
 }
 export function validateUpload(bytes,mime,kind){
  const b=new Uint8Array(bytes);const ascii=(start,n)=>String.fromCharCode(...b.slice(start,start+n));
- const ok=kind==='image'&&((mime==='image/png'&&b[0]===137&&ascii(1,3)==='PNG'&&b[4]===13&&b[5]===10&&b[6]===26&&b[7]===10)||(mime==='image/jpeg'&&b[0]===255&&b[1]===216&&b[2]===255)||(mime==='image/webp'&&ascii(0,4)==='RIFF'&&ascii(8,4)==='WEBP'))||kind==='audio'&&((mime==='audio/mpeg'&&(ascii(0,3)==='ID3'||b[0]===255&&(b[1]&224)===224))||(mime==='audio/wav'&&ascii(0,4)==='RIFF'&&ascii(8,4)==='WAVE'))||kind==='video'&&mime==='video/mp4'&&ascii(4,4)==='ftyp';
+ const ok=kind==='image'&&((mime==='image/png'&&b[0]===137&&ascii(1,3)==='PNG'&&b[4]===13&&b[5]===10&&b[6]===26&&b[7]===10)||(mime==='image/jpeg'&&b[0]===255&&b[1]===216&&b[2]===255)||(mime==='image/webp'&&ascii(0,4)==='RIFF'&&ascii(8,4)==='WEBP'))||kind==='audio'&&((mime==='audio/mpeg'&&(ascii(0,3)==='ID3'||b[0]===255&&(b[1]&224)===224))||(mime==='audio/wav'&&ascii(0,4)==='RIFF'&&ascii(8,4)==='WAVE'))||kind==='video'&&((mime==='video/mp4'&&ascii(4,4)==='ftyp')||(mime==='video/webm'&&b[0]===26&&b[1]===69&&b[2]===223&&b[3]===163));
  must(ok,'File content does not match a supported image, audio or MP4 type');must(bytes.byteLength>12,'Media file is empty');
 }
 export function validateCaptions(text){must(typeof text==='string'&&text.length<100000&&/^WEBVTT(?:\r?\n|$)/.test(text),'Video requires WebVTT captions');must(!/<|>|javascript:|https?:\/\//i.test(text.replace(/-->/g,'')),'Captions must contain plain text and timestamps');must(/\d{2}:\d{2}[.:]\d{3}\s+-->\s+\d{2}:\d{2}[.:]\d{3}|\d{2}:\d{2}:\d{2}\.\d{3}\s+-->\s+\d{2}:\d{2}:\d{2}\.\d{3}/.test(text),'Captions need timed cues');return text;}
