@@ -283,3 +283,24 @@ WEB-04 (25 November 2026) — System / Product / Architecture / Validation / Dec
 WEB-05 (25 November 2026) — System / Product / Architecture / Validation / Decision: Connected an explicitly invoked browser canvas recorder to the media studio, correct MP4/WebM format selection, progress/cancel controls, transcript/VTT/provenance downloads and a version/hash-bound upload-for-review action. Added WebM validation and playback MIME handling. Nine video planning/contract checks passed; actual browser capture is recorded in WEB-07 rather than claimed by Node tests. Status: IMPLEMENTED / nine contract checks passed; capture QA pending. Changes and remaining limits are separately recorded in docs/steps/WEB-05.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
 
 WEB-06 (25 November 2026) — System / Product / Architecture / Validation / Decision: Added browser-local text preferences, explicit opt-in aggregate counts, optional notifications limited to publication changes while the site is open, a same-origin web manifest/icon, and connected settings/help/privacy pages. Three focused checks passed for safe defaults, publication-change detection and same-site manifest/browser parsing. No background push subscription, provider credential or native app release is claimed. Status: IMPLEMENTED / preference and alert-contract checks passed. Changes and remaining limits are separately recorded in docs/steps/WEB-06.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+
+## WEB-07 — 25 November 2026 navigation completion
+
+Actual implementation and record date: 25 November 2026. Scope, evidence and recovery: [WEB-07](steps/WEB-07.md).
+
+| Log | Entry |
+| --- | --- |
+| Business Learning | Explicitly distinguish research preview, approved publication and operational readiness. |
+| System | Worker build plus 74 website and 54 Python checks passed. |
+| Architecture | Keep browser helper serialization executable after bundling. |
+| Automation | Queued route loads and refresh guards protect unfinished work; schedules unchanged. |
+| Recommendation | Retain physical-device, provider and cold-start verification as outstanding. |
+| Experiment | Browser exercised guided form dirty state, discard dialog, workspace, reader and offline saving. |
+| External Evidence | No new source claims introduced by this change. |
+| Risk & Assumption | Browser capability support varies; retain explicit unsupported/error states. |
+| Data & Integration | No migrations or production editorial changes. |
+| Product / Feature | Connected navigation, unknown routes, unsaved work and failure recovery. |
+| Merchant & Fulfilment | Not applicable. |
+| Expansion | Browser website only; native-store milestones remain separate. |
+| Decision | Preserve existing green editorial interface, Site audience and publication controls. |
