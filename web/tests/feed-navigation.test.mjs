@@ -1,0 +1,6 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFeedFilters,feedLink,readerFormat,filterFeed,storyLink} from '../worker/reader-tools.js';
+test('feed links retain only bounded, supported search and filter values',()=>{const f={q:'policy',region:'United States',period:'recent',status:'research',saved:'yes'};assert.deepEqual(readFeedFilters(feedLink(f)),f);assert.deepEqual(readFeedFilters('#/?period=invalid&status=admin&saved=true&token=secret'),{});assert.equal(readFeedFilters('#/?q='+'x'.repeat(400)).q.length,200);});
+test('recent period contains seven event dates and respects published/research distinction',()=>{const items=[{id:'a',title:'A',coverage_end:'2026-11-19',status:'published'},{id:'b',title:'B',coverage_end:'2026-11-18',status:'research_preview'},{id:'c',title:'C',coverage_end:'2026-11-25',status:'research_preview'}];assert.deepEqual(filterFeed(items,{period:'recent'},'2026-11-25').map(x=>x.id),['c','a']);assert.deepEqual(filterFeed(items,{status:'published'}).map(x=>x.id),['a']);});
+test('story-format links preserve timeline selection and choose honest defaults',()=>{const link=storyLink('story','2026','11','watch');assert.equal(readerFormat(link),'watch');assert.equal(readerFormat('#/story/story?format=admin'),'read');assert.ok(link.includes('year=2026'));});
