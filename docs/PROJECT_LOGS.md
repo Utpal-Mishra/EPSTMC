@@ -304,3 +304,33 @@ Actual implementation and record date: 25 November 2026. Scope, evidence and rec
 | Merchant & Fulfilment | Not applicable. |
 | Expansion | Browser website only; native-store milestones remain separate. |
 | Decision | Preserve existing green editorial interface, Site audience and publication controls. |
+
+## Daily follow-up — 25 November 2026
+
+Evidence: [D25 verification](DAILY_DEVELOPMENT.md#25-november-2026--freshness-and-private-access-verification).
+Actual work and record date: 25 November 2026. Baseline main `4863d32`.
+
+| Log / ID | Observation and action | Status / next action |
+| --- | --- | --- |
+| Business Learning D25-BL | Verified maintenance does not require a feature change. | No invented development milestone. |
+| System D25-SY | Status, intake and independent status returned HTTP 200. | VERIFIED; active Site v6 retained. |
+| Architecture D25-AR | Status confirmed durable successful intake and unchanged draft v1/sequence 0. | VERIFIED; no schema change. |
+| Automation D25-AU | One bounded intake; 24–30 November run window preserved. | No schedule creation/extension. |
+| Recommendation D25-RE | Review candidate relevance before editing claims. | Owner approval/publication remain pending. |
+| Experiment D25-EX | 45 local Python/SQLite tests passed; PR #3 and latest merged PR release runs successful. | Documentation PR CI required before merge. |
+| External Evidence D25-EE | Federal Register processed 20 matches at 09:49:10.065 UTC. | UNREVIEWED; not necessarily new and not verified developments. |
+| Risk & Assumption D25-RA | Search freshness differs from research freshness. | Latest event 6 Nov; full research/retrieval 23 Nov retained. |
+| Data & Integration D25-DI | Attempt 09:49:09.816 UTC and success 09:49:10.065 UTC independently confirmed. | Persisted; five story events unchanged. |
+| Product / Feature D25-PF | No observed failure requiring application changes in this bounded check. | No code change or visual-QA claim. |
+| Merchant & Fulfilment D25-MF | No commerce scope. | NOT APPLICABLE. |
+| Expansion D25-EP | Agency response, operational status and broader coverage remain gaps. | Preserve selected-source boundaries. |
+| Decision D25-DE | Preserve owner-only access and existing source; isolate from ongoing checkout work. | Site v6 unchanged; documentation only, no deployment. |
+
+Release/check and merge evidence is linked below after the follow-up PR is opened.
+No real editorial attestation, approval or publication was performed.
+
+
+D25 follow-up: [PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5), evidence
+commit [c5efb25](https://github.com/Utpal-Mishra/EPSTMC/commit/c5efb25922d252acb3e8520d38ecf540eceacd09).
+The PR is the authoritative release-check and merge record. No application or
+deployment changes belong to this documentation follow-up.

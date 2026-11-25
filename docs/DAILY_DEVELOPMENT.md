@@ -186,3 +186,49 @@ is claimed. Existing private Site version 6 remains unchanged.
 Added 45 distinct requirement/event records, each in its own documentation commit: seven history-to-present units, seven website units, fourteen media requirements, five release/synchronization events, six operational follow-ups and six original native/launch milestones. Historical combined HTP/media origins are explicitly labelled. Original dates and published history are retained; recording commits are not isolated runtime rollback units. Added one-step-per-implementation-commit rules in AGENTS.md and a navigable index with implementation and recording commit links.
 
 Verification: unique IDs, per-step commit scope, local links and documentation-only changed paths checked. Runtime/tests/deployment unchanged; no new provider activation or editorial approval claimed.
+
+## 25 November 2026 — Freshness and private access verification
+
+Bounded follow-up D25: one live Federal Register intake followed by an independent
+status read. No observed release failure justified rebuilding or changing the
+seven delivered units. Other active development in a separate checkout was
+left untouched; this run uses an isolated branch from fetched main.
+
+- Baseline main: [4863d32](https://github.com/Utpal-Mishra/EPSTMC/commit/4863d323b515c7a3e4d30ebe829ce8ac752f3a4b),
+  the merge of [PR #4](https://github.com/Utpal-Mishra/EPSTMC/pull/4).
+  [PR #3](https://github.com/Utpal-Mishra/EPSTMC/pull/3) remains merged.
+  Rechecked successful release runs [45287420076](https://github.com/Utpal-Mishra/EPSTMC/actions/runs/45287420076)
+  and [45368953804](https://github.com/Utpal-Mishra/EPSTMC/actions/runs/45368953804)
+  for PR #3 and the latest merged PR head respectively. The connector returned
+  no PR-triggered runs for the main merge SHA; no fresh main-SHA CI result is claimed.
+- `get_site` confirmed active Site version 6, owner-only custom access, no
+  viewers, editors, groups or external visitors. Source identity and URL retained.
+  Version 6 source provenance: `f2d5f81ec0df2c302a6fccea538f4eb3fb87b2c0`;
+  it is a Sites source commit, not this run's GitHub merge or editorial approval.
+- GET `/api/service/status` returned HTTP 200 before intake. POST
+  `/api/service/intake` returned HTTP 200: attempt `2026-11-25T09:49:09.816Z`,
+  completion `2026-11-25T09:49:10.065Z`, 20 unreviewed matches processed.
+  A subsequent GET returned HTTP 200 and confirmed both persisted timestamps.
+  Only one intake was requested; no one-minute throttle violation.
+- Draft version 1, publication sequence 0, research-preview status and five
+  events remain unchanged. Latest covered event: **6 November 2026**.
+  Original-source publications span 17 January 2025–6 November 2026;
+  original-source retrieval and full research check remain
+  `2026-11-23T22:59:31+00:00`. Today's search is not a new event or full fact-check.
+- Validation: 45 Python/SQLite tests passed locally. No application change;
+  required Python/SQLite, Postgres and Worker CI on this documentation PR must
+  pass before merge. No browser/mobile visual QA or new Postgres local run claimed.
+- Website: https://epstmc-reader-review.utpalmishra21.chatgpt.site remains at
+  version 6; no deployment needed for these documentation records.
+  Implementation, validation, merge, deployment and editorial approval remain separate.
+- Blockers: no service failure observed. Owner editorial review, unverified agency
+  response/project operational status, broader coverage and physical-device QA
+  remain open. Next: assess a real coverage/access/mobile/regression issue;
+  do not promote matches automatically or invent a code change.
+- Existing 24–30 November seven-run window preserved; no schedule mutation.
+
+
+D25 follow-up: [PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5), evidence
+commit [c5efb25](https://github.com/Utpal-Mishra/EPSTMC/commit/c5efb25922d252acb3e8520d38ecf540eceacd09).
+The PR is the authoritative release-check and merge record. No application or
+deployment changes belong to this documentation follow-up.
