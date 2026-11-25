@@ -167,3 +167,41 @@ UI-TEXT-03 — 23 November 2026: capitalized navigation to “Evidence Desk”, 
 | W5-SP-01 Security & Privacy | Owner-only site, editor-only creation, saved IDs on browser only. | Anonymous/service creation rejected; same-origin writes retained. |
 | W5-QA-01 Validation / QA | Local build, 45 Python and 26 website tests passed. | Browser preview checked; CI/merge/deployment recorded in release follow-up. |
 | W5-RL-01 Change / Release | Preserve existing Site and data; source changes only. | Publication and deployment statuses remain distinct until confirmed. |
+
+## 24 November 2026 — Media delivery planning
+
+| Log / ID | Decision or evidence | Status / next action |
+| --- | --- | --- |
+| Business Learning / MED-BL | Reader needs reading, listening and visual explanation of the same story. | REQUIREMENT; deliver incremental slices. |
+| System / MED-SY | No hosted media pipeline found in inspected source. | PENDING implementation. |
+| Architecture / MED-AR | Bind assets to immutable story version and script/content hash. | PROPOSED; implement contract first. |
+| Automation / MED-AU | Existing reliability runs unchanged; dates do not create builds. | NO schedule mutation. |
+| Recommendation / MED-RE | Release existing website expansion, then images, audio, video. | PROPOSED delivery order. |
+| Experiment / MED-EX | Pilot one image, one narration and one short explainer. | PLANNED; no media tests executed. |
+| External Evidence / MED-EE | Git fetch confirms origin/main 4863d32; local expansion ccd8508. | VERIFIED repository state; no external research or new live-site check. |
+| Risk & Assumption / MED-RA | Provider/storage readiness, cost and factual drift could delay media; medium likelihood/high impact. | OPEN; version binding, review and explicit targets; owner Utpal. |
+| Data & Integration / MED-DI | Define media status, rights, location and accessible fallback. | PROPOSED; storage/provider unresolved. |
+| Product / Feature / MED-PF | Read/Listen/Watch with transcript, captions, alt text and mobile controls. | PLANNED; only ready assets shown. |
+| Merchant & Fulfilment / MED-MF | No commerce work or purchase. | NOT APPLICABLE. |
+| Expansion / MED-EP | Video explainers follow initial image/audio slice; video-input analysis separate. | PROPOSED; no native-app completion claimed. |
+| Decision / MED-DE | Before-December target is image and audio pilot; video target 1–4 December. | PLANNED, conditional; see MEDIA_DELIVERY.md. |
+
+## 24 November 2026 — Accelerated media implementation
+
+| Log / ID | Change and evidence | Status / remaining condition |
+| --- | --- | --- |
+| Business Learning / MED2-BL | Implemented Read/Listen/Watch inside the story journey, with the same facts, historical limits and scenarios. | IMPLEMENTED; media does not establish broader coverage. |
+| System / MED2-SY | Added authenticated media APIs, uploads, range delivery, provider configuration state and review queue. | IMPLEMENTED / locally tested; deployment tracked separately. |
+| Architecture / MED2-AR | D1 media records reference immutable story/hash/script; private R2 holds bytes. Generated migrations preserve existing data. | VALIDATED; released asset metadata is immutable. |
+| Automation / MED2-AU | Request keys prevent repeated provider invocation; capped jobs and interrupted-job closure avoid silent retries. | IMPLEMENTED; existing reliability schedule unchanged. |
+| Recommendation / MED2-RE | Browser listening and visual storyboards work without paid credentials; optional provider controls explain setup. | IMPLEMENTED; live credentials absent. |
+| Experiment / MED2-EX | Provider fixtures test PCM assembly, image bytes, failure handling, quota and idempotency. FFmpeg tests render actual silent and narrated MP4s. | VALIDATED locally; no paid generation call. |
+| External Evidence / MED2-EE | Provider contracts checked against official Speech, text-to-speech and image-generation documentation linked in the runbook. | VERIFIED contract references; model availability remains account-dependent. |
+| Risk & Assumption / MED2-RA | Stale assets, review bypass and duplicate charges: medium likelihood/high impact before controls. Version/hash selection, review gates, atomic audit, fixed provider endpoints and no automatic paid retries mitigate these. | VALIDATED locally; owner Utpal; physical devices and real provider validation remain open. |
+| Data & Integration / MED2-DI | Added media, feedback and aggregate metrics tables; private bytes do not enter source control. Configuration names only are documented. | IMPLEMENTED; R2 binding enabled in manifest; deployment applies migrations. |
+| Product / Feature / MED2-PF | Image/diagram captions, credits and alt text; native recordings or browser voice; captioned storyboard or MP4; transcript, seeking/chapter and rate controls. | IMPLEMENTED; voice availability depends on browser. |
+| Merchant & Fulfilment / MED2-MF | No purchase, commerce or subscription initiated. | NOT APPLICABLE. |
+| Expansion / MED2-EP | Existing multi-story website expansion is included in the release branch. Native apps, offline copies, push and one-click hosted video rendering remain separate. | IMPLEMENTED branch; integration/deployment evidence recorded on completion. |
+| Decision / MED2-DE | Accelerate the two-week media scope into the current implementation session. Keep software release, provider activation and actual editorial review separate. | IMPLEMENTED; no real source-review attestation fabricated. |
+| Security & Privacy / MED2-SP | Same-origin writes, editor-only media access, fixed egress, signature/size validation, review rollback and consent-required aggregate measurement. | VALIDATED; no access audience change. |
+| Validation / MED2-QA | Python/renderer tests and Worker integration suite; browser checked modes, source diagram, studio and disabled media approval before story approval. | See daily tracker for exact counts and release result. |

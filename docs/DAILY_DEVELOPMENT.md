@@ -53,3 +53,28 @@ The owner selected website expansion over native-app delivery. See
 verification. Work began 23 November 2026; the labels do not imply elapsed days.
 Continue with observed release issues or the earliest remaining requirement,
 not the historical seven-unit plan. Native Week 5 is not claimed complete.
+
+## 24 November 2026 — Media scope and pending-work review
+
+Refreshed origin/main to 4863d32. W5 expansion remains local at ccd8508 and must be integrated before claiming live delivery. Added MEDIA_DELIVERY.md with conditional date targets and media acceptance checks. Documentation only: no media generation, deployment, editorial approval or automation change performed.
+
+## 24 November 2026 — Accelerated story formats
+
+Implemented the requested next-two-week scope as current work: website expansion,
+Read/Listen/Watch, private media storage, provider adapters, uploads and media
+review, correction lineage, feedback triage, opt-in aggregate measurement and
+captioned MP4 export. See MEDIA_INTEGRATIONS.md and VIDEO_EXPORT.md.
+
+- Local Python suite: **54 passed**, including nine renderer tests with real
+  silent and narrated MP4 smoke exports and hosted caption validation.
+- Worker suite: **45 passed**; Worker build and whitespace checks passed.
+- Browser preview checked the source diagram, Read/Listen/Watch controls,
+  transcript/chapters, editorial media studio, generated diagram held in review,
+  disabled approval for an unapproved story, and disabled paid generation setup.
+- Production environment inspection found only the existing private-update flag.
+  Provider key/models/enablement are absent; no live paid generation was attempted.
+- The cloud browser exposed no usable synthetic voice; the transcript fallback was observed. Recorded audio and PCM assembly were validated with isolated fixtures.
+- No real story or media editorial approval was performed. Wider coverage,
+  physical-device testing and a hosted external video-render worker remain open.
+- GitHub integration and the existing owner-private Site deployment are recorded
+  independently below; no date labels imply elapsed future work days.

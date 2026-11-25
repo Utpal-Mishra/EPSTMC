@@ -4,11 +4,15 @@ EPSTMC is an AI-assisted news project that connects today’s headlines to their
 
 ## Current status
 
-The application connects primary-source intake, Week 3 editorial review and
-Week 4 publication. Editors attach evidence, review conditional scenarios and
-approve immutable versions. A separate publish command makes an approved version
-available to the account-free reader and GET-only public API. Corrections retain
-older publications and explain what changed.
+The owner-private hosted application connects source intake, multi-story reading,
+search/filtering, evidence timelines and protected editorial review. Story formats
+include image-with-content, chapter-based browser listening and a captioned visual
+storyboard. The media studio supports private uploads, version-bound review,
+optional provider-generated images/narration, and MP4 export/import. See the
+[media integration runbook](docs/MEDIA_INTEGRATIONS.md) for setup and limits.
+The separate Python CLI/WSGI prototype remains available. Real reporting still
+requires explicit owner review and publication. Native apps, full offline reading
+and push alerts remain planned.
 
 Quick start with an explicitly fictional demo in a fresh database:
 
@@ -27,8 +31,9 @@ Open `http://127.0.0.1:8080/` when running locally. See the
 [PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) on 23 November 2026
 (merge `04f136e`). All 42 tests passed on SQLite/Python 3.9, SQLite/Python 3.12
 and Postgres 16 in [the release CI run](https://github.com/Utpal-Mishra/EPSTMC/actions/runs/45278577458).
-Hosted production database setup, public deployment and browser visual QA remain
-pending. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
+That original Python release did not configure hosted Postgres. The private
+website subsequently gained durable D1 storage and a browser review workflow;
+public deployment and native-device QA remain separate milestones. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
 No real story was automatically approved or published.
 
 The original fictional brief still runs with:
@@ -198,3 +203,11 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 22 Nov 2026 | Week 3, Day 2. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 23 Nov 2026 | Weeks 1–4 and all seven history-to-present units merged (PRs #1–#3). Real-source private timeline, browser review, durable D1 and freshness are deployed. All 45 Python and 18 Worker/D1 tests pass; live intake stored 20 pending candidates. | Real story remains a research preview awaiting owner review; broader coverage and physical-device QA remain open. | Inspect the timeline and review queued sources; daily runs maintain reliability and bounded fixes. |
 <!-- epstmc-status:end -->
+
+## Media delivery and remaining work
+
+The [24 November delivery targets](docs/MEDIA_DELIVERY.md) are retained as planning
+history. The owner requested accelerated implementation of the two-week scope;
+[MEDIA_INTEGRATIONS.md](docs/MEDIA_INTEGRATIONS.md) describes the resulting media
+workflow and provider configuration. Software implementation does not imply live
+paid generation, editorial approval, exhaustive coverage or native-app completion.
