@@ -131,7 +131,7 @@ All 45 IDs are unique, each has a separate file and recording commit, file links
 
 | Step | Separate record | Acceptance scope | Status |
 | --- | --- | --- | --- |
-| WEB-01 | [Connected workspace and readiness dashboard](steps/WEB-01.md) | Aggregate story/review/media/feedback health with actionable navigation; expose configuration presence without secrets. | PLANNED |
+| WEB-01 | [Connected workspace and readiness dashboard](steps/WEB-01.md) | Aggregate story/review/media/feedback health with actionable navigation; expose configuration presence without secrets. | IMPLEMENTED / focused checks passed; integration check pending |
 | WEB-02 | [Guided story creation and revision](steps/WEB-02.md) | Create and edit the complete source-backed story through labelled fields and repeatable sections; keep JSON as an optional advanced mode and preserve review controls. | PLANNED |
 | WEB-03 | [Complete feed, filters and shareable navigation](steps/WEB-03.md) | Feature the latest covered story honestly, add recent filtering, persist filter state in URLs and preserve story/timeline context. | PLANNED |
 | WEB-04 | [Explicit offline saved-reading workflow](steps/WEB-04.md) | Opt in to local story copies, cache only the app shell, read saved projections offline, show timestamps and allow clearing; never cache editorial data or credentials. | PLANNED |

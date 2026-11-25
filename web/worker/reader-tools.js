@@ -9,7 +9,7 @@ export function filterFeed(items,filters={},today=new Date().toISOString().slice
 export function parseRoute(hash){
  const [path,search='']=hash.replace(/^#/,'').split('?');const params=new URLSearchParams(search);
  const match=/^\/story\/([a-z0-9][a-z0-9-]{0,119})$/.exec(path);
- return {view:path==='/review'?'review':path==='/timeline'?'timeline':match?'story':'feed',story:match?.[1]||params.get('story')||'',year:/^\d{4}$/.test(params.get('year')||'')?params.get('year'):'',month:/^(0[1-9]|1[0-2])$/.test(params.get('month')||'')?params.get('month'):''};
+ return {view:path==='/workspace'?'workspace':path==='/review'?'review':path==='/timeline'?'timeline':match?'story':'feed',story:match?.[1]||params.get('story')||'',year:/^\d{4}$/.test(params.get('year')||'')?params.get('year'):'',month:/^(0[1-9]|1[0-2])$/.test(params.get('month')||'')?params.get('month'):''};
 }
 export function storyLink(id,year='',month=''){
  const p=new URLSearchParams();if(year)p.set('year',year);if(month)p.set('month',month);
