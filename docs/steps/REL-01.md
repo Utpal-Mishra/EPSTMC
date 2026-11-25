@@ -26,7 +26,7 @@ Full local release checks. Track this outcome independently so a planned require
 
 [Implementation ea14e786](https://github.com/Utpal-Mishra/EPSTMC/commit/ea14e786eb7599b77d788122523f168a19b11144)
 
-Original unit has its own implementation/event commit.
+The release checks were recorded with the shared media implementation. There was no isolated QA-only implementation commit; this file provides a separate retrospective validation record.
 
 ## Acceptance evidence
 
