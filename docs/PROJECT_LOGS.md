@@ -250,3 +250,8 @@ MED2-DE: GitHub push automatically rejected for external source/history transfer
 without explicit approval. Do not retry via another route; retain local branch
 and seek approval for that exact transfer after the private release is complete.
 No GitHub integration/CI, real story approval or media editorial approval claimed.
+MED2-QA-LIVE: Actual version 6 feed/story/media studio verified in signed-in
+browser. Diagram loaded, chapter selection changed caption/source, storage-backed
+preparation enabled and paid controls disabled. Existing freshness and review
+state persisted. Narrow viewport reported no page overflow; screenshot timed out;
+physical-device QA remains open. No production test data or approvals added.

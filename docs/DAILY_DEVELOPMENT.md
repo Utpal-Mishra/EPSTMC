@@ -143,3 +143,18 @@ captioned MP4 export. See MEDIA_INTEGRATIONS.md and VIDEO_EXPORT.md.
 - Remaining: owner editorial review, provider setup and live paid-output QA,
   physical-device testing, optional hosted rendering worker, and explicit GitHub
   transfer approval. Existing reliability schedules were not changed.
+
+### Deployed browser smoke check
+
+The signed-in browser opened the actual version 6 website: the multi-story feed
+loaded, the story evidence diagram loaded, and selecting storyboard chapter 6
+updated the caption and Senate source link. Editorial Review displayed Media
+studio; evidence-diagram preparation was enabled (storage connected), while paid
+narration and illustration remained disabled. Morning intake timestamp and the
+unapproved research state persisted across deployment. No production mutation
+or real editorial attestation was used for these checks.
+
+A temporary narrow-viewport override reported a 487-pixel inner viewport and a
+468-pixel document width (no horizontal page overflow); it was reset. The browser
+screenshot command timed out, so no final mobile screenshot or physical-device
+validation is claimed. The live editorial tab was retained for owner review.
