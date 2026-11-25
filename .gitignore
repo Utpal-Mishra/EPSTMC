@@ -9,3 +9,5 @@ node_modules/
 .wrangler/
 .dev.vars
 web/dist/
+
+node_modules
