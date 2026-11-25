@@ -2,13 +2,21 @@
 
 EPSTMC is an AI-assisted news project that connects today’s headlines to their sources, historical context, and what could happen next. A story is designed to evolve as new evidence arrives, with a record of what changed and why.
 
+## Trace every planned update
+
+Open [the step-by-step index](docs/STEP_TRACEABILITY.md) for separate records, implementation links, validation evidence, remaining work and recording commits. Historical shared implementations are explicitly labelled; future implementation uses one planned step per commit.
+
 ## Current status
 
-The application connects primary-source intake, Week 3 editorial review and
-Week 4 publication. Editors attach evidence, review conditional scenarios and
-approve immutable versions. A separate publish command makes an approved version
-available to the account-free reader and GET-only public API. Corrections retain
-older publications and explain what changed.
+The owner-private hosted application connects source intake, multi-story reading,
+search/filtering, evidence timelines and protected editorial review. Story formats
+include image-with-content, chapter-based browser listening and a captioned visual
+storyboard. The media studio supports private uploads, version-bound review,
+optional provider-generated images/narration, and MP4 export/import. See the
+[media integration runbook](docs/MEDIA_INTEGRATIONS.md) for setup and limits.
+The separate Python CLI/WSGI prototype remains available. Real reporting still
+requires explicit owner review and publication. Native apps, full offline reading
+and push alerts remain planned.
 
 Quick start with an explicitly fictional demo in a fresh database:
 
@@ -27,8 +35,9 @@ Open `http://127.0.0.1:8080/` when running locally. See the
 [PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) on 23 November 2026
 (merge `04f136e`). All 42 tests passed on SQLite/Python 3.9, SQLite/Python 3.12
 and Postgres 16 in [the release CI run](https://github.com/Utpal-Mishra/EPSTMC/actions/runs/45278577458).
-Hosted production database setup, public deployment and browser visual QA remain
-pending. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
+That original Python release did not configure hosted Postgres. The private
+website subsequently gained durable D1 storage and a browser review workflow;
+public deployment and native-device QA remain separate milestones. See the [launch and editorial policy](docs/EDITORIAL_POLICY.md).
 No real story was automatically approved or published.
 
 The original fictional brief still runs with:
@@ -134,6 +143,15 @@ source candidates and freshness, protected browser review and durable D1 data.
 The story remains a private research preview until owner approval. The
 original daily plan is retained as history; subsequent tasks maintain the release.
 
+## Website expansion
+
+The [next seven website work units](docs/WEBSITE_EXPANSION.md) add a multi-story
+Evidence Desk, region/category filters, search and event-date windows, saved
+bookmarks, story/timeline links and mobile controls. Each unit has its own commit
+with actual implementation timestamps. The original real story remains a private
+research preview; adding software support does not create additional verified news.
+Native apps and full offline reading remain future work.
+
 ## Pre-launch roadmap
 
 Readers will open straight to the feed without signing up. The app will refresh stories on open and resume, and readers can opt in to push alerts for major stories and material updates. Editorial publishing uses separate, protected access.
@@ -188,6 +206,25 @@ The plan starts on 7 November 2026. Week 10 ends on 15 January 2027. Dates are p
 | 21 Nov 2026 | Week 3, Day 1. Editorial draft and review is the planned milestone and remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation and the editorial review queue remain pending. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 22 Nov 2026 | Week 3, Day 2. Editorial draft and review remains pending. Development is unchanged since 16 Nov. [Postgres ingestion](https://github.com/Utpal-Mishra/EPSTMC/commit/3c3b07ef36a29979b83a7c58dcf9ec63f7ec6ab1) in [draft PR #1](https://github.com/Utpal-Mishra/EPSTMC/pull/1) has recorded local provenance and duplicate-prevention checks. | Hosted Postgres setup and validation remain pending, along with the editorial review queue. | Apply the hosted migration and verify two imports of DOE notice 2025-05936 leave one record, then connect an editorial draft to stored evidence. |
 | 23 Nov 2026 | Weeks 1–4 and all seven history-to-present units merged (PRs #1–#3). Real-source private timeline, browser review, durable D1 and freshness are deployed. All 45 Python and 18 Worker/D1 tests pass; live intake stored 20 pending candidates. | Real story remains a research preview awaiting owner review; broader coverage and physical-device QA remain open. | Inspect the timeline and review queued sources; daily runs maintain reliability and bounded fixes. |
-| 24 Nov 2026 | [Daily PR #4](https://github.com/Utpal-Mishra/EPSTMC/pull/4): PR #3 and current main release CI verified green. Private Site v5 remains owner-only; D1 draft v1 has five events. Live Federal Register intake succeeded at 09:48:40 UTC with 20 unreviewed matches; separate status read confirmed persistence. 45 local Python tests passed. Application code unchanged. | Latest covered event remains 6 Nov; original-source research/retrieval remains 23 Nov. Owner review, wider coverage and physical-device QA remain open. | Review candidates and coverage gaps; make a bounded fix only for an observed issue. See [daily evidence](docs/DAILY_DEVELOPMENT.md#24-november-2026--freshness-verification). |
-| 25 Nov 2026 | [Daily PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5): D25: private Site v6 confirmed owner-only. Federal Register intake succeeded at 09:49:10 UTC with 20 unreviewed matches; independent status confirmed persistence. Draft v1/five events/sequence 0 unchanged. 45 local Python tests passed; PR #3 and latest merged PR release checks verified successful. Application code unchanged. | Latest event 6 Nov; full source research/retrieval 23 Nov. Owner review, coverage gaps and physical-device QA remain open. | See [daily evidence](docs/DAILY_DEVELOPMENT.md#25-november-2026--freshness-and-private-access-verification); follow up only on observed issues. |
+| 24 Nov 2026 (media release) | Private Site v6 deployed with feed expansion, Read/Listen/Watch, versioned media review/uploads, feedback and MP4 export workflow. 54 Python and 45 website tests passed locally. Morning source-intake evidence is preserved in the daily tracker. | Provider setup, real editorial review and physical-device QA remain open. GitHub source transfer explicitly authorized on 25 November; see the daily tracker for synchronization status. | Review the private release, configure providers if desired, and review the GitHub branch. |
+
+| 24 Nov 2026 (morning verification) | [Daily PR #4](https://github.com/Utpal-Mishra/EPSTMC/pull/4): PR #3 and current main release CI verified green. Private Site v5 remains owner-only; D1 draft v1 has five events. Live Federal Register intake succeeded at 09:48:40 UTC with 20 unreviewed matches; separate status read confirmed persistence. 45 local Python tests passed. Application code unchanged. | Latest covered event remains 6 Nov; original-source research/retrieval remains 23 Nov. Owner review, wider coverage and physical-device QA remain open. | Review candidates and coverage gaps; make a bounded fix only for an observed issue. See [daily evidence](docs/DAILY_DEVELOPMENT.md#24-november-2026--freshness-verification). |
+| 25 Nov 2026 (morning verification) | [Daily PR #5](https://github.com/Utpal-Mishra/EPSTMC/pull/5): D25: private Site v6 confirmed owner-only. Federal Register intake succeeded at 09:49:10 UTC with 20 unreviewed matches; independent status confirmed persistence. Draft v1/five events/sequence 0 unchanged. 45 local Python tests passed; PR #3 and latest merged PR release checks verified successful. Application code unchanged. | Latest event 6 Nov; full source research/retrieval 23 Nov. Owner review, coverage gaps and physical-device QA remain open. | See [daily evidence](docs/DAILY_DEVELOPMENT.md#25-november-2026--freshness-and-private-access-verification); follow up only on observed issues. |
 <!-- epstmc-status:end -->
+
+## Media delivery and remaining work
+
+The [24 November delivery targets](docs/MEDIA_DELIVERY.md) are retained as planning
+history. The owner requested accelerated implementation of the two-week scope;
+[MEDIA_INTEGRATIONS.md](docs/MEDIA_INTEGRATIONS.md) describes the resulting media
+workflow and provider configuration. Software implementation does not imply live
+paid generation, editorial approval, exhaustive coverage or native-app completion.
+
+**Media release:** [Private Site version 6](https://epstmc-reader-review.utpalmishra21.chatgpt.site) deployed on 24 November 2026. Source is retained in the existing private Site repository. The owner explicitly authorized pushing the combined `codex/media-formats` branch to GitHub on 25 November 2026. Branch synchronization and remote CI are recorded separately in the daily tracker.
+
+
+## Connected website release — 25 November 2026
+
+The browser application now connects the evidence desk, guided source-backed story creation, editorial workspace, story/timeline navigation, media studio, browser video production, explicit offline text copies, reader settings and unsaved-work protection. Run `cd web && npm ci && npm run build && npm test` to verify it locally. The Python suite uses `python -m unittest discover -s tests -v`.
+
+Release evidence and exact integration/deployment status: [WEB-08](docs/steps/WEB-08.md). Local validation passed 74 website and 54 Python tests, plus browser smoke checks. Provider activation, actual editorial approval, native applications, app-store delivery and physical-device QA remain separate milestones.

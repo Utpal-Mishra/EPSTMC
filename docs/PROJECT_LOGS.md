@@ -1,5 +1,7 @@
 # EPSTMC project audit trail
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 Private project record. Baseline for this work is the fetched prototype branch
 plus main's status entries through 23 November 2026. Older conversations are not
 reconstructed as verified implementation. Owner: Utpal Mishra; implementation:
@@ -179,6 +181,129 @@ Follow-up: [PR #4](https://github.com/Utpal-Mishra/EPSTMC/pull/4), initial evide
 commit [3405e34](https://github.com/Utpal-Mishra/EPSTMC/commit/3405e34dc1e76be4091302ae87ddaf3b86e15d04).
 The PR provides the authoritative check and merge status; no application files changed.
 
+
+## W5 website expansion — begun 23 November 2026
+
+| ID / log | Decision / implementation | Evidence and remaining action |
+| --- | --- | --- |
+| W5-BL-01 Business Learning | Owner selected website feed expansion over native-app milestone. | Scope confirmed in this session; native delivery remains pending. |
+| W5-SY-01 System | Per-story reader, review, draft and publication routes plus feed and story creation. | Cross-story tests; no automatic editorial decisions. |
+| W5-AR-01 Architecture | Reuse composite story/version keys; no schema rewrite. | D1 atomic creation/audit and publication isolation tests. |
+| W5-AU-01 Automation | Preserve seven existing morning runs; follow completed expansion with observed fixes. | Same task, cadence and stop condition; release pointer updated after integration. |
+| W5-RE-01 Recommendation | Prioritize real coverage and physical-device checks next. | Software can hold more stories; only one real case is currently supplied. |
+| W5-EX-01 Experiment | Synthetic second story revision, publication and later private draft. | Tests prove other-story history stays isolated and published projection remains visible. |
+| W5-EE-01 External Evidence | Reuse five previously checked primary sources; no new reporting claims. | Research date retained; no sources reverified in this software-only phase. |
+| W5-RA-01 Risk & Assumption | Filter recency could mislead or drafts leak; medium likelihood/high impact. | Event-date filters, visible preview badges and isolation tests; owner Utpal; physical-device checks pending. |
+| W5-DI-01 Data & Integration | Optional region/category labels and legacy display compatibility. | Stored evidence/review hashes unchanged; no production revisions made. |
+| W5-PF-01 Product / Feature | Feed, taxonomy filters, search, recency, saved IDs and deep links. | Browser QA: empty search, reset, saved list, one November event after reload. |
+| W5-MF-01 Merchant & Fulfilment | No commerce workflows. | NOT APPLICABLE. |
+| W5-EP-01 Expansion | Additional real reporting, offline content, native apps and alerts remain open. | No invented stories or platform-completion claims. |
+| W5-DE-01 Decision | Seven separate work-unit commits on actual dates. | W5-D1–D7; no backdating or fabricated daily progress. |
+| W5-SP-01 Security & Privacy | Owner-only site, editor-only creation, saved IDs on browser only. | Anonymous/service creation rejected; same-origin writes retained. |
+| W5-QA-01 Validation / QA | Local build, 45 Python and 26 website tests passed. | Browser preview checked; CI/merge/deployment recorded in release follow-up. |
+| W5-RL-01 Change / Release | Preserve existing Site and data; source changes only. | Publication and deployment statuses remain distinct until confirmed. |
+
+## 24 November 2026 — Media delivery planning
+
+| Log / ID | Decision or evidence | Status / next action |
+| --- | --- | --- |
+| Business Learning / MED-BL | Reader needs reading, listening and visual explanation of the same story. | REQUIREMENT; deliver incremental slices. |
+| System / MED-SY | No hosted media pipeline found in inspected source. | PENDING implementation. |
+| Architecture / MED-AR | Bind assets to immutable story version and script/content hash. | PROPOSED; implement contract first. |
+| Automation / MED-AU | Existing reliability runs unchanged; dates do not create builds. | NO schedule mutation. |
+| Recommendation / MED-RE | Release existing website expansion, then images, audio, video. | PROPOSED delivery order. |
+| Experiment / MED-EX | Pilot one image, one narration and one short explainer. | PLANNED; no media tests executed. |
+| External Evidence / MED-EE | Git fetch confirms origin/main 4863d32; local expansion ccd8508. | VERIFIED repository state; no external research or new live-site check. |
+| Risk & Assumption / MED-RA | Provider/storage readiness, cost and factual drift could delay media; medium likelihood/high impact. | OPEN; version binding, review and explicit targets; owner Utpal. |
+| Data & Integration / MED-DI | Define media status, rights, location and accessible fallback. | PROPOSED; storage/provider unresolved. |
+| Product / Feature / MED-PF | Read/Listen/Watch with transcript, captions, alt text and mobile controls. | PLANNED; only ready assets shown. |
+| Merchant & Fulfilment / MED-MF | No commerce work or purchase. | NOT APPLICABLE. |
+| Expansion / MED-EP | Video explainers follow initial image/audio slice; video-input analysis separate. | PROPOSED; no native-app completion claimed. |
+| Decision / MED-DE | Before-December target is image and audio pilot; video target 1–4 December. | PLANNED, conditional; see MEDIA_DELIVERY.md. |
+
+## 24 November 2026 — Accelerated media implementation
+
+| Log / ID | Change and evidence | Status / remaining condition |
+| --- | --- | --- |
+| Business Learning / MED2-BL | Implemented Read/Listen/Watch inside the story journey, with the same facts, historical limits and scenarios. | IMPLEMENTED; media does not establish broader coverage. |
+| System / MED2-SY | Added authenticated media APIs, uploads, range delivery, provider configuration state and review queue. | IMPLEMENTED / locally tested; deployment tracked separately. |
+| Architecture / MED2-AR | D1 media records reference immutable story/hash/script; private R2 holds bytes. Generated migrations preserve existing data. | VALIDATED; released asset metadata is immutable. |
+| Automation / MED2-AU | Request keys prevent repeated provider invocation; capped jobs and interrupted-job closure avoid silent retries. | IMPLEMENTED; existing reliability schedule unchanged. |
+| Recommendation / MED2-RE | Browser listening and visual storyboards work without paid credentials; optional provider controls explain setup. | IMPLEMENTED; live credentials absent. |
+| Experiment / MED2-EX | Provider fixtures test PCM assembly, image bytes, failure handling, quota and idempotency. FFmpeg tests render actual silent and narrated MP4s. | VALIDATED locally; no paid generation call. |
+| External Evidence / MED2-EE | Provider contracts checked against official Speech, text-to-speech and image-generation documentation linked in the runbook. | VERIFIED contract references; model availability remains account-dependent. |
+| Risk & Assumption / MED2-RA | Stale assets, review bypass and duplicate charges: medium likelihood/high impact before controls. Version/hash selection, review gates, atomic audit, fixed provider endpoints and no automatic paid retries mitigate these. | VALIDATED locally; owner Utpal; physical devices and real provider validation remain open. |
+| Data & Integration / MED2-DI | Added media, feedback and aggregate metrics tables; private bytes do not enter source control. Configuration names only are documented. | IMPLEMENTED; R2 binding enabled in manifest; deployment applies migrations. |
+| Product / Feature / MED2-PF | Image/diagram captions, credits and alt text; native recordings or browser voice; captioned storyboard or MP4; transcript, seeking/chapter and rate controls. | IMPLEMENTED; voice availability depends on browser. |
+| Merchant & Fulfilment / MED2-MF | No purchase, commerce or subscription initiated. | NOT APPLICABLE. |
+| Expansion / MED2-EP | Existing multi-story website expansion is included in the release branch. Native apps, offline copies, push and one-click hosted video rendering remain separate. | IMPLEMENTED branch; integration/deployment evidence recorded on completion. |
+| Decision / MED2-DE | Accelerate the two-week media scope into the current implementation session. Keep software release, provider activation and actual editorial review separate. | IMPLEMENTED; no real source-review attestation fabricated. |
+| Security & Privacy / MED2-SP | Same-origin writes, editor-only media access, fixed egress, signature/size validation, review rollback and consent-required aggregate measurement. | VALIDATED; no access audience change. |
+| Validation / MED2-QA | Python/renderer tests and Worker integration suite; browser checked modes, source diagram, studio and disabled media approval before story approval. | See daily tracker for exact counts and release result. |
+
+### MED2 release closure
+
+MED2-CR: Existing private Site version 6 deployed successfully; private source
+`f2d5f81ec0df2c302a6fccea538f4eb3fb87b2c0`. Owner-only audience retained.
+MED2-QA: Final local checks: 54 Python and 45 website tests passed; Worker built.
+MED2-RA: Cloud-browser voice unavailable; transcript fallback observed; real
+provider validation and physical-device QA remain open. Paid generation disabled.
+MED2-DE: GitHub push automatically rejected for external source/history transfer
+without explicit approval. Do not retry via another route; retain local branch
+and seek approval for that exact transfer after the private release is complete.
+No GitHub integration/CI, real story approval or media editorial approval claimed.
+MED2-QA-LIVE: Actual version 6 feed/story/media studio verified in signed-in
+browser. Diagram loaded, chapter selection changed caption/source, storage-backed
+preparation enabled and paid controls disabled. Existing freshness and review
+state persisted. Narrow viewport reported no page overflow; screenshot timed out;
+physical-device QA remains open. No production test data or approvals added.
+
+MED2-DE-AUTH (25 November 2026): Owner explicitly authorized the previously
+blocked GitHub transfer of `codex/media-formats` to `Utpal-Mishra/EPSTMC`. The
+permission blocker is resolved for this exact push; private Site access remains
+unchanged. Remote synchronization, CI and main integration remain separate facts.
+
+MED2-SYNC (25 November 2026): Completed the authorized transfer to GitHub branch
+`codex/media-formats`. Code head `9d55d46c`; every uploaded tree matched its local
+development tree, including the final tested release. Connected API commit IDs
+differ; original local SHAs are retained in commit trailers. Shell credentials
+were unavailable; no credential was exposed or fabricated. Main merge/remote CI
+remain separate; private Site v6 unchanged.
+
+TRACE-20261125: Owner requested separate records for every planned step. Added 45 individually committed step files and a master traceability index. This clarifies historical shared changes without rewriting them; statuses retain planned/implemented/validated/deployed/activated/approved distinctions. The index maps each step to the existing 13 log categories. System/architecture/data/runtime unchanged; risk of misleading rollback boundaries mitigated by explicit shared-origin labels. No commerce, new schedule, provider activation or real editorial approval. Validation covers unique IDs, links, record commit scope and documentation-only files. Future implementation must use one step per commit under AGENTS.md.
+
+WEB-01 (25 November 2026) — System / Product / Architecture / Validation / Decision: Connected the workspace dashboard to actual story, publication, media, source-candidate and feedback states. Added navigation and configuration-presence reporting. The focused summary/route test and browser-program parse check passed; full endpoint validation is included in the release suite. Status: IMPLEMENTED / focused checks passed; integration check pending. Changes and remaining limits are separately recorded in docs/steps/WEB-01.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+WEB-02 (25 November 2026) — System / Product / Architecture / Validation / Decision: Added a guided creation/revision form for all story fields, sources, qualified historical comparisons, conditional scenarios, timeline events and gaps. New forms begin with blank research attestations; advanced JSON remains available. Three focused tests passed for blank-state honesty, round-trip contract normalization and browser program parsing. Status: IMPLEMENTED / focused authoring checks passed. Changes and remaining limits are separately recorded in docs/steps/WEB-02.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+WEB-03 (25 November 2026) — System / Product / Architecture / Validation / Decision: Added a lead story based on the latest covered event, seven-day recency, publication/research filtering, URL-preserved feed criteria and format-specific story links. Seven focused navigation/browser-program checks passed. Coverage dates remain distinct from source-check freshness. Status: IMPLEMENTED / feed navigation checks passed. Changes and remaining limits are separately recorded in docs/steps/WEB-03.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+WEB-04 (25 November 2026) — System / Product / Architecture / Validation / Decision: Added explicit IndexedDB saved-reader copies, shell-only service-worker opt-in, timestamped offline read views, bookmarks/copy distinction and removal controls. Saved data is validated and reader-projected; editorial metadata, credentials and media files are not persisted. Three focused offline contract tests passed; cold-start browser behavior is checked in the integrated QA step. Status: IMPLEMENTED / offline contract checks passed; browser QA pending. Changes and remaining limits are separately recorded in docs/steps/WEB-04.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+WEB-05 (25 November 2026) — System / Product / Architecture / Validation / Decision: Connected an explicitly invoked browser canvas recorder to the media studio, correct MP4/WebM format selection, progress/cancel controls, transcript/VTT/provenance downloads and a version/hash-bound upload-for-review action. Added WebM validation and playback MIME handling. Nine video planning/contract checks passed; actual browser capture is recorded in WEB-07 rather than claimed by Node tests. Status: IMPLEMENTED / nine contract checks passed; capture QA pending. Changes and remaining limits are separately recorded in docs/steps/WEB-05.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+WEB-06 (25 November 2026) — System / Product / Architecture / Validation / Decision: Added browser-local text preferences, explicit opt-in aggregate counts, optional notifications limited to publication changes while the site is open, a same-origin web manifest/icon, and connected settings/help/privacy pages. Three focused checks passed for safe defaults, publication-change detection and same-site manifest/browser parsing. No background push subscription, provider credential or native app release is claimed. Status: IMPLEMENTED / preference and alert-contract checks passed. Changes and remaining limits are separately recorded in docs/steps/WEB-06.md; preserve the existing 13 logs and distinguish code, source integration, deployment, provider activation and actual editorial review.
+
+
+## WEB-07 — 25 November 2026 navigation completion
+
+Actual implementation and record date: 25 November 2026. Scope, evidence and recovery: [WEB-07](steps/WEB-07.md).
+
+| Log | Entry |
+| --- | --- |
+| Business Learning | Explicitly distinguish research preview, approved publication and operational readiness. |
+| System | Worker build plus 74 website and 54 Python checks passed. |
+| Architecture | Keep browser helper serialization executable after bundling. |
+| Automation | Queued route loads and refresh guards protect unfinished work; schedules unchanged. |
+| Recommendation | Retain physical-device, provider and cold-start verification as outstanding. |
+| Experiment | Browser exercised guided form dirty state, discard dialog, workspace, reader and offline saving. |
+| External Evidence | No new source claims introduced by this change. |
+| Risk & Assumption | Browser capability support varies; retain explicit unsupported/error states. |
+| Data & Integration | No migrations or production editorial changes. |
+| Product / Feature | Connected navigation, unknown routes, unsaved work and failure recovery. |
+| Merchant & Fulfilment | Not applicable. |
+| Expansion | Browser website only; native-store milestones remain separate. |
+| Decision | Preserve existing green editorial interface, Site audience and publication controls. |
 
 ## Daily follow-up — 25 November 2026
 

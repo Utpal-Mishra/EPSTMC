@@ -1,5 +1,7 @@
 # History-to-present integration
 
+Trace individual requirements and recording commits in [STEP_TRACEABILITY.md](STEP_TRACEABILITY.md). Historical status statements below retain their original date/context.
+
 The seven requested units are implemented together following the owner's latest
 instruction to develop and integrate the full set. They are no longer future
 feature promises for seven separate dates. Actual implementation date:

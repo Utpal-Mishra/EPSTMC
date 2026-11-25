@@ -2,7 +2,7 @@
 import {Miniflare} from 'miniflare';
 import {createServer} from 'node:http';
 import {readFileSync,readdirSync} from 'node:fs';
-const mf=new Miniflare({modules:true,scriptPath:'dist/server/index.js',compatibilityDate:'2026-05-01',d1Databases:{DB:'preview-db'}});
+const mf=new Miniflare({modules:true,scriptPath:'dist/server/index.js',compatibilityDate:'2026-05-01',d1Databases:{DB:'preview-db'},r2Buckets:['BUCKET']});
 const db=await mf.getD1Database('DB');
 for(const file of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())for(const sql of readFileSync('drizzle/'+file,'utf8').split(/-->\s*statement-breakpoint/))if(sql.trim())await db.prepare(sql.trim()).run();
 await mf.dispatchFetch('http://127.0.0.1:4173/api/initialize',{method:'POST',headers:{'oai-authenticated-user-id':'local-preview-only',Origin:'http://127.0.0.1:4173'}});
