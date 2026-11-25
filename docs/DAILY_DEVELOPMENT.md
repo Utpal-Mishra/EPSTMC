@@ -45,3 +45,11 @@ The existing daily task was updated on 23 November 2026 to implement a bounded n
 than only maintain the README. The same task now has seven dated runs for 24–30 November; no duplicate
 recurring task is needed. Its approximate morning slot is retained. If execution, credentials or authorization are missing,
 report the blocker and perform only independently authorized work.
+
+## Following website phase
+
+The owner selected website expansion over native-app delivery. See
+[WEBSITE_EXPANSION.md](WEBSITE_EXPANSION.md) for W5-D1–D7, separate commits and
+verification. Work began 23 November 2026; the labels do not imply elapsed days.
+Continue with observed release issues or the earliest remaining requirement,
+not the historical seven-unit plan. Native Week 5 is not claimed complete.

@@ -146,3 +146,24 @@ UI-TEXT-01 — 23 November 2026: owner requested the timeline heading change fro
 UI-TEXT-02 — 23 November 2026: updated the HTML browser tab title to “EPSTMC · News Timeline”, matching the requested visible heading. Copy-only change; verified by the website build.
 
 UI-TEXT-03 — 23 November 2026: capitalized navigation to “Evidence Desk”, “Timeline” and “Editorial Review” as requested. Copy-only change; verified with the website build.
+
+## W5 website expansion — begun 23 November 2026
+
+| ID / log | Decision / implementation | Evidence and remaining action |
+| --- | --- | --- |
+| W5-BL-01 Business Learning | Owner selected website feed expansion over native-app milestone. | Scope confirmed in this session; native delivery remains pending. |
+| W5-SY-01 System | Per-story reader, review, draft and publication routes plus feed and story creation. | Cross-story tests; no automatic editorial decisions. |
+| W5-AR-01 Architecture | Reuse composite story/version keys; no schema rewrite. | D1 atomic creation/audit and publication isolation tests. |
+| W5-AU-01 Automation | Preserve seven existing morning runs; follow completed expansion with observed fixes. | Same task, cadence and stop condition; release pointer updated after integration. |
+| W5-RE-01 Recommendation | Prioritize real coverage and physical-device checks next. | Software can hold more stories; only one real case is currently supplied. |
+| W5-EX-01 Experiment | Synthetic second story revision, publication and later private draft. | Tests prove other-story history stays isolated and published projection remains visible. |
+| W5-EE-01 External Evidence | Reuse five previously checked primary sources; no new reporting claims. | Research date retained; no sources reverified in this software-only phase. |
+| W5-RA-01 Risk & Assumption | Filter recency could mislead or drafts leak; medium likelihood/high impact. | Event-date filters, visible preview badges and isolation tests; owner Utpal; physical-device checks pending. |
+| W5-DI-01 Data & Integration | Optional region/category labels and legacy display compatibility. | Stored evidence/review hashes unchanged; no production revisions made. |
+| W5-PF-01 Product / Feature | Feed, taxonomy filters, search, recency, saved IDs and deep links. | Browser QA: empty search, reset, saved list, one November event after reload. |
+| W5-MF-01 Merchant & Fulfilment | No commerce workflows. | NOT APPLICABLE. |
+| W5-EP-01 Expansion | Additional real reporting, offline content, native apps and alerts remain open. | No invented stories or platform-completion claims. |
+| W5-DE-01 Decision | Seven separate work-unit commits on actual dates. | W5-D1–D7; no backdating or fabricated daily progress. |
+| W5-SP-01 Security & Privacy | Owner-only site, editor-only creation, saved IDs on browser only. | Anonymous/service creation rejected; same-origin writes retained. |
+| W5-QA-01 Validation / QA | Local build, 45 Python and 26 website tests passed. | Browser preview checked; CI/merge/deployment recorded in release follow-up. |
+| W5-RL-01 Change / Release | Preserve existing Site and data; source changes only. | Publication and deployment statuses remain distinct until confirmed. |

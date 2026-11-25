@@ -134,6 +134,15 @@ source candidates and freshness, protected browser review and durable D1 data.
 The story remains a private research preview until owner approval. The
 original daily plan is retained as history; subsequent tasks maintain the release.
 
+## Website expansion
+
+The [next seven website work units](docs/WEBSITE_EXPANSION.md) add a multi-story
+Evidence Desk, region/category filters, search and event-date windows, saved
+bookmarks, story/timeline links and mobile controls. Each unit has its own commit
+with actual implementation timestamps. The original real story remains a private
+research preview; adding software support does not create additional verified news.
+Native apps and full offline reading remain future work.
+
 ## Pre-launch roadmap
 
 Readers will open straight to the feed without signing up. The app will refresh stories on open and resume, and readers can opt in to push alerts for major stories and material updates. Editorial publishing uses separate, protected access.
