@@ -381,3 +381,24 @@ Planned, implemented and recorded on 25 November 2026. Separate implementation r
 ## REL-09 — 25 November 2026 deployment event
 
 System / Data & Integration: GitHub PR #7 merged; local/runtime tree equality verified. Private v8 deployment succeeded with additive regional tables. Validation: 82 website / 54 Python tests and preview browser checks passed. External Evidence: successful native deployment response and empty recent error-log result. Risk & Assumption: remote CI, authenticated production workflows and physical devices remain unverified. Automation: existing schedules unchanged; reader-open refresh only. Decision: preserve v7 rollback and all editorial history. Full event IDs and separate commit provenance: [REL-09](steps/REL-09.md).
+
+
+## D26 — 26 November 2026 bounded follow-up
+
+[Evidence and scope](steps/D26.md). Actual work/record date: 26 November 2026.
+
+| Log | Observation / action |
+| --- | --- |
+| Business Learning | Maintenance can verify delivered work without adding features. |
+| System | Private status/intake/status HTTP 200; deployment v8 succeeded. |
+| Architecture | D1 draft v1, five events and sequence 0 preserved; no schema change. |
+| Automation | One intake at 09:11 UTC; seven-run 24–30 November window unchanged. |
+| Recommendation | Review candidate relevance before editing or approving claims. |
+| Experiment | 54 local Python tests passed; release CI all five jobs successful. |
+| External Evidence | 20 Federal Register matches processed at 09:11:22.778 UTC; UNREVIEWED. |
+| Risk & Assumption | Latest covered event 6 Nov; research/retrieval 23 Nov; search is not a full fact-check. |
+| Data & Integration | Attempt 09:11:22.535 UTC and success 09:11:22.778 UTC independently persisted. |
+| Product / Feature | Corrected stale current-release and CI documentation; application unchanged. |
+| Merchant & Fulfilment | Not applicable; no commerce. |
+| Expansion | Agency response, operational status, broader coverage and device QA remain open. |
+| Decision | Preserve owner-private v8, source repository, prior data and editorial controls; no redeploy. |

@@ -149,3 +149,10 @@ All 45 IDs are unique, each has a separate file and recording commit, file links
 | NEWS-01 | [Regional ingestion](steps/NEWS-01.md) | Bounded allowlisted RSS/Atom intake, dated attributed headlines across US/Europe, per-source freshness/failure, durable deduplication; no automatic editorial approval. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |
 | NEWS-02 | [Regional news desk](steps/NEWS-02.md) | Working region/category/time/search controls, source links, source health, recent headlines, retained reviewed stories and actual ECB reference-rate chart. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |
 | REL-09 | [Editorial regional release](steps/REL-09.md) | Build and relevant tests, browser QA, GitHub synchronization and existing private Site deployment with honest limits. | IMPLEMENTED / private v8 / PR #7 merged; per-step limits retained |
+
+
+## 26 November 2026 bounded maintenance
+
+| Step | Record | Acceptance | Status |
+| --- | --- | --- | --- |
+| D26 | [Release and freshness verification](steps/D26.md) | Verify v8 release checks and one durable unreviewed intake; correct stale present-tense release labels. | VERIFIED / documentation integration pending CI; no runtime change |
