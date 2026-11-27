@@ -402,3 +402,24 @@ System / Data & Integration: GitHub PR #7 merged; local/runtime tree equality ve
 | Merchant & Fulfilment | Not applicable; no commerce. |
 | Expansion | Agency response, operational status, broader coverage and device QA remain open. |
 | Decision | Preserve owner-private v8, source repository, prior data and editorial controls; no redeploy. |
+
+
+## D27 — 27 November 2026 bounded follow-up
+
+Actual work/record date: 27 November 2026. [Scope and evidence](steps/D27.md).
+
+| Log | Observation / action |
+| --- | --- |
+| Business Learning | Healthy code needs no invented daily feature. |
+| System | Anonymous status 403; authenticated status/intake/status 200; v8 deployment succeeded. |
+| Architecture | D1 draft v1 / five events / sequence 0 unchanged. |
+| Automation | One intake; existing 24–30 November window unchanged. |
+| Recommendation | Review candidate relevance and primary evidence before claims. |
+| Experiment | 54 local Python tests passed; prior merged head CI all five jobs successful. |
+| External Evidence | 20 UNREVIEWED Federal Register matches; completion 09:10:59.292 UTC. |
+| Risk & Assumption | Latest covered event 6 Nov; original research/retrieval 23 Nov; search differs from fact-check. |
+| Data & Integration | Attempt 09:10:59.051 UTC and success 09:10:59.292 UTC confirmed by separate read. |
+| Product / Feature | No observed regression justifies an application change. |
+| Merchant & Fulfilment | Not applicable. |
+| Expansion | Agency response, operational status, coverage and physical-device QA gaps retained. |
+| Decision | Preserve owner-only Site v8, source and prior data; documentation only, no redeploy. |

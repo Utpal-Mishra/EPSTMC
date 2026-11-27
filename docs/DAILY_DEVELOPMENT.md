@@ -287,3 +287,46 @@ and record date: 26 November 2026. No application change was warranted.
 - Existing seven-run 24–30 November window unchanged; no schedule operation.
 
 Separate scope, recovery and commit/PR evidence: [D26](steps/D26.md).
+
+
+## 27 November 2026 — Private access and source freshness
+
+Bounded follow-up **D27**. Planned, actual work and record date: 27 November 2026.
+Inspected main, PR #3, HISTORY_TO_PRESENT, DAILY_DEVELOPMENT and structured logs.
+No observed release/service failure or incomplete delivered requirement warranted
+an application change. Code remains unchanged; this is a documentation audit.
+
+- Baseline main [5407e6e](https://github.com/Utpal-Mishra/EPSTMC/commit/5407e6ed0f2c975d3f84adda6cea8b9a4d5cb451)
+  includes merged PR #8. PR #3 remains merged at `3335c51`, with successful
+  release run 45287420076. Latest merged PR head `8c5538d` has successful
+  [CI run 45789984463](https://github.com/Utpal-Mishra/EPSTMC/actions/runs/45789984463):
+  Python 3.9/SQLite, Python 3.12/SQLite, Postgres, Worker/website and video export.
+  This is head-check evidence, not an asserted new main-SHA run.
+- `get_site` confirmed active custom owner-only access: only owner, no editors,
+  groups or external visitors. Anonymous GET `/api/service/status` returned
+  HTTP 403. Authenticated status/intake/status returned HTTP 200. Supported
+  bearer sent only to the exact retained origin; redirects disabled. No access
+  change, credential rotation or credential persistence.
+- Exactly one POST intake: attempt `2026-11-27T09:10:59.051Z`, successful
+  source-search retrieval/completion `2026-11-27T09:10:59.292Z`, 20 UNREVIEWED
+  matches processed. Independent status confirmed both stored timestamps.
+  These are not necessarily new records or verified developments. One-minute
+  throttle respected; prior status showed last successful intake on 26 November.
+- Story remains research preview: draft v1, five events, publication sequence 0,
+  no publication. Latest covered event **6 November 2026**. Original-source
+  publication range **17 January 2025–6 November 2026**. Original-source retrieval
+  and full research check remain `2026-11-23T22:59:31+00:00`.
+  Today's Federal Register search does not reverify all original sources.
+- Website version 8 retained at https://epstmc-reader-review.utpalmishra21.chatgpt.site.
+  Native deployment status independently confirmed succeeded for
+  `appgdep_6b06f8c828dc8191b899a79e4a20e8d0`; saved source remains
+  `baf3e2aca3afd9295e2638d49e1a7ad8e1e7554d`. No redeployment needed.
+- Validation: **54 local Python/SQLite tests passed**. Documentation PR must pass
+  required remote checks before merge. No new local Postgres/Worker run or
+  browser/mobile visual QA claimed. No editorial attestation/approval performed.
+- Blockers/next: no release/access/intake blocker observed. Owner source review,
+  agency-response and operational-status gaps, broader coverage and physical
+  device QA remain open. Follow up on evidence, without manufacturing code work.
+- Existing 24–30 November seven-run window retained; no schedule operation.
+
+Commit/PR evidence and recovery: [D27](steps/D27.md).

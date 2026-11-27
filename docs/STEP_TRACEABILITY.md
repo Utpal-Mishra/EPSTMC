@@ -156,3 +156,10 @@ All 45 IDs are unique, each has a separate file and recording commit, file links
 | Step | Record | Acceptance | Status |
 | --- | --- | --- | --- |
 | D26 | [Release and freshness verification](steps/D26.md) | Verify v8 release checks and one durable unreviewed intake; correct stale present-tense release labels. | VERIFIED / documentation integration pending CI; no runtime change |
+
+
+## 27 November 2026 bounded maintenance
+
+| Step | Record | Acceptance | Status |
+| --- | --- | --- | --- |
+| D27 | [Private access and freshness](steps/D27.md) | Anonymous denial, supported private service, one persisted unreviewed intake; no editorial changes. | VERIFIED / documentation integration pending CI; code unchanged |
