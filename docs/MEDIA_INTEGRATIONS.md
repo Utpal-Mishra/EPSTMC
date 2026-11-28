@@ -99,3 +99,48 @@ cover reader modes and editorial media management. Provider tests use isolated
 fixtures and never real paid calls or live editorial decisions.
 
 See DAILY_DEVELOPMENT.md for exact check counts and deployment evidence.
+
+
+## Hosted video integration — 28 November 2026 (INT-02)
+
+The media studio now supports Shotstack-hosted captioned MP4 rendering, alongside
+existing OpenAI illustration and narration, browser recording and manual uploads.
+This is a silent, source-linked text explainer, not generated documentary footage.
+The story text and source IDs go to Shotstack. Private app access does not make
+provider processing or temporary output confidential to the app alone.
+
+Configure server-side `SHOTSTACK_API_KEY`, `SHOTSTACK_ENV=stage` (sandbox, default)
+or `v1` (production), and `EPSTMC_MEDIA_GENERATION=enabled`. Image/audio retain
+`OPENAI_API_KEY`, `EPSTMC_IMAGE_MODEL`, `EPSTMC_TTS_MODEL`, optional `EPSTMC_TTS_VOICE`.
+Select models supported by the account and the existing PNG/24kHz-PCM adapters.
+No credentials are accepted by story fields, stored in source or returned by configuration APIs.
+Workspace and Media studio list missing setting names. Presence checks do not attest
+account entitlement or successful output. A zero daily limit disables paid buttons.
+
+One daily job cap covers OpenAI image, narration and Shotstack video together.
+Submission keys are idempotent. Ambiguous submissions consume a slot and are not
+retried automatically. Videos are bounded to 60 text pages, six minutes and 20 MiB.
+Longer content is rejected before submission rather than losing limitations.
+The cap is a job count, not a currency-denominated spending guarantee.
+
+After submission, **Refresh render status** checks the persisted render ID. Five
+seconds must elapse between checks. Completion imports validated MP4 bytes into
+private R2 and enters the existing media-review queue; no publication occurs.
+Transient status/download errors preserve the render reference so a refresh can
+retry retrieval without another render charge. An interrupted job can be closed;
+this does not cancel remote work or provider billing. No background queue or webhook
+is claimed: leave and return to the media studio to refresh an unfinished render.
+
+Provider requests use fixed API URLs. Output downloads require matching render IDs
+and stage-specific Shotstack S3 hosts, reject redirects, omit provider credentials,
+and enforce size/file-signature checks. Provider CDN hosting is explicitly excluded;
+Shotstack still creates temporary output (documented lifetime: 24 hours).
+Story corrections retain existing media version/approval isolation.
+
+Contracts checked on 28 November 2026:
+- https://shotstack.io/docs/api/ (Edit render/status, rich-text, output destinations)
+- https://shotstack.io/docs/guide/getting-started/hello-world-using-curl/
+- https://shotstack.io/docs/guide/serving-assets/hosting/
+
+Live provider activation and paid-output QA remain pending server-side credentials.
+Tests use isolated provider fixtures, never paid calls or real editorial approvals.

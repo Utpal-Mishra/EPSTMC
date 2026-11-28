@@ -423,3 +423,13 @@ Actual work/record date: 27 November 2026. [Scope and evidence](steps/D27.md).
 | Merchant & Fulfilment | Not applicable. |
 | Expansion | Agency response, operational status, coverage and physical-device QA gaps retained. |
 | Decision | Preserve owner-only Site v8, source and prior data; documentation only, no redeploy. |
+
+
+## INT-01 — 28 November 2026
+
+System / Data & Integration / Product: shared provider setup checks and missing-setting display. Risk & Assumption: configured means presence only; keys and live account access remain pending. See [step](steps/INT-01.md). No schedule change.
+
+
+## INT-02 — 28 November 2026
+
+Architecture / Automation / Product: bounded asynchronous Shotstack render with explicit polling, private R2 import and existing approval controls. Experiment: 93 website tests passed; post-fix focused set 33/33. External Evidence: official Shotstack Edit API and hosting contracts checked. Risk: temporary provider output is external; permanent CDN destination excluded. Decision: silent captioned explainer; no automatic paid retry or publication. See [step](steps/INT-02.md). No schedule change.

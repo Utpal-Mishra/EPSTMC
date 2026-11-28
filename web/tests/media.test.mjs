@@ -5,9 +5,20 @@ import {Miniflare} from 'miniflare';
 import {readFileSync,readdirSync} from 'node:fs';
 import {scriptFor,speechChunks,pcmWav,timelineSvg,validateCaptions} from '../worker/media-model.js';
 const seed=JSON.parse(readFileSync('worker/case-study.json','utf8'));
-let mf,db,bucket,calls,fail;
+let mf,db,bucket,calls,fail,videoStatus,videoURL,videoPosts,videoFailPoll;
+const renderID='12345678-1234-1234-1234-123456789012';
 const origin='https://epstmc.test';
-beforeEach(async()=>{calls=0;fail=false;mf=new Miniflare({modules:true,scriptPath:'dist/server/index.js',compatibilityDate:'2026-05-01',d1Databases:{DB:'media-test'},r2Buckets:['BUCKET'],bindings:{OPENAI_API_KEY:'fixture-key',EPSTMC_MEDIA_GENERATION:'enabled',EPSTMC_TTS_MODEL:'fixture-speech',EPSTMC_IMAGE_MODEL:'fixture-image',EPSTMC_MEDIA_DAILY_LIMIT:'2',EPSTMC_SERVICE_KEY:'fixture-service'},outboundService:async req=>{calls++;assert.equal(new URL(req.url).hostname,'api.openai.com');const body=await req.json();assert.ok(!body.input||body.input.length<=4096);if(fail)return new Response('private provider diagnostic',{status:500});if(new URL(req.url).pathname.endsWith('/images/generations'))return Response.json({data:[{b64_json:'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aNc8AAAAASUVORK5CYII='}]});return new Response(new Uint8Array(4800),{headers:{'Content-Type':'application/octet-stream'}});}});db=await mf.getD1Database('DB');bucket=await mf.getR2Bucket('BUCKET');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())for(const sql of readFileSync('drizzle/'+f,'utf8').split(/-->\s*statement-breakpoint/))if(sql.trim())await db.prepare(sql).run();await ok('/api/initialize',{});});
+beforeEach(async()=>{calls=0;fail=false;videoStatus='queued';videoPosts=0;videoFailPoll=false;videoURL='https://shotstack-api-stage-output.s3-ap-southeast-2.amazonaws.com/owner/'+renderID+'.mp4';mf=new Miniflare({modules:true,scriptPath:'dist/server/index.js',compatibilityDate:'2026-05-01',d1Databases:{DB:'media-test'},r2Buckets:['BUCKET'],bindings:{SHOTSTACK_API_KEY:'fixture-video-key',OPENAI_API_KEY:'fixture-key',EPSTMC_MEDIA_GENERATION:'enabled',EPSTMC_TTS_MODEL:'fixture-speech',EPSTMC_IMAGE_MODEL:'fixture-image',EPSTMC_MEDIA_DAILY_LIMIT:'2',EPSTMC_SERVICE_KEY:'fixture-service'},outboundService:async req=>{calls++;const u=new URL(req.url);
+if(u.hostname==='api.shotstack.io'){
+ assert.equal(req.headers.get('x-api-key'),'fixture-video-key');
+ if(req.method==='POST'){videoPosts++;const body=await req.json();assert.equal(body.output.destinations[0].exclude,true);return Response.json({success:true,response:{id:renderID}});}
+ if(videoFailPoll)return new Response('private video error',{status:503});
+ return Response.json({success:true,response:{id:renderID,status:videoStatus,url:videoURL}});
+}
+if(u.hostname==='shotstack-api-stage-output.s3-ap-southeast-2.amazonaws.com'){
+ assert.equal(req.headers.get('x-api-key'),null);const bytes=new Uint8Array(64);bytes.set(new TextEncoder().encode('ftyp'),4);return new Response(bytes,{headers:{'Content-Type':'video/mp4'}});
+}
+assert.equal(u.hostname,'api.openai.com');const body=await req.json();assert.ok(!body.input||body.input.length<=4096);if(fail)return new Response('private provider diagnostic',{status:500});if(new URL(req.url).pathname.endsWith('/images/generations'))return Response.json({data:[{b64_json:'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aNc8AAAAASUVORK5CYII='}]});return new Response(new Uint8Array(4800),{headers:{'Content-Type':'application/octet-stream'}});}});db=await mf.getD1Database('DB');bucket=await mf.getR2Bucket('BUCKET');for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())for(const sql of readFileSync('drizzle/'+f,'utf8').split(/-->\s*statement-breakpoint/))if(sql.trim())await db.prepare(sql).run();await ok('/api/initialize',{});});
 afterEach(async()=>{await mf.dispose();});
 async function request(path,body,extra={}){const headers={'oai-authenticated-user-id':'fixture-owner',...extra};const options={headers};if(body!==undefined){options.method='POST';headers.Origin=extra.Origin||origin;if(body instanceof FormData)options.body=body;else{headers['Content-Type']='application/json';options.body=JSON.stringify(body);}}if(body instanceof FormData){const serialized=new Request(origin+path,{method:'POST',body});headers['Content-Type']=serialized.headers.get('content-type');options.body=await serialized.arrayBuffer();}return mf.dispatchFetch(origin+path,options);}
 async function ok(path,body){const r=await request(path,body);const value=await r.json();assert.ok(r.ok,JSON.stringify(value));return value;}
@@ -42,3 +53,40 @@ test('browser WebM upload stays bound to the selected story hash and remains una
 test('built Worker delivers an executable browser program after bundling',async()=>{const response=await mf.dispatchFetch(origin+'/');const html=await response.text();const source=html.match(/<script>([\s\S]*)<\/script>/)?.[1];assert.ok(source);assert.doesNotThrow(()=>new Function(source));});
 
 test('bundled browser helpers execute without missing bundler support functions',async()=>{const html=await (await mf.dispatchFetch(origin+'/')).text();const source=html.match(/<script>([\s\S]*)<\/script>/)[1].replace(/act\(load\);\s*$/,'');const context=vm.createContext({document:{addEventListener(){},documentElement:{style:{setProperty(){}}}},window:{addEventListener(){}},location:{hash:'#/'},setInterval(){},localStorage:{getItem(){return null;}},URL,URLSearchParams,TextEncoder,structuredClone,testStory:structuredClone(seed)});vm.runInContext(source,context);const plan=vm.runInContext('buildBrowserVideoPlan(storyScript(testStory),{duration:75})',context);assert.ok(plan.pages.length>0);const copy=vm.runInContext('offlineSnapshot({version:1,content:testStory},null,[])',context);assert.equal(copy.id,seed.id);});
+
+async function ageVideo(id){await db.prepare("UPDATE htp_media SET updated_at='2020-01-01T00:00:00Z' WHERE id=?").bind(id).run();}
+test('hosted render persists once, imports privately, then requires story and media approval',async()=>{
+ const j=await generate('shotstack-video','hosted-one');assert.equal(j.status,'generating');assert.equal(j.kind,'video');assert.equal(j.metadata.provider_id,renderID);
+ assert.equal((await generate('shotstack-video','hosted-one')).id,j.id);assert.equal(videoPosts,1);
+ assert.equal((await request('/api/media/video/refresh',{id:j.id})).status,429);
+ await ageVideo(j.id);videoStatus='rendering';assert.equal((await ok('/api/media/video/refresh',{id:j.id})).status,'generating');
+ await ageVideo(j.id);videoStatus='done';const finished=await ok('/api/media/video/refresh',{id:j.id});assert.equal(finished.status,'review');
+ assert.equal((await request(finished.url)).status,404);assert.equal((await request(finished.url+'?preview=1')).status,200);
+ assert.equal((await request('/api/media/decision',{id:j.id,action:'approve',note:'test'})).status,409);
+ await approved();await release(finished);assert.equal((await request(finished.url)).status,200);
+ assert.match(await (await request('/api/media/captions/'+j.id)).text(),/WEBVTT/);assert.equal(videoPosts,1);
+});
+test('provider jobs share one daily cap across narration, images and hosted video',async()=>{
+ await generate('shotstack-video','shared-video');await generate('openai-image','shared-image');
+ assert.equal((await request('/api/media/generate',{method:'openai-tts',expected_version:1,request_key:'over-cap'})).status,429);assert.equal(videoPosts,1);
+});
+test('unsafe render URLs and transient status failures preserve reference without resubmission',async()=>{
+ const j=await generate('shotstack-video','bad-output');await ageVideo(j.id);videoStatus='done';videoURL='https://evil.invalid/private';
+ assert.equal((await request('/api/media/video/refresh',{id:j.id})).status,502);
+ assert.equal((await db.prepare('SELECT status FROM htp_media WHERE id=?').bind(j.id).first()).status,'generating');
+ await ageVideo(j.id);videoFailPoll=true;const r=await request('/api/media/video/refresh',{id:j.id});assert.equal(r.status,502);assert.ok(!(await r.text()).includes('private video error'));
+ assert.equal(videoPosts,1);assert.equal((await ok('/api/media')).assets.length,0);
+});
+test('failed and closed render jobs do not import output or resubmit',async()=>{
+ const j=await generate('shotstack-video','render-failure');await ageVideo(j.id);videoStatus='failed';assert.equal((await ok('/api/media/video/refresh',{id:j.id})).status,'failed');
+ assert.equal((await generate('shotstack-video','render-failure')).status,'failed');assert.equal(videoPosts,1);
+ const k=await generate('shotstack-video','render-closed');await ageVideo(k.id);await ok('/api/media/abandon',{id:k.id});videoStatus='done';
+ assert.equal((await ok('/api/media/video/refresh',{id:k.id})).status,'failed');assert.equal(videoPosts,2);
+});
+test('video status is scoped to story and same-origin editor access',async()=>{
+ const j=await generate('shotstack-video','scoped-render');await ageVideo(j.id);
+ assert.equal((await request('/api/media/video/refresh?story=other',{id:j.id})).status,404);
+ assert.equal((await request('/api/media/video/refresh',{id:j.id},{Origin:'https://evil.invalid'})).status,403);
+ assert.equal((await mf.dispatchFetch(origin+'/api/media/video/refresh',{method:'POST',headers:{Authorization:'Bearer fixture-service','Content-Type':'application/json'},body:JSON.stringify({id:j.id})})).status,401);
+ assert.equal(videoPosts,1);
+});
