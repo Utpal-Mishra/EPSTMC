@@ -168,3 +168,8 @@ All 45 IDs are unique, each has a separate file and recording commit, file links
 ## INT-01 — media integrations, 28 November 2026
 
 See [step record](steps/INT-01.md). Implemented and locally checked; live provider activation pending credentials. Hosted source commit: `449fe08`. GitHub integration and deployment recorded separately in INT-03.
+
+
+## INT-02 — media integrations, 28 November 2026
+
+See [step record](steps/INT-02.md). Implemented and locally checked; live provider activation pending credentials. Hosted source commit: `d243afe`. GitHub integration and deployment recorded separately in INT-03.

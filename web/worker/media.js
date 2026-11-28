@@ -1,3 +1,4 @@
+import {submitVideo,checkVideo,downloadVideo,videoEdit} from './hosted-video.js';
 import {integrationConfig} from './integrations.js';
 import {HttpError,must,cleanText,identifier,hash} from './model.js';
 import {scriptFor,timelineSvg,validateUpload,validateCaptions,speechChunks,pcmWav} from './media-model.js';
@@ -18,7 +19,7 @@ function cap(env){const n=Number(env.EPSTMC_MEDIA_DAILY_LIMIT||6);return Number.
 async function reserve(db,r,kind,method,actor,key,limit){
  must(identifier(key),'Provide a unique request_key');const script=await scriptFor(r.payload);const existing=await first(db,'SELECT * FROM htp_media WHERE story_id=? AND request_key=?',r.story_id,key);if(existing){if(existing.version!==r.version||existing.method!==method)throw new HttpError(409,'Request key belongs to different content');return {job:existing,reused:true,script};}
  const id=crypto.randomUUID(),time=now();
- const rows=await q(db,`INSERT INTO htp_media (id,story_id,version,story_hash,script_hash,kind,method,status,metadata,created_by,created_at,updated_at,request_key,attempts) SELECT ?,?,?,?,?,?,?,'queued','{}',?,?,?,?,0 WHERE (SELECT COUNT(*) FROM htp_media WHERE created_at>=? AND method IN ('openai-tts','openai-image'))<?`,id,r.story_id,r.version,r.hash,script.hash,kind,method,actor,time,time,key,time.slice(0,10),limit).run();
+ const rows=await q(db,`INSERT INTO htp_media (id,story_id,version,story_hash,script_hash,kind,method,status,metadata,created_by,created_at,updated_at,request_key,attempts) SELECT ?,?,?,?,?,?,?,'queued','{}',?,?,?,?,0 WHERE (SELECT COUNT(*) FROM htp_media WHERE created_at>=? AND method IN ('openai-tts','openai-image','shotstack-video'))<?`,id,r.story_id,r.version,r.hash,script.hash,kind,method,actor,time,time,key,time.slice(0,10),limit).run();
  if(!rows.meta.changes)throw new HttpError(429,'Daily generation limit reached; retry another day or upload an existing asset');return {job:await first(db,'SELECT * FROM htp_media WHERE id=?',id),reused:false,script};
 }
 async function reviewJob(db,env,id,action,note,actor){
@@ -28,14 +29,17 @@ async function reviewJob(db,env,id,action,note,actor){
  const result=await db.batch([q(db,`UPDATE htp_media SET status=?,reviewed_by=?,review_note=?,updated_at=?,decision_token=? WHERE id=? AND status=?`,status,actor,note,time,token,id,j.status),q(db,'INSERT INTO htp_audit (id,story_id,version,action,actor,note,created_at) SELECT ?,?,?,?,?,?,? WHERE EXISTS (SELECT 1 FROM htp_media WHERE decision_token=?)',token,j.story_id,j.version,'media_'+action,actor,note,time,token)]);if(!result[0].meta.changes)throw new HttpError(409,'Media review changed; reload');return publicJob(await first(db,'SELECT * FROM htp_media WHERE id=?',id));
 }
 async function generate(db,env,r,data,actor){
- const method=data.method;must(['diagram','openai-image','openai-tts','storyboard'].includes(method),'Choose a supported media method');
+ const method=data.method;must(['diagram','openai-image','openai-tts','storyboard','shotstack-video'].includes(method),'Choose a supported media method');
  if(!env.BUCKET)throw new HttpError(503,'Media storage is not connected');
- if(method.startsWith('openai-')){if(env.EPSTMC_MEDIA_GENERATION!=='enabled'||!env.OPENAI_API_KEY)throw new HttpError(503,'Provider generation is not configured; use the evidence diagram, browser listening or upload');if(method==='openai-tts'&&!env.EPSTMC_TTS_MODEL)throw new HttpError(503,'Choose an available speech model in server configuration');if(method==='openai-image'&&!env.EPSTMC_IMAGE_MODEL)throw new HttpError(503,'Choose an available image model in server configuration');}
- const kind=method==='openai-tts'?'audio':method==='storyboard'?'storyboard':'image';
- const {job,reused,script}=await reserve(db,r,kind,method,actor,data.request_key,method.startsWith('openai-')?cap(env):1000000);if(reused)return publicJob(job);
+ if(method.startsWith('openai-')){const configured=integrationConfig(env);if(!(method==='openai-image'?configured.image_generation:configured.audio_generation))throw new HttpError(503,'Provider setup is incomplete; check Workspace connections');if(env.EPSTMC_MEDIA_GENERATION!=='enabled'||!env.OPENAI_API_KEY)throw new HttpError(503,'Provider generation is not configured; use the evidence diagram, browser listening or upload');if(method==='openai-tts'&&!env.EPSTMC_TTS_MODEL)throw new HttpError(503,'Choose an available speech model in server configuration');if(method==='openai-image'&&!env.EPSTMC_IMAGE_MODEL)throw new HttpError(503,'Choose an available image model in server configuration');}
+ const paid=method.startsWith('openai-')||method==='shotstack-video';
+ if(method==='shotstack-video'){if(!integrationConfig(env).video_generation)throw new HttpError(503,'Hosted video setup is incomplete; check Workspace connections');videoEdit(await scriptFor(r.payload));}
+ const kind=method==='shotstack-video'?'video':method==='openai-tts'?'audio':method==='storyboard'?'storyboard':'image';
+ const {job,reused,script}=await reserve(db,r,kind,method,actor,data.request_key,paid?cap(env):1000000);if(reused)return publicJob(job);
  const key='media/'+r.story_id+'/'+r.version+'/'+job.id;let mime,bytes,metadata;
  await q(db,"UPDATE htp_media SET status='generating',attempts=1,updated_at=? WHERE id=?",now(),job.id).run();
  try{
+ if(method==='shotstack-video'){const metadata=await submitVideo(env,script);await q(db,"UPDATE htp_media SET metadata=?,updated_at=? WHERE id=? AND status='generating'",JSON.stringify(metadata),now(),job.id).run();return publicJob(await first(db,'SELECT * FROM htp_media WHERE id=?',job.id));}
  if(method==='diagram'){mime='image/svg+xml';bytes=new TextEncoder().encode(timelineSvg(r.payload));metadata={caption:'Selected dated evidence; thematic connections do not establish causation.',alt:'Evidence timeline for '+r.payload.title,credit:'EPSTMC · rendered from the attached source-backed timeline',rights:'Original evidence diagram',disclosure:'Evidence diagram; not a photograph'};}
  else if(method==='storyboard'){mime='application/json';bytes=new TextEncoder().encode(JSON.stringify(script));metadata={caption:'Source-linked visual explainer with captions and transcript',credit:'EPSTMC · extractive storyboard',rights:'Story-derived explanation',disclosure:'Interactive storyboard, not generated footage'};}
  else{
@@ -57,6 +61,30 @@ async function generate(db,env,r,data,actor){
  await env.BUCKET.put(key,bytes,{httpMetadata:{contentType:mime}});
  const saved=await q(db,"UPDATE htp_media SET status='review',object_key=?,mime=?,size=?,metadata=?,updated_at=? WHERE id=? AND status='generating'",key,mime,bytes.byteLength,JSON.stringify(metadata),now(),job.id).run();if(!saved.meta.changes){await env.BUCKET.delete(key);throw new Error('Job was closed');}return publicJob(await first(db,'SELECT * FROM htp_media WHERE id=?',job.id));
  }catch{await env.BUCKET.delete(key).catch(()=>{});await q(db,"UPDATE htp_media SET status='failed',error='Generation failed; no file was released. Check provider configuration before a new attempt.',updated_at=? WHERE id=?",now(),job.id).run();throw new HttpError(502,'Media generation failed; no asset was released. This request will not be charged again by automatic retry.');}
+}
+async function refreshVideo(db,env,story,id){
+ if(!env.BUCKET)throw new HttpError(503,'Media storage is unavailable');
+ const job=await first(db,'SELECT * FROM htp_media WHERE id=? AND story_id=?',id,story);
+ if(!job||job.method!=='shotstack-video')throw new HttpError(404,'Video render not found');
+ if(job.status!=='generating')return publicJob(job);
+ if(Date.now()-Date.parse(job.updated_at)<5000)throw new HttpError(429,'Wait five seconds between video status checks');
+ const metadata=JSON.parse(job.metadata),token=crypto.randomUUID(),time=now();
+ const locked=await q(db,"UPDATE htp_media SET decision_token=?,updated_at=? WHERE id=? AND status='generating' AND updated_at=?",token,time,id,job.updated_at).run();
+ if(!locked.meta.changes)throw new HttpError(409,'Video status changed; reload');
+ const key='media/'+job.story_id+'/'+job.version+'/'+job.id+'/'+token;
+ try{
+ const result=await checkVideo(env,metadata);
+ if(result.status==='failed'){await q(db,"UPDATE htp_media SET status='failed',error='Hosted video render failed. No automatic retry.',updated_at=? WHERE id=? AND status='generating' AND decision_token=?",now(),id,token).run();}
+ else if(result.status==='done'){
+ const bytes=await downloadVideo(env,result,metadata);
+ await env.BUCKET.put(key,bytes,{httpMetadata:{contentType:'video/mp4'}});
+ const saved=await q(db,"UPDATE htp_media SET status='review',object_key=?,mime='video/mp4',size=?,metadata=?,updated_at=? WHERE id=? AND status='generating' AND decision_token=?",key,bytes.byteLength,JSON.stringify({...metadata,provider_status:'done'}),now(),id,token).run();
+ if(!saved.meta.changes)await env.BUCKET.delete(key);
+ }else if(['queued','fetching','rendering','saving'].includes(result.status)){
+ await q(db,"UPDATE htp_media SET metadata=?,updated_at=? WHERE id=? AND status='generating' AND decision_token=?",JSON.stringify({...metadata,provider_status:result.status}),now(),id,token).run();
+ }else throw new Error('Unknown provider status');
+ return publicJob(await first(db,'SELECT * FROM htp_media WHERE id=?',id));
+ }catch{await env.BUCKET?.delete(key).catch(()=>{});throw new HttpError(502,'Video status check or import failed; the stored render reference is preserved. Refresh status to retry without submitting another render.');}
 }
 async function upload(db,env,request,story,actor){
  if(!env.BUCKET)throw new HttpError(503,'Media storage is not connected');must((request.headers.get('content-type')||'').startsWith('multipart/form-data'),'Use a multipart file upload');
@@ -91,6 +119,7 @@ export async function mediaRoute(request,env,story,actor){
  if(request.method!=='POST')return json({error:'Method not allowed'},405);
  if(path==='/api/media/upload')return json(await upload(db,env,request,story,actor),201);
  const data=await input(request);
+ if(path==='/api/media/video/refresh')return json(await refreshVideo(db,env,story,data.id));
  if(path==='/api/media/generate'){must(Number.isInteger(data.expected_version),'Specify the story version');const r=await version(db,story,data.expected_version);if(r.latest!==r.version)throw new HttpError(409,'Story changed; reload before generating');return json(await generate(db,env,r,data,actor),201);}
  if(path==='/api/media/abandon'){const j=await first(db,"SELECT * FROM htp_media WHERE id=? AND story_id=? AND status IN ('queued','generating')",data.id,story);if(!j||Date.now()-Date.parse(j.updated_at)<300000)throw new HttpError(409,'Only an unfinished job older than five minutes can be closed');await q(db,"UPDATE htp_media SET status='failed',error='Operator closed an interrupted job. Provider charges may already have occurred; no automatic retry.',updated_at=? WHERE id=? AND status IN ('queued','generating')",now(),j.id).run();return json({status:'failed'});}
  if(path==='/api/media/decision'){const j=await first(db,'SELECT story_id FROM htp_media WHERE id=?',data.id);if(!j||j.story_id!==story)throw new HttpError(404,'Media not found for this story');return json(await reviewJob(db,env,data.id,data.action,data.note,actor));}
