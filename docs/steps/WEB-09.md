@@ -12,6 +12,6 @@ Implementation: `web/worker/ui.js` scopes layout rules to the timeline filters a
 
 Evidence: the Worker build and all 93 website tests passed. The local browser measured identical 44 px control heights with matching top and bottom edges at a 1,348 px viewport. Selecting a year updated the story view, Reset filters cleared the selection, and Copy view link reported success.
 
-Status: implemented and locally validated. Narrow viewport browser verification and remote CI are tracked separately.
+Status: implemented and locally validated. Responsive browser verification and deployment are recorded in WEB-09-QA and WEB-09-REL in the traceability register.
 
 Rollback: revert the dedicated layout commit or redeploy private Site version 9. No data migration is needed.

@@ -184,3 +184,11 @@ See [step record](steps/INT-02.md). Implemented and locally checked; live provid
 | Step | Record | Acceptance | Status |
 | --- | --- | --- | --- |
 | WEB-09 | [Timeline filter alignment](steps/WEB-09.md) | Align both buttons with the Year and Month dropdowns, with matching heights and a usable narrow layout. Preserve filter and link behavior. | Implemented and locally validated |
+
+## WEB-09-QA — responsive layout verification, 28 November 2026
+
+The local browser showed both columns aligned at a 360 px content viewport. All four controls measured 44 px and fit within the viewport. See [WEB-09](steps/WEB-09.md).
+
+## WEB-09-REL — private Site release, 28 November 2026
+
+Private Site version 10 deployed successfully at 03:29 UTC from hosted source `752d14ce85c36cf4104268ffd189fea7ce51af57`. The production browser reached the owner sign-in gate. Authenticated layout checks ran in local preview. See [WEB-09](steps/WEB-09.md) for rollback.
