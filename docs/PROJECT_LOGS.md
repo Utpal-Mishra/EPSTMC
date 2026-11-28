@@ -463,3 +463,24 @@ Architecture / Automation / Product: bounded asynchronous Shotstack render with 
 
 - WEB-09-QA Experiment: at a 360 px content viewport, the dropdowns and buttons formed two aligned rows of 44 px controls with no horizontal overflow in the filter group.
 - WEB-09-REL System: Site version 10 deployed privately. The production URL reached the owner sign-in gate.
+
+
+## D28 — 28 November 2026 bounded follow-up
+
+Actual work/record date: 28 November 2026. [Evidence](steps/D28.md).
+
+| Log | Observation / action |
+| --- | --- |
+| Business Learning | Reconcile existing deployed work before proposing new features. |
+| System | Owner-only v10 succeeded; anonymous status 403; private status/intake/status 200. |
+| Architecture | Draft v1/five events/sequence 0 unchanged; D1 retained. |
+| Automation | One intake; existing 24–30 November window unchanged. |
+| Recommendation | Review candidate relevance and original evidence before claims. |
+| Experiment | 54 local Python tests passed; PR #11 all five CI jobs passed. |
+| External Evidence | 20 UNREVIEWED Federal Register matches; retrieval 09:14:24.015 UTC. |
+| Risk & Assumption | Latest event 6 Nov; full research/retrieval 23 Nov; search is not fact-check. |
+| Data & Integration | Attempt 09:14:23.779 UTC / success 09:14:24.015 UTC independently persisted. |
+| Product / Feature | Existing timeline layout PR #11 merged; no new application change. |
+| Merchant & Fulfilment | Not applicable; no paid activation. |
+| Expansion | Agency response, operational status, coverage and device QA gaps retained. |
+| Decision | Keep owner-only v10 and source; no redeploy or editorial approval. |

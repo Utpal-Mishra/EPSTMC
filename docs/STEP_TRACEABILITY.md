@@ -192,3 +192,10 @@ The local browser showed both columns aligned at a 360 px content viewport. All 
 ## WEB-09-REL — private Site release, 28 November 2026
 
 Private Site version 10 deployed successfully at 03:29 UTC from hosted source `752d14ce85c36cf4104268ffd189fea7ce51af57`. The production browser reached the owner sign-in gate. Authenticated layout checks ran in local preview. See [WEB-09](steps/WEB-09.md) for rollback.
+
+
+## 28 November 2026 bounded maintenance
+
+| Step | Record | Acceptance | Status |
+| --- | --- | --- | --- |
+| D28 | [Release reconciliation and freshness](steps/D28.md) | Existing PR #11 merged after five successful CI jobs; private access and one persisted intake verified. | Operations VERIFIED; documentation CI pending; no new application change |
