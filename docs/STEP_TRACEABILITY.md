@@ -173,3 +173,8 @@ See [step record](steps/INT-01.md). Implemented and locally checked; live provid
 ## INT-02 — media integrations, 28 November 2026
 
 See [step record](steps/INT-02.md). Implemented and locally checked; live provider activation pending credentials. Hosted source commit: `d243afe`. GitHub integration and deployment recorded separately in INT-03.
+
+
+## INT-03 — verified media release, 28 November 2026
+
+[Release evidence](steps/INT-03.md): CI run 46101660350 succeeded; PR #10 merged; private Site v9 deployed. Provider keys and real output QA remain pending.

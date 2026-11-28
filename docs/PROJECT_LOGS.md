@@ -433,3 +433,24 @@ System / Data & Integration / Product: shared provider setup checks and missing-
 ## INT-02 — 28 November 2026
 
 Architecture / Automation / Product: bounded asynchronous Shotstack render with explicit polling, private R2 import and existing approval controls. Experiment: 93 website tests passed; post-fix focused set 33/33. External Evidence: official Shotstack Edit API and hosting contracts checked. Risk: temporary provider output is external; permanent CDN destination excluded. Decision: silent captioned explainer; no automatic paid retry or publication. See [step](steps/INT-02.md). No schedule change.
+
+
+## INT-03 — verified release, 28 November 2026
+
+| Log | Recorded outcome |
+| --- | --- |
+| Business Learning | Configuration presence and real provider output are separate readiness states. |
+| System | Private Site version 9 deployment succeeded. |
+| Architecture | Persisted provider render IDs; explicit status refresh; private R2 import. No migrations. |
+| Automation | No new background schedule. No automatic paid retries. |
+| Recommendation | Configure provider keys, then validate real outputs before editorial release. |
+| Experiment | 93 website tests and 33 final focused media checks passed; fixtures only. |
+| External Evidence | Official Shotstack Edit API and hosting contracts checked. |
+| Risk & Assumption | Provider activation pending; external temporary output exists even with permanent CDN excluded. |
+| Data & Integration | Same D1/R2 bindings; no live story edits or media approvals. |
+| Product / Feature | Missing-setting guidance and hosted captioned-video workflow deployed. |
+| Merchant & Fulfilment | Not applicable; no purchase or subscription activation. |
+| Expansion | Captioned silent MP4 integration added; native apps remain separate. |
+| Decision | Preserve existing private audience, schedule, story history and publication controls. |
+
+[INT-03 release evidence](steps/INT-03.md), [merged PR #10](https://github.com/Utpal-Mishra/EPSTMC/pull/10). Remote workflow 46101660350 passed. Authenticated production UI and real provider outputs remain unverified.
