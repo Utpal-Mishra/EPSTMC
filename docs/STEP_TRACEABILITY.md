@@ -178,3 +178,9 @@ See [step record](steps/INT-02.md). Implemented and locally checked; live provid
 ## INT-03 — verified media release, 28 November 2026
 
 [Release evidence](steps/INT-03.md): CI run 46101660350 succeeded; PR #10 merged; private Site v9 deployed. Provider keys and real output QA remain pending.
+
+## WEB-09 — timeline filter alignment, 28 November 2026
+
+| Step | Record | Acceptance | Status |
+| --- | --- | --- | --- |
+| WEB-09 | [Timeline filter alignment](steps/WEB-09.md) | Align both buttons with the Year and Month dropdowns, with matching heights and a usable narrow layout. Preserve filter and link behavior. | Implemented and locally validated |

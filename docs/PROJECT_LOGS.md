@@ -454,3 +454,9 @@ Architecture / Automation / Product: bounded asynchronous Shotstack render with 
 | Decision | Preserve existing private audience, schedule, story history and publication controls. |
 
 [INT-03 release evidence](steps/INT-03.md), [merged PR #10](https://github.com/Utpal-Mishra/EPSTMC/pull/10). Remote workflow 46101660350 passed. Authenticated production UI and real provider outputs remain unverified.
+
+## WEB-09 — timeline filter alignment, 28 November 2026
+
+- Product / Feature: aligned the timeline dropdowns and buttons with a shared control height and a two-column layout on narrow screens.
+- System / Experiment: the Worker build and 93 website tests passed. Desktop browser measurements confirmed the aligned edges and filter actions were checked.
+- Decision: scoped the layout change to the timeline filters. See [WEB-09](steps/WEB-09.md).
