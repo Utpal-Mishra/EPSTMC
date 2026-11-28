@@ -423,3 +423,8 @@ Actual work/record date: 27 November 2026. [Scope and evidence](steps/D27.md).
 | Merchant & Fulfilment | Not applicable. |
 | Expansion | Agency response, operational status, coverage and physical-device QA gaps retained. |
 | Decision | Preserve owner-only Site v8, source and prior data; documentation only, no redeploy. |
+
+
+## INT-01 — 28 November 2026
+
+System / Data & Integration / Product: shared provider setup checks and missing-setting display. Risk & Assumption: configured means presence only; keys and live account access remain pending. See [step](steps/INT-01.md). No schedule change.
